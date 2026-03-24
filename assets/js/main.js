@@ -96,12 +96,13 @@ function initFormValidation() {
         }
 
         // 2. Comprobación del reCAPTCHA (Si lo activan)
-        /* const recaptchaResponse = grecaptcha.getResponse();
+        const recaptchaResponse = grecaptcha.getResponse();
+        
         if(recaptchaResponse.length === 0) {
-            alert("Por favor, verificá que no sos un robot.");
-            return;
+            alert("Por favor, verificá que no sos un robot marcando la casilla.");
+            return; // Corta la ejecución, no manda el formulario
         }
-        */
+        
 
         // 3. Preparar datos para envío
         const submitBtn = form.querySelector('.btn-submit');

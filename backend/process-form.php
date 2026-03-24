@@ -63,8 +63,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 7. Validación de Google reCAPTCHA (¡Descomentar en producción!)
-/*
+// 7. Validación de Google reCAPTCHA
+
 $recaptcha_secret = $_ENV['RECAPTCHA_SECRET'] ?? '';
 $recaptcha_response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
 
@@ -82,7 +82,6 @@ if (!$response_data->success) {
     echo json_encode(["status" => "error", "message" => "Validación de reCAPTCHA fallida. Sospecha de bot."]);
     exit;
 }
-*/
 
 // Diccionario para traducir el valor del servicio a texto legible
 $servicios_nombres = [
