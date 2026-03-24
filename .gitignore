@@ -2,9 +2,9 @@
 # IGNORAR VARIABLES DE ENTORNO (Seguridad Crítica)
 # =========================================================================
 # Ignora todos los archivos .env, sin importar en qué carpeta estén
-.env
-.env.*
-!.env.example
+#.env
+#.env.*
+#!.env.example
 
 # =========================================================================
 # IGNORAR DEPENDENCIAS DE COMPOSER (PHP)
