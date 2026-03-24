@@ -13,13 +13,26 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-// 2. Cargar PHPMailer vía Composer (¡Requisito: ejecutar 'composer require phpmailer/phpmailer'!)
+// 2. Cargar dependencias de Composer (PHPMailer y Dotenv)
 require 'vendor/autoload.php'; 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
-// 3. Función de Sanitización (Capa de Seguridad Anti-XSS)
+// 3. Cargar Variables de Entorno (.env)
+// Esto asume que el archivo .env está en la misma carpeta que este script (backend/)
+try {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+} catch (\Exception $e) {
+    // Si no encuentra el archivo .env, frenamos la ejecución por seguridad
+    http_response_code(500);
+    echo json_encode(["status" => "error", "message" => "Error de configuración del servidor."]);
+    exit;
+}
+
+// 4. Función de Sanitización (Capa de Seguridad Anti-XSS)
 function clean_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -27,7 +40,7 @@ function clean_input($data) {
     return $data;
 }
 
-// 4. Captura y Sanitización de los datos del formulario
+// 5. Captura y Sanitización de los datos del formulario
 $nombre      = isset($_POST['nombre']) ? clean_input($_POST['nombre']) : '';
 $apellido    = isset($_POST['apellido']) ? clean_input($_POST['apellido']) : '';
 $email       = isset($_POST['email']) ? filter_var(clean_input($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
@@ -37,7 +50,7 @@ $rubro       = isset($_POST['rubro']) ? clean_input($_POST['rubro']) : 'No espec
 $preferencia = isset($_POST['preferencia']) ? clean_input($_POST['preferencia']) : 'mail';
 $consulta    = isset($_POST['consulta']) ? clean_input($_POST['consulta']) : '';
 
-// 5. Validación de campos obligatorios (Backend Backup)
+// 6. Validación de campos obligatorios (Backend Backup)
 if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono) || empty($consulta)) {
     http_response_code(400);
     echo json_encode(["status" => "error", "message" => "Faltan campos obligatorios."]);
@@ -50,9 +63,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// 6. Validación de Google reCAPTCHA (¡Descomentar en producción!)
+// 7. Validación de Google reCAPTCHA (¡Descomentar en producción!)
 /*
-$recaptcha_secret = "TU_CLAVE_SECRETA_DE_GOOGLE_AQUI";
+$recaptcha_secret = $_ENV['RECAPTCHA_SECRET'] ?? '';
 $recaptcha_response = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : '';
 
 if(empty($recaptcha_response)) {
@@ -81,24 +94,24 @@ $servicios_nombres = [
 $servicio_legible = isset($servicios_nombres[$servicio]) ? $servicios_nombres[$servicio] : $servicio;
 
 // =========================================================================
-// 7. CONFIGURACIÓN Y ENVÍO DE CORREO (PHPMailer)
+// 8. CONFIGURACIÓN Y ENVÍO DE CORREO (PHPMailer)
 // =========================================================================
 $mail = new PHPMailer(true);
 
 try {
-    // Configuración del Servidor SMTP (Reemplazar con datos de Hostinger)
+    // Configuración del Servidor SMTP usando Variables de Entorno
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com'; // Servidor SMTP de Hostinger
+    $mail->Host       = $_ENV['SMTP_HOST']; 
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@lamas-gc.com';  // Tu correo real
-    $mail->Password   = 'TU_CONTRASEÑA_DE_CORREO'; 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Usar SSL/TLS
-    $mail->Port       = 465; // Puerto seguro
+    $mail->Username   = $_ENV['SMTP_USER'];  
+    $mail->Password   = $_ENV['SMTP_PASS']; 
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->Port       = $_ENV['SMTP_PORT']; 
 
     // Remitente y Destinatario
-    $mail->setFrom('info@lamas-gc.com', 'LGC Landing Page'); // Quien envía
-    $mail->addAddress('info@lamas-gc.com', 'Lamas Global Consulting'); // A quién le llega
-    $mail->addReplyTo($email, "$nombre $apellido"); // Para responder directo al lead
+    $mail->setFrom($_ENV['SMTP_USER'], 'LGC Landing Page'); 
+    $mail->addAddress($_ENV['SMTP_USER'], 'Lamas Global Consulting'); 
+    $mail->addReplyTo($email, "$nombre $apellido"); 
 
     // Contenido del Correo
     $mail->isHTML(true);
@@ -130,12 +143,11 @@ try {
     $mail->send();
 
     // =========================================================================
-    // 8. ENVIAR DATOS A GOOGLE SHEETS (Webhook silente vía cURL)
+    // 9. ENVIAR DATOS A GOOGLE SHEETS (Webhook silente vía cURL)
     // =========================================================================
-    // PEGA ACÁ LA URL LARGA QUE TE DIO GOOGLE APPS SCRIPT
-    $google_webhook_url = 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI'; 
+    $google_webhook_url = $_ENV['WEBHOOK_URL'] ?? ''; 
 
-    if (!empty($google_webhook_url) && $google_webhook_url !== 'TU_URL_DE_GOOGLE_APPS_SCRIPT_AQUI') {
+    if (!empty($google_webhook_url)) {
         $post_data = [
             'nombre' => $nombre,
             'apellido' => $apellido,
@@ -152,24 +164,22 @@ try {
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data)); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Vital porque Google hace redirecciones
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5); // Timeout corto para no trabar la web si Google tarda
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); 
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); 
         
         $sheet_response = curl_exec($ch);
         curl_close($ch);
     }
 
     // =========================================================================
-    // 9. RESPUESTA FINAL AL FRONTEND
+    // 10. RESPUESTA FINAL AL FRONTEND
     // =========================================================================
-    // Si llegamos acá, el mail se mandó y el sheet se actualizó. Devolvemos 200 OK.
     http_response_code(200);
     echo json_encode(["status" => "success", "message" => "Consulta enviada y registrada correctamente."]);
 
 } catch (Exception $e) {
     // Error crítico al enviar el correo
     http_response_code(500);
-    // Nota: en producción real, conviene no mostrar $mail->ErrorInfo al usuario final por seguridad.
     echo json_encode(["status" => "error", "message" => "Error al enviar el correo. Por favor, intentá nuevamente."]);
 }
 ?>
