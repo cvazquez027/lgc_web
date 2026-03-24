@@ -1,0 +1,41 @@
+/* variables.css */
+:root {
+    /* --- PALETA DE COLORES --- */
+    /* Solidez y Estructura (Legal / Industrial) */
+    --clr-dark: #1A1A1A; 
+    --clr-dark-blue: #0A192F; /* Tono más profundo para headers/footers */
+    
+    /* Naturaleza y Dinamismo (Ambiente / Modernidad) */
+    --clr-primary: #007A5E; /* Verde institucional sólido */
+    --clr-accent: #00D47E; /* Verde brillante para CTAs y hover */
+    
+    /* Fondos */
+    --clr-bg-light: #F8F9FA;
+    --clr-surface: #FFFFFF;
+    
+    /* Textos */
+    --clr-text-main: #333333;
+    --clr-text-muted: #666666;
+
+    /* --- TIPOGRAFÍAS --- */
+    /* Montserrat emula la solidez geométrica de Bauhaus para Títulos */
+    --font-heading: 'Montserrat', sans-serif; 
+    /* Inter aporta máxima legibilidad técnica para párrafos */
+    --font-body: 'Inter', sans-serif;
+
+    /* --- ESPACIADOS (Sistema Base de 8px) --- */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 2rem;     /* 32px */
+    --space-lg: 4rem;     /* 64px */
+    --space-xl: 6rem;     /* 96px */
+
+    /* --- BORDES: EL JUEGO ENTRE LO RECTO Y LO FLUIDO --- */
+    --radius-strict: 0px;      /* Para botones y contenedores estructurales */
+    --radius-fluid: 40px 0px 40px 0px; /* Forma orgánica para imágenes y tarjetas (Opción 2/3) */
+    --radius-soft: 8px;        /* Para inputs del formulario */
+
+    /* --- TRANSICIONES --- */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
