@@ -1,27 +1,34 @@
 /* =========================================================================
-   VARIABLES.CSS - LGC LANDING PAGE (Paleta Turquesa, Oliva y Tostado)
+   VARIABLES.CSS - LGC (Actualizado con Overlay para Quiénes Somos)
    ========================================================================= */
 
 :root {
     /* --- PALETA DE COLORES ACORDADA --- */
     --clr-primary: #286484; /* Turquesa Oscuro (Estructura, Header, Botones) */
     --clr-accent: #657038;  /* Verde Oliva (Detalles, Hovers, Destacados) */
-    --clr-tostado: #CBC3B7; /* Tostado Claro (Fondos secundarios y calidez) */
+    --clr-tostado: #CBC3B7; /* Tostado Claro (Fondos secundarios, Calidez) */
     
     /* Derivados para contraste y fondos */
     --clr-dark: #153445;    /* Turquesa muy oscuro para títulos fuertes */
-    --clr-bg-light: #F4F3F0; /* Blanco roto/crema muy sutil para fondo general */
-    --clr-surface: #FFFFFF;  /* Blanco puro para tarjetas */
+    --clr-bg-light: #F4F3F0; /* Crema muy sutil para fondo general */
+    --clr-surface: #FFFFFF;  /* Blanco puro */
     
     /* Textos */
     --clr-text-main: #333333;
     --clr-text-muted: #555555;
 
+    /* --- NUEVAS VARIABLES PARA FONDOS INMERSIVOS (Quiénes Somos) --- */
+    /* Overlay Turquesa profundo para Quiénes Somos */
+    --clr-overlay-dark: rgba(21, 52, 69, 0.85); /* Un Turquesa muy oscuro y profundo, con 85% de opacidad */
+    
+    /* Texto claro para usar sobre fondos oscuros (matrices, ambiente, seguridad, habilitaciones) */
+    --clr-surface-light: rgba(255, 255, 255, 0.9);
+
     /* --- TIPOGRAFÍAS --- */
-    /* Corporate A (Serif) para Títulos. Playfair es el fallback temporal */
+    /* Corporate A (Serif) para Títulos. Playfair es el fallback */
     --font-heading: 'Corporate A', 'Playfair Display', serif; 
     
-    /* Arboria (Sans) para Textos. Montserrat es el fallback temporal */
+    /* Arboria (Sans) para Textos. Montserrat es el fallback */
     --font-body: 'Arboria', 'Montserrat', sans-serif;
 
     /* --- ESPACIADOS --- */
@@ -33,7 +40,7 @@
 
     /* --- BORDES --- */
     --radius-strict: 0px;       
-    --radius-fluid: 16px;       /* Un poco más sobrio para esta paleta elegante */
+    --radius-fluid: 16px;       
     --radius-soft: 8px;         
 
     /* --- TRANSICIONES --- */
