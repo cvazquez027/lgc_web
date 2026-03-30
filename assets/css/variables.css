@@ -1,41 +1,42 @@
-/* variables.css */
+/* =========================================================================
+   VARIABLES.CSS - LGC LANDING PAGE (Paleta Turquesa, Oliva y Tostado)
+   ========================================================================= */
+
 :root {
-    /* --- PALETA DE COLORES --- */
-    /* Solidez y Estructura (Legal / Industrial) */
-    --clr-dark: #1A1A1A; 
-    --clr-dark-blue: #0A192F; /* Tono más profundo para headers/footers */
+    /* --- PALETA DE COLORES ACORDADA --- */
+    --clr-primary: #286484; /* Turquesa Oscuro (Estructura, Header, Botones) */
+    --clr-accent: #657038;  /* Verde Oliva (Detalles, Hovers, Destacados) */
+    --clr-tostado: #CBC3B7; /* Tostado Claro (Fondos secundarios y calidez) */
     
-    /* Naturaleza y Dinamismo (Ambiente / Modernidad) */
-    --clr-primary: #007A5E; /* Verde institucional sólido */
-    --clr-accent: #00D47E; /* Verde brillante para CTAs y hover */
-    
-    /* Fondos */
-    --clr-bg-light: #F8F9FA;
-    --clr-surface: #FFFFFF;
+    /* Derivados para contraste y fondos */
+    --clr-dark: #153445;    /* Turquesa muy oscuro para títulos fuertes */
+    --clr-bg-light: #F4F3F0; /* Blanco roto/crema muy sutil para fondo general */
+    --clr-surface: #FFFFFF;  /* Blanco puro para tarjetas */
     
     /* Textos */
     --clr-text-main: #333333;
-    --clr-text-muted: #666666;
+    --clr-text-muted: #555555;
 
     /* --- TIPOGRAFÍAS --- */
-    /* Montserrat emula la solidez geométrica de Bauhaus para Títulos */
-    --font-heading: 'Montserrat', sans-serif; 
-    /* Inter aporta máxima legibilidad técnica para párrafos */
-    --font-body: 'Inter', sans-serif;
+    /* Corporate A (Serif) para Títulos. Playfair es el fallback temporal */
+    --font-heading: 'Corporate A', 'Playfair Display', serif; 
+    
+    /* Arboria (Sans) para Textos. Montserrat es el fallback temporal */
+    --font-body: 'Arboria', 'Montserrat', sans-serif;
 
-    /* --- ESPACIADOS (Sistema Base de 8px) --- */
-    --space-xs: 0.5rem;   /* 8px */
-    --space-sm: 1rem;     /* 16px */
-    --space-md: 2rem;     /* 32px */
-    --space-lg: 4rem;     /* 64px */
-    --space-xl: 6rem;     /* 96px */
+    /* --- ESPACIADOS --- */
+    --space-xs: 0.5rem;   
+    --space-sm: 1rem;     
+    --space-md: 2rem;     
+    --space-lg: 4rem;     
+    --space-xl: 6rem;     
 
-    /* --- BORDES: EL JUEGO ENTRE LO RECTO Y LO FLUIDO --- */
-    --radius-strict: 0px;      /* Para botones y contenedores estructurales */
-    --radius-fluid: 40px 0px 40px 0px; /* Forma orgánica para imágenes y tarjetas (Opción 2/3) */
-    --radius-soft: 8px;        /* Para inputs del formulario */
+    /* --- BORDES --- */
+    --radius-strict: 0px;       
+    --radius-fluid: 16px;       /* Un poco más sobrio para esta paleta elegante */
+    --radius-soft: 8px;         
 
     /* --- TRANSICIONES --- */
-    --transition-fast: 0.2s ease-in-out;
-    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.2s ease-in-out; 
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
 }

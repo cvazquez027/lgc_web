@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lamas Global Consulting. Soluciones ambientales, legales y de gestión a la medida de cada organización. Más de 30 años de trayectoria.">
-    <meta name="keywords" content="consultoría ambiental, matrices legales, seguridad e higiene, habilitaciones, impacto ambiental, LGC">
-    <title>LGC | Soluciones Ambientales, Legales y de Gestión</title>
+    <meta name="description" content="Lamas Global Consulting. Soluciones ambientales, legales y de gestión a la medida de cada organización.">
+    <title>LGC | Ambiente, Seguridad Ocupacional y Gestión</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -18,15 +17,25 @@
 
     <header class="header" id="header">
         <div class="container nav-container">
-            <a href="#inicio" class="logo" aria-label="Ir al inicio de Lamas Global Consulting">
-                <span class="logo-lamas">LAMAS</span> <span class="logo-gc">Global Consulting</span>
+            <a href="#inicio" class="logo" aria-label="Ir al inicio de LGC">
+                <img src="assets/img/logos/logo_lgc.png" alt="Lamas Global Consulting" class="logo-img">
             </a>
             <nav class="navbar" aria-label="Navegación principal">
                 <ul class="nav-links">
-                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#abonos">Abonos</a></li>
-                    <li><a href="#casos-exito">Casos de Éxito</a></li>
+                    <li><a href="#quienes-somos">Quiénes somos</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#servicios" class="dropdown-toggle">Servicios ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#srv-matrices">Matrices Legales</a></li>
+                            <li><a href="#srv-ambiente">Ambiente</a></li>
+                            <li><a href="#srv-seguridad">Seguridad e Higiene</a></li>
+                            <li><a href="#srv-habilitaciones">Habilitaciones</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="#casos-exito">Confían en Nosotros</a></li>
+                    <li><a href="#novedades">Novedades</a></li>
                     <li><a href="#contacto" class="btn-outline">Contacto</a></li>
                 </ul>
             </nav>
@@ -34,61 +43,131 @@
     </header>
 
     <main>
-        <section id="inicio" class="hero">
-            <div class="container hero-content">
-                <p class="hero-subtitle">Ambiente · Seguridad y Salud Ocupacional · Gestión</p>
-                <h1 class="hero-title">Soluciones ambientales, legales y de gestión, a la medida de cada organización.</h1>
-                <p class="hero-text">Combinamos más de 30 años de trayectoria con una mirada moderna, dinámica y estratégica.</p>
-                <a href="#contacto" class="btn-primary">Solicitá tu cotización</a>
+        <section id="inicio" class="hero-slider-section">
+            <div class="slider-container" id="mainSlider">
+                
+                <div class="slide active">
+                    <div class="container hero-content">
+                        <p class="hero-subtitle">Ambiente · Seguridad · Gestión</p>
+                        <h1 class="hero-title">Soluciones a la medida de cada organización.</h1>
+                        <p class="hero-text">Combinamos más de 30 años de trayectoria con una mirada moderna, dinámica y estratégica.</p>
+                        <div class="slider-actions">
+                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="matrices">Solicitá tu cotización</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="container hero-content">
+                        <p class="hero-subtitle">Sistemas Online</p>
+                        <h1 class="hero-title">Matrices Legales Dinámicas.</h1>
+                        <p class="hero-text">Transformamos el cumplimiento normativo en una gestión clara y automatizable con alertas y reportes.</p>
+                        <div class="slider-actions">
+                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="matrices">Solicitá tu cotización</a>
+                            <a href="#srv-matrices" class="btn-outline-light">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <div class="container hero-content">
+                        <p class="hero-subtitle">Sostenibilidad Estratégica</p>
+                        <h1 class="hero-title">Gestión Ambiental Integral.</h1>
+                        <p class="hero-text">Viabilizamos proyectos equilibrando el desarrollo industrial y la protección del entorno.</p>
+                        <div class="slider-actions">
+                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="ambiente">Solicitá tu cotización</a>
+                            <a href="#srv-ambiente" class="btn-outline-light">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="hero-decoration" aria-hidden="true"></div>
+            
+            <button class="slider-btn prev" aria-label="Anterior">&#10094;</button>
+            <button class="slider-btn next" aria-label="Siguiente">&#10095;</button>
+            <div class="slider-dots"></div>
         </section>
 
         <section id="quienes-somos" class="about">
-            <div class="container about-grid">
-                <div class="about-text">
-                    <h2>Una apuesta intergeneracional</h2>
-                    <p>Somos continuadores de Estudio Lamas & Asociados. Nuestro equipo integra profesionales con amplia experiencia técnica y legal, junto a jóvenes que aportan agilidad y una visión actualizada.</p>
-                    <p>No creemos en soluciones estándar, creemos en el trabajo a medida. Además, contamos con <strong>alianzas estratégicas</strong> de primer nivel que potencian nuestra capacidad operativa y analítica en proyectos de alta complejidad.</p>
-                </div>
-                <div class="about-image">
-                    <div class="image-mask"></div>
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p class="hero-subtitle">Trayectoria intergeneracional</p>
+                        <h2>Continuadores de Estudio Lamas & Asociados</h2>
+                        <p>Con más de tres décadas de presencia en el mercado, acompañamos a empresas, organismos públicos y proyectos de diversa complejidad. Nuestro equipo integra sólida experiencia técnica y legal —con paso por la función pública— y jóvenes profesionales que aportan innovación, agilidad y visión actualizada.</p>
+                        <p>No creemos en soluciones estándar. El diferencial de LGC es el <strong>acompañamiento continuo</strong>, respetando la identidad, el contexto y los objetivos de cada organización.</p>
+                    </div>
+                    <div class="about-alianzas">
+                        <h3>Alianzas Estratégicas</h3>
+                        <p class="text-muted">Fortalecemos nuestra capacidad operativa y garantizamos respaldo especializado:</p>
+                        <ul class="alianzas-grid">
+                            <li><strong>Grupo Ecogestionar:</strong> Licitaciones y abordajes interdisciplinarios.</li>
+                            <li><strong>Laboratorios LAIA:</strong> Respaldo técnico analítico bajo estándares de calidad.</li>
+                            <li><strong>MEGMA:</strong> Auditorías Certificadas en Secretaría de Energía.</li>
+                            <li><strong>Peritos Sin Fronteras:</strong> Intervención en alta complejidad técnica/judicial.</li>
+                            <li><strong>CC Sustainable:</strong> Integración con estrategias financieras (Bonos Verdes).</li>
+                            <li><strong>LEAF:</strong> Cuantificación y reporte (Huellas Ambientales).</li>
+                            <li><strong>EHS:</strong> Intervención especializada en terreno (SYSO).</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="servicios" class="services">
+        <section id="servicios" class="services-detailed">
             <div class="container">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="service-icon" aria-hidden="true"></div>
-                        <h3>Sistemas de Matrices Legales Online</h3>
+                <h2 class="section-title text-center">Nuestros Servicios</h2>
+                
+                <div id="srv-matrices" class="service-block">
+                    <div class="service-block-content">
+                        <h3>Matrices Legales</h3>
                         <p>Transformamos el cumplimiento normativo en una gestión clara, dinámica y automatizable.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon" aria-hidden="true"></div>
-                        <h3>Impacto Ambiental</h3>
-                        <p>Gestión integral para viabilizar proyectos equilibrando desarrollo y protección del entorno.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon" aria-hidden="true"></div>
-                        <h3>Seguridad e Higiene</h3>
-                        <p>Prevención, control de riesgos y cumplimiento legal para entornos laborales seguros.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon" aria-hidden="true"></div>
-                        <h3>Habilitaciones</h3>
-                        <p>Acompañamiento y gestión ágil ante organismos públicos para el inicio de operaciones.</p>
-                    </article>
+                        <ul class="service-features">
+                            <li><strong>Sistemas Online:</strong> Plataforma digital interactiva con alertas de vencimientos y reportes exportables adaptada a la actividad y jurisdicción de cada empresa.</li>
+                            <li><strong>Asesoramiento Jurídico:</strong> Interpretación normativa aplicada, elaboración de descargos, representación en inspecciones y patrocinio letrado.</li>
+                            <li><strong>Abonos de Mantenimiento:</strong> Actualización mensual y seguimiento continuo.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="abonos" class="subscriptions" style="display: none;">
-            <div class="container">
-                <h2>Planes y Abonos</h2>
-                <p>Próximamente: Conocé nuestros esquemas para Matrices Legales.</p>
+                <div id="srv-ambiente" class="service-block alt-bg">
+                    <div class="service-block-content">
+                        <h3>Ambiente</h3>
+                        <p>Evaluación y gestión integral para viabilizar proyectos equilibrando desarrollo y protección del entorno.</p>
+                        <ul class="service-features">
+                            <li><strong>Estudios de Impacto Ambiental (EsIA):</strong> Línea de base, evaluaciones y planes de gestión para radicación y operaciones.</li>
+                            <li><strong>Auditorías Ambientales:</strong> Evaluación de pasivos, Due Diligence, Fase I y II, y relevamiento con drones.</li>
+                            <li><strong>Gestión de Residuos:</strong> Trazabilidad, manifiestos, inscripciones (generadores y operadores) y estrategias de valorización.</li>
+                            <li><strong>Huella de Carbono:</strong> Inventario de emisiones (Alcance 1, 2 y 3) y planes de compensación.</li>
+                            <li><strong>Sistemas ISO 14001:</strong> Diseño, implementación y preparación para certificación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="srv-seguridad" class="service-block">
+                    <div class="service-block-content">
+                        <h3>Seguridad e Higiene (SYSO)</h3>
+                        <p>Fortalecemos la cultura preventiva y el compromiso organizacional para entornos seguros.</p>
+                        <ul class="service-features">
+                            <li><strong>Auditorías SYSO:</strong> Identificación de riesgos legales y operativos con planes de acción correctiva.</li>
+                            <li><strong>Sistemas ISO 45001:</strong> Implementación y seguimiento de estándares internacionales de seguridad y salud en el trabajo.</li>
+                            <li><strong>Capacitación y Formación:</strong> Programas a medida sobre prevención, manejo de residuos y responsabilidades legales.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="srv-habilitaciones" class="service-block alt-bg">
+                    <div class="service-block-content">
+                        <h3>Habilitaciones y Permisos</h3>
+                        <p>Garantizamos seguridad jurídica actuando como nexo técnico entre la empresa y la autoridad de aplicación.</p>
+                        <ul class="service-features">
+                            <li><strong>Gestión Administrativa:</strong> Habilitaciones industriales, comerciales y categorizaciones ambientales.</li>
+                            <li><strong>Trámites Específicos:</strong> Permisos de vuelco, emisiones e inscripción como generador de residuos.</li>
+                            <li><strong>Facility Management:</strong> Control documental de habilitaciones, supervisión técnica y gestión de proveedores.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -102,14 +181,45 @@
                         <span class="logo-item">Logo Cliente 3</span>
                     </div>
                 </div>
+                
                 <div class="cases-grid">
                     <article class="case-card">
-                        <h3>Caso Cirion</h3>
-                        <p>Intervención y resultados concretos.</p>
+                        <div class="case-header">
+                            <h3>CIRION Technologies</h3>
+                            <span class="case-sector">Telecomunicaciones e infraestructura</span>
+                        </div>
+                        <div class="case-body">
+                            <p><strong>El Desafío:</strong> Garantizar cumplimiento en instalaciones complejas (antenas, combustibles, residuos).</p>
+                            <p><strong>Nuestra Intervención:</strong> Auditorías ISO 14001, matrices legales, plan de monitoreo de radiación y regularización ambiental.</p>
+                            <hr>
+                            <p class="case-result"><strong>Resultados:</strong> Reducción de contingencias, actualización normativa y reducción de pasivos en un 40%.</p>
+                        </div>
                     </article>
+
                     <article class="case-card">
-                        <h3>Caso Belgrano Cargas</h3>
-                        <p>Gestión y solución aplicada.</p>
+                        <div class="case-header">
+                            <h3>Belgrano Cargas y Logística</h3>
+                            <span class="case-sector">Transporte ferroviario</span>
+                        </div>
+                        <div class="case-body">
+                            <p><strong>El Desafío:</strong> Diagnóstico integral y regularización en talleres, depósitos y lavaderos a escala nacional.</p>
+                            <p><strong>Nuestra Intervención:</strong> Relevamiento en 33 establecimientos, matrices legales dinámicas y asesoramiento en transporte de sustancias peligrosas.</p>
+                            <hr>
+                            <p class="case-result"><strong>Resultados:</strong> Operatividad garantizada, estandarización de procedimientos y minimización de riesgos en inspecciones.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="novedades" class="news">
+            <div class="container">
+                <h2 class="section-title text-center">Novedades Normativas</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <span class="news-date">Última actualización</span>
+                        <h3>Monitoreo Normativo</h3>
+                        <p>Mantenemos a nuestros clientes informados sobre los últimos cambios en la legislación nacional, provincial y municipal aplicable a su sector.</p>
                     </article>
                 </div>
             </div>
@@ -157,7 +267,7 @@
                             <select id="servicio" name="servicio" required>
                                 <option value="" disabled selected>Seleccioná una opción</option>
                                 <option value="matrices">Sistemas de Matrices Legales</option>
-                                <option value="impacto">Impacto Ambiental</option>
+                                <option value="ambiente">Ambiente</option>
                                 <option value="seguridad">Seguridad e Higiene</option>
                                 <option value="habilitaciones">Habilitaciones</option>
                             </select>
@@ -182,7 +292,7 @@
                         <textarea id="consulta" name="consulta" rows="4" required></textarea>
                     </div>
 
-                    <div class="g-recaptcha" data-sitekey="6Lcm05YsAAAAANpDa30UsD6r-wrkCgUqlENMXaeH"></div>
+                    <div class="g-recaptcha" data-sitekey="TU_CLAVE_DE_SITIO_AQUI"></div>
 
                     <button type="submit" class="btn-primary btn-submit">Solicitá tu cotización</button>
                 </form>
