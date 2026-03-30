@@ -1,5 +1,5 @@
 /* =========================================================================
-   STYLE.CSS - LGC LANDING PAGE (Slider + Paleta Elegante + Dropdown)
+   STYLE.CSS - LGC LANDING PAGE (Slider + Paleta Elegante + Showcase)
    ========================================================================= */
 
 /* =========================================
@@ -143,7 +143,7 @@ img {
 }
 
 .logo-img {
-    max-height: 70px; 
+    max-height: 90px; 
     width: auto; 
     object-fit: contain;
 }
@@ -296,7 +296,6 @@ img {
     flex-wrap: wrap;
 }
 
-/* Controles del Slider */
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -415,71 +414,149 @@ img {
 }
 
 /* =========================================
-   SERVICIOS DETALLADOS (Bloques)
+   SERVICIOS: EDITORIAL SHOWCASE
    ========================================= */
-.services-detailed {
-    padding: var(--space-md) 0 0 0; /* Menos padding superior ya que viene de About */
-    background-color: var(--clr-surface);
+.services-showcase {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.service-block {
-    padding: var(--space-lg) var(--space-md);
-    border-bottom: 1px solid #eaeaea;
+.showcase-block {
+    position: relative;
+    padding: var(--space-xl) 0;
+    overflow: hidden;
+    width: 100%;
 }
 
-.service-block.alt-bg {
-    background-color: var(--clr-bg-light); /* Fondo crema para separar */
+.showcase-bg-number {
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: clamp(12rem, 25vw, 25rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 0.8;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
 }
 
-.service-block-content {
-    max-width: 900px;
-    margin: 0 auto;
+.showcase-grid {
+    position: relative;
+    z-index: 2;
 }
 
-.service-block h3 {
-    font-size: 2rem;
-    color: var(--clr-primary);
+.showcase-content {
+    max-width: 600px; 
+    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius-fluid);
+}
+
+.showcase-block:nth-child(odd) .showcase-bg-number {
+    right: -5%;
+}
+
+.showcase-block:nth-child(even) .showcase-bg-number {
+    left: -5%;
+}
+
+.showcase-grid.align-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.showcase-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin-bottom: var(--space-sm);
+    font-weight: 700;
 }
 
-.service-block > p {
-    font-size: 1.1rem;
-    color: var(--clr-text-muted);
+.showcase-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
+}
+
+.showcase-desc {
+    font-size: 1.2rem;
     margin-bottom: var(--space-md);
+    font-weight: 500;
 }
 
-.service-features {
+.showcase-features {
     list-style: none;
     display: grid;
-    gap: 15px;
+    gap: 1.2rem;
 }
 
-.service-features li {
+.showcase-features li {
     position: relative;
     padding-left: 28px;
     line-height: 1.6;
-    color: var(--clr-text-main);
+    font-size: 1.05rem;
 }
 
-.service-features li::before {
+.showcase-features li::before {
     content: "■";
     position: absolute;
     left: 0;
     top: 2px;
-    color: var(--clr-accent);
     font-size: 0.8rem;
 }
 
-.service-features li strong {
-    color: var(--clr-dark);
-}
+/* --- TEMA 1: LIGHT (Matrices) --- */
+.theme-light { background-color: var(--clr-bg-light); }
+.theme-light .showcase-bg-number { color: var(--clr-tostado); opacity: 0.3; }
+.theme-light .showcase-tag { color: var(--clr-accent); }
+.theme-light .showcase-title { color: var(--clr-primary); }
+.theme-light .showcase-desc { color: var(--clr-text-muted); }
+.theme-light .showcase-features li { color: var(--clr-text-main); }
+.theme-light .showcase-features li strong { color: var(--clr-primary); }
+.theme-light .showcase-features li::before { color: var(--clr-accent); }
+
+/* --- TEMA 2: PRIMARY (Ambiente) --- */
+.theme-primary { background: radial-gradient(circle at top left, #367b9e 0%, var(--clr-dark) 100%); }
+.theme-primary .showcase-bg-number { color: var(--clr-surface); opacity: 0.04; }
+.theme-primary .showcase-tag { color: var(--clr-tostado); }
+.theme-primary .showcase-title { color: var(--clr-surface); }
+.theme-primary .showcase-desc { color: rgba(255, 255, 255, 0.8); }
+.theme-primary .showcase-features li { color: rgba(255, 255, 255, 0.9); }
+.theme-primary .showcase-features li strong { color: var(--clr-surface); }
+.theme-primary .showcase-features li::before { color: var(--clr-tostado); }
+
+/* --- TEMA 3: TOSTADO (Seguridad) --- */
+.theme-tostado { background: radial-gradient(circle at bottom right, #e2dacd 0%, var(--clr-tostado) 100%); }
+.theme-tostado .showcase-bg-number { color: var(--clr-surface); opacity: 0.4; }
+.theme-tostado .showcase-tag { color: var(--clr-accent); }
+.theme-tostado .showcase-title { color: var(--clr-dark); }
+.theme-tostado .showcase-desc { color: var(--clr-text-muted); }
+.theme-tostado .showcase-features li { color: var(--clr-text-main); }
+.theme-tostado .showcase-features li strong { color: var(--clr-dark); }
+.theme-tostado .showcase-features li::before { color: var(--clr-accent); }
+
+/* --- TEMA 4: ACCENT OLIVA (Habilitaciones) --- */
+.theme-accent { background: radial-gradient(circle at bottom left, #7c8846 0%, var(--clr-accent) 100%); }
+.theme-accent .showcase-bg-number { color: var(--clr-surface); opacity: 0.05; }
+.theme-accent .showcase-tag { color: var(--clr-tostado); }
+.theme-accent .showcase-title { color: var(--clr-surface); }
+.theme-accent .showcase-desc { color: rgba(255, 255, 255, 0.9); }
+.theme-accent .showcase-features li { color: rgba(255, 255, 255, 0.95); }
+.theme-accent .showcase-features li strong { color: var(--clr-surface); }
+.theme-accent .showcase-features li::before { color: var(--clr-tostado); }
 
 /* =========================================
    CASOS DE ÉXITO 
    ========================================= */
 .success {
     padding: var(--space-xl) 0;
-    background-color: var(--clr-tostado); 
+    background-color: var(--clr-bg-light); /* Cambio a claro para descansar del Verde Oliva anterior */
 }
 
 .success .section-title {
@@ -491,8 +568,8 @@ img {
     overflow: hidden;
     white-space: nowrap;
     padding: var(--space-md) 0;
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     margin-bottom: var(--space-lg);
 }
 
@@ -723,6 +800,19 @@ select option {
     .about-grid, .footer-grid {
         grid-template-columns: 1fr;
     }
+    .showcase-grid.align-right {
+        justify-content: flex-start; 
+    }
+    .showcase-content {
+        max-width: 100%;
+        padding: var(--space-sm) 0;
+        background: none;
+        backdrop-filter: none;
+    }
+    .showcase-bg-number {
+        font-size: 15rem;
+        top: 20%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -730,7 +820,6 @@ select option {
     .logo-img { max-height: 55px; }
     
     .nav-links { display: none; }
-
     .slider-btn { display: none; }
     
     .form-row {

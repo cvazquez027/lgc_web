@@ -26,7 +26,7 @@ function initHeaderScroll() {
 }
 
 /* =======================================================
-   2. SCROLL SUAVE PARA ANCLAS (Y MENÚ DESPLEGABLE)
+   2. SCROLL SUAVE PARA ANCLAS
    ======================================================= */
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
