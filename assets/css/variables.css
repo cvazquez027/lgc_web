@@ -1,41 +1,36 @@
-/* variables.css */
+/* =========================================================================
+   VARIABLES.CSS - LGC (Identidad Final: Turquesa, Verde y Crema)
+   ========================================================================= */
+
 :root {
-    /* --- PALETA DE COLORES --- */
-    /* Solidez y Estructura (Legal / Industrial) */
-    --clr-dark: #1A1A1A; 
-    --clr-dark-blue: #0A192F; /* Tono más profundo para headers/footers */
+    /* --- PALETA DE COLORES DEFINITIVA --- */
+    --clr-primary: #007FA1; /* Turquesa LGC */
+    --clr-accent: #90A224;  /* Verde Oliva LGC */
+    --clr-tostado: #E0D6C4; /* Crema LGC (Fondo Premium) */
     
-    /* Naturaleza y Dinamismo (Ambiente / Modernidad) */
-    --clr-primary: #007A5E; /* Verde institucional sólido */
-    --clr-accent: #00D47E; /* Verde brillante para CTAs y hover */
-    
-    /* Fondos */
-    --clr-bg-light: #F8F9FA;
-    --clr-surface: #FFFFFF;
+    /* Derivados para contraste */
+    --clr-dark: #004d61;    
+    --clr-bg-light: #F9F7F4; 
+    --clr-surface: #FFFFFF;  
     
     /* Textos */
-    --clr-text-main: #333333;
-    --clr-text-muted: #666666;
+    --clr-text-main: #2D3436;
+    --clr-text-muted: #636E72;
 
-    /* --- TIPOGRAFÍAS --- */
-    /* Montserrat emula la solidez geométrica de Bauhaus para Títulos */
-    --font-heading: 'Montserrat', sans-serif; 
-    /* Inter aporta máxima legibilidad técnica para párrafos */
-    --font-body: 'Inter', sans-serif;
+    /* --- TIPOGRAFÍAS SELECCIONADAS --- */
+    --font-heading: 'Cormorant Garamond', serif; 
+    --font-body: 'Outfit', sans-serif;
 
-    /* --- ESPACIADOS (Sistema Base de 8px) --- */
-    --space-xs: 0.5rem;   /* 8px */
-    --space-sm: 1rem;     /* 16px */
-    --space-md: 2rem;     /* 32px */
-    --space-lg: 4rem;     /* 64px */
-    --space-xl: 6rem;     /* 96px */
-
-    /* --- BORDES: EL JUEGO ENTRE LO RECTO Y LO FLUIDO --- */
-    --radius-strict: 0px;      /* Para botones y contenedores estructurales */
-    --radius-fluid: 40px 0px 40px 0px; /* Forma orgánica para imágenes y tarjetas (Opción 2/3) */
-    --radius-soft: 8px;        /* Para inputs del formulario */
+    /* --- ESPACIADOS Y BORDES --- */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;     
+    --space-md: 2rem;     
+    --space-lg: 4rem;     
+    --space-xl: 6rem;     
+    --radius-fluid: 20px;       
+    --radius-soft: 4px; 
 
     /* --- TRANSICIONES --- */
     --transition-fast: 0.2s ease-in-out;
-    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
 }
