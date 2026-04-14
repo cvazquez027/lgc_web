@@ -1,9 +1,5 @@
 /* =========================================================================
-<<<<<<< HEAD
    STYLE.CSS - LGC (Identidad Final: Turquesa, Verde y Crema)
-=======
-   STYLE.CSS - LGC LANDING PAGE (Slider + Paleta Elegante + Showcase)
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
    ========================================================================= */
 
 /* =========================================
@@ -32,11 +28,7 @@ h1, h2, h3, h4 {
     font-family: var(--font-heading);
     color: var(--clr-dark);
     line-height: 1.2;
-<<<<<<< HEAD
     font-weight: 600;
-=======
-    font-weight: 700;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 a {
@@ -73,7 +65,6 @@ img {
     color: var(--clr-text-muted);
 }
 
-<<<<<<< HEAD
 .section-tag {
     color: var(--clr-accent);
     text-transform: uppercase;
@@ -84,18 +75,12 @@ img {
     margin-bottom: var(--space-sm);
 }
 
-=======
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 /* --- Botones --- */
 .btn-primary, .btn-outline, .btn-outline-light {
     display: inline-block;
     padding: 12px 28px;
     font-family: var(--font-body); 
-<<<<<<< HEAD
     font-weight: 600;
-=======
-    font-weight: 500;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     text-align: center;
     border-radius: var(--radius-soft);
     transition: var(--transition-fast);
@@ -103,11 +88,7 @@ img {
     border: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-<<<<<<< HEAD
     font-size: 0.85rem;
-=======
-    font-size: 0.9rem;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .btn-primary {
@@ -118,11 +99,7 @@ img {
 .btn-primary:hover {
     background-color: var(--clr-accent); 
     transform: translateY(-2px);
-<<<<<<< HEAD
     box-shadow: 0 4px 12px rgba(144, 162, 36, 0.3); /* Sombra Verde Oliva */
-=======
-    box-shadow: 0 4px 12px rgba(101, 112, 56, 0.3); 
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .btn-outline {
@@ -176,11 +153,7 @@ img {
 }
 
 .logo-img {
-<<<<<<< HEAD
     max-height: 100px; 
-=======
-    max-height: 90px; 
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     width: auto; 
     object-fit: contain;
 }
@@ -218,11 +191,7 @@ img {
     position: absolute;
     top: 100%;
     left: 0;
-<<<<<<< HEAD
     background-color: var(--clr-dark); 
-=======
-    background-color: var(--clr-primary); 
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     min-width: 240px;
     list-style: none;
     display: flex;
@@ -234,10 +203,7 @@ img {
     border-radius: var(--radius-soft);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     overflow: hidden;
-<<<<<<< HEAD
     border-top: 3px solid var(--clr-accent);
-=======
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .dropdown:hover .dropdown-menu {
@@ -247,11 +213,7 @@ img {
 }
 
 .dropdown-menu li {
-<<<<<<< HEAD
     border-bottom: 1px solid rgba(255,255,255,0.05);
-=======
-    border-bottom: 1px solid rgba(255,255,255,0.1);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .dropdown-menu li:last-child {
@@ -262,19 +224,11 @@ img {
     display: block;
     padding: 15px 20px;
     color: var(--clr-surface) !important;
-<<<<<<< HEAD
     font-size: 0.95rem !important;
 }
 
 .dropdown-menu a:hover {
     background-color: var(--clr-primary);
-=======
-    font-size: 0.9rem !important;
-}
-
-.dropdown-menu a:hover {
-    background-color: var(--clr-dark);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     color: var(--clr-surface) !important;
 }
 
@@ -324,11 +278,7 @@ img {
 }
 
 .hero-subtitle {
-<<<<<<< HEAD
     font-weight: 600;
-=======
-    font-weight: 500;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     color: var(--clr-tostado); 
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -338,11 +288,7 @@ img {
 }
 
 .hero-title {
-<<<<<<< HEAD
     font-size: clamp(3rem, 5vw, 4.5rem);
-=======
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     margin-bottom: var(--space-md);
     color: var(--clr-surface);
     font-style: italic; 
@@ -361,10 +307,7 @@ img {
     flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
 /* Controles del Slider */
-=======
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -388,7 +331,6 @@ img {
     background: var(--clr-accent);
 }
 
-<<<<<<< HEAD
 .slider-btn.prev {
     left: 20px;
 }
@@ -396,10 +338,6 @@ img {
 .slider-btn.next {
     right: 20px;
 }
-=======
-.slider-btn.prev { left: 20px; }
-.slider-btn.next { right: 20px; }
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 
 .slider-dots {
     position: absolute;
@@ -426,13 +364,8 @@ img {
 }
 
 /* =========================================
-<<<<<<< HEAD
    QUIÉNES SOMOS & MÁSCARA DEL LOGO
    ========================================= */
-=======
-   QUIÉNES SOMOS & ALIANZAS (Inmersivo con Imagen)
-   ======================================== */
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 .about {
     position: relative;
     padding: var(--space-xl) 0;
@@ -470,24 +403,15 @@ img {
     align-items: start;
 }
 
-<<<<<<< HEAD
 .about-subtitle {
     font-size: clamp(1.6rem, 2.5vw, 2.2rem); /* Más sutil y elegante que el H2 anterior */
     margin-bottom: var(--space-xs);
     color: var(--clr-primary);
     line-height: 1.2;
-=======
-/* --- Ajuste del Texto sobre Fondo Oscuro --- */
-.about-text h2 {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    margin-bottom: var(--space-md);
-    color: var(--clr-surface-light); /* Texto claro para resaltar */
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .about-text p {
     margin-bottom: var(--space-sm);
-<<<<<<< HEAD
     font-size: 1.1rem;
     color: var(--clr-text-muted);
 }
@@ -623,67 +547,6 @@ img {
     letter-spacing: 2px;
     margin-bottom: var(--space-sm);
     font-weight: 600;
-=======
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.8); /* Un blanco sutil */
-    font-weight: 300;
-}
-
-.about-text p strong {
-    color: var(--clr-surface);
-}
-
-.about-text h3 {
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-sm);
-    color: var(--clr-tostado); /* Tostado para subtítulos élégantes */
-    font-size: 1.6rem;
-}
-
-/* --- Ajuste de Alianzas (Sobre Fondo Oscuro) --- */
-.about-alianzas {
-    background-color: rgba(255, 255, 255, 0.03); /* Un fondo casi transparente */
-    padding: var(--space-lg);
-    border-radius: var(--radius-fluid);
-    border-left: 4px solid var(--clr-accent); /* Verde Oliva */
-    backdrop-filter: blur(5px); /* Efecto cristal glaseado súper premium */
-}
-
-.about-alianzas p {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.about-alianzas h3 {
-    color: var(--clr-tostado);
-}
-
-.alianzas-grid {
-    list-style: none;
-    margin-top: var(--space-md);
-    display: grid;
-    gap: 15px;
-}
-
-.alianzas-grid li {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    position: relative;
-    padding-left: 20px;
-    color: var(--clr-surface-light);
-}
-
-.alianzas-grid li::before {
-    content: "■";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    color: var(--clr-accent); /* Verde Oliva para las viñetas */
-    font-size: 0.8rem;
-}
-
-.alianzas-grid li strong {
-    color: var(--clr-tostado); /* Tostado para las marcas */
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .showcase-title {
@@ -760,156 +623,11 @@ img {
 .theme-accent .showcase-features li::before { color: var(--clr-tostado); }
 
 /* =========================================
-<<<<<<< HEAD
-=======
-   SERVICIOS: EDITORIAL SHOWCASE
-   ========================================= */
-.services-showcase {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.showcase-block {
-    position: relative;
-    padding: var(--space-xl) 0;
-    overflow: hidden;
-    width: 100%;
-}
-
-.showcase-bg-number {
-    position: absolute;
-    font-family: var(--font-heading);
-    font-size: clamp(12rem, 25vw, 25rem);
-    font-weight: 700;
-    font-style: italic;
-    line-height: 0.8;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 0;
-    user-select: none;
-    pointer-events: none;
-}
-
-.showcase-grid {
-    position: relative;
-    z-index: 2;
-}
-
-.showcase-content {
-    max-width: 600px; 
-    padding: var(--space-md);
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(5px);
-    border-radius: var(--radius-fluid);
-}
-
-.showcase-block:nth-child(odd) .showcase-bg-number {
-    right: -5%;
-}
-
-.showcase-block:nth-child(even) .showcase-bg-number {
-    left: -5%;
-}
-
-.showcase-grid.align-right {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.showcase-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: var(--space-sm);
-    font-weight: 700;
-}
-
-.showcase-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    margin-bottom: var(--space-sm);
-    line-height: 1.1;
-}
-
-.showcase-desc {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-md);
-    font-weight: 500;
-}
-
-.showcase-features {
-    list-style: none;
-    display: grid;
-    gap: 1.2rem;
-}
-
-.showcase-features li {
-    position: relative;
-    padding-left: 28px;
-    line-height: 1.6;
-    font-size: 1.05rem;
-}
-
-.showcase-features li::before {
-    content: "■";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    font-size: 0.8rem;
-}
-
-/* --- TEMA 1: LIGHT (Matrices) --- */
-.theme-light { background-color: var(--clr-bg-light); }
-.theme-light .showcase-bg-number { color: var(--clr-tostado); opacity: 0.3; }
-.theme-light .showcase-tag { color: var(--clr-accent); }
-.theme-light .showcase-title { color: var(--clr-primary); }
-.theme-light .showcase-desc { color: var(--clr-text-muted); }
-.theme-light .showcase-features li { color: var(--clr-text-main); }
-.theme-light .showcase-features li strong { color: var(--clr-primary); }
-.theme-light .showcase-features li::before { color: var(--clr-accent); }
-
-/* --- TEMA 2: PRIMARY (Ambiente) --- */
-.theme-primary { background: radial-gradient(circle at top left, #367b9e 0%, var(--clr-dark) 100%); }
-.theme-primary .showcase-bg-number { color: var(--clr-surface); opacity: 0.04; }
-.theme-primary .showcase-tag { color: var(--clr-tostado); }
-.theme-primary .showcase-title { color: var(--clr-surface); }
-.theme-primary .showcase-desc { color: rgba(255, 255, 255, 0.8); }
-.theme-primary .showcase-features li { color: rgba(255, 255, 255, 0.9); }
-.theme-primary .showcase-features li strong { color: var(--clr-surface); }
-.theme-primary .showcase-features li::before { color: var(--clr-tostado); }
-
-/* --- TEMA 3: TOSTADO (Seguridad) --- */
-.theme-tostado { background: radial-gradient(circle at bottom right, #e2dacd 0%, var(--clr-tostado) 100%); }
-.theme-tostado .showcase-bg-number { color: var(--clr-surface); opacity: 0.4; }
-.theme-tostado .showcase-tag { color: var(--clr-accent); }
-.theme-tostado .showcase-title { color: var(--clr-dark); }
-.theme-tostado .showcase-desc { color: var(--clr-text-muted); }
-.theme-tostado .showcase-features li { color: var(--clr-text-main); }
-.theme-tostado .showcase-features li strong { color: var(--clr-dark); }
-.theme-tostado .showcase-features li::before { color: var(--clr-accent); }
-
-/* --- TEMA 4: ACCENT OLIVA (Habilitaciones) --- */
-.theme-accent { background: radial-gradient(circle at bottom left, #7c8846 0%, var(--clr-accent) 100%); }
-.theme-accent .showcase-bg-number { color: var(--clr-surface); opacity: 0.05; }
-.theme-accent .showcase-tag { color: var(--clr-tostado); }
-.theme-accent .showcase-title { color: var(--clr-surface); }
-.theme-accent .showcase-desc { color: rgba(255, 255, 255, 0.9); }
-.theme-accent .showcase-features li { color: rgba(255, 255, 255, 0.95); }
-.theme-accent .showcase-features li strong { color: var(--clr-surface); }
-.theme-accent .showcase-features li::before { color: var(--clr-tostado); }
-
-/* =========================================
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
    CASOS DE ÉXITO 
    ========================================= */
 .success {
     padding: var(--space-xl) 0;
-<<<<<<< HEAD
     background-color: var(--clr-bg-light); 
-=======
-    background-color: var(--clr-bg-light); /* Cambio a claro para descansar del Verde Oliva anterior */
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .success .section-title {
@@ -921,13 +639,8 @@ img {
     overflow: hidden;
     white-space: nowrap;
     padding: var(--space-md) 0;
-<<<<<<< HEAD
     border-top: 1px solid rgba(0,0,0,0.05);
     border-bottom: 1px solid rgba(0,0,0,0.05);
-=======
-    border-top: 1px solid rgba(0,0,0,0.1);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     margin-bottom: var(--space-lg);
 }
 
@@ -943,11 +656,7 @@ img {
     font-family: var(--font-heading);
     font-style: italic;
     color: var(--clr-dark); 
-<<<<<<< HEAD
     opacity: 0.5;
-=======
-    opacity: 0.7;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 @keyframes scrollLogos {
@@ -966,10 +675,7 @@ img {
     border-radius: var(--radius-soft);
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-<<<<<<< HEAD
     border-left: 4px solid var(--clr-accent);
-=======
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .case-header {
@@ -1034,21 +740,13 @@ img {
 .news-card:hover {
     border-color: var(--clr-primary);
     transform: translateY(-4px);
-<<<<<<< HEAD
     box-shadow: 0 10px 20px rgba(0, 127, 161, 0.1);
-=======
-    box-shadow: 0 10px 20px rgba(40, 100, 132, 0.1);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .news-date {
     display: block;
     font-size: 0.85rem;
-<<<<<<< HEAD
     font-weight: 600;
-=======
-    font-weight: 700;
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     color: var(--clr-accent);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1065,16 +763,10 @@ img {
    FOOTER / CONTACTO 
    ========================================= */
 .footer {
-<<<<<<< HEAD
     background-color: var(--clr-dark); 
     color: var(--clr-surface);
     padding: var(--space-xl) 0 var(--space-lg);
     border-top: 5px solid var(--clr-accent);
-=======
-    background-color: var(--clr-primary); 
-    color: var(--clr-surface);
-    padding: var(--space-xl) 0 var(--space-lg);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 .footer-info h2 {
@@ -1118,20 +810,12 @@ label {
 input, select, textarea {
     width: 100%;
     padding: 12px;
-<<<<<<< HEAD
     border: 1px solid rgba(255,255,255,0.2);
-=======
-    border: 1px solid rgba(255,255,255,0.3);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     border-radius: var(--radius-soft);
     font-family: var(--font-body);
     font-size: 1rem;
     transition: var(--transition-fast);
-<<<<<<< HEAD
     background-color: rgba(255, 255, 255, 0.05);
-=======
-    background-color: rgba(255, 255, 255, 0.1);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     color: var(--clr-surface);
 }
 
@@ -1142,19 +826,11 @@ input::placeholder, textarea::placeholder {
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--clr-tostado); 
-<<<<<<< HEAD
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 select option {
     background-color: var(--clr-dark);
-=======
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-select option {
-    background-color: var(--clr-primary);
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     color: white;
 }
 
@@ -1188,7 +864,6 @@ select option {
    RESPONSIVE (Mobile First)
    ========================================= */
 @media (max-width: 1100px) {
-<<<<<<< HEAD
     .nav-links {
         gap: 1rem;
     }
@@ -1198,11 +873,6 @@ select option {
     .dropdown-menu {
         min-width: 200px;
     }
-=======
-    .nav-links { gap: 1rem; }
-    .nav-links a:not(.btn-outline) { font-size: 0.85rem; }
-    .dropdown-menu { min-width: 200px; }
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
 }
 
 @media (max-width: 992px) {
@@ -1225,7 +895,6 @@ select option {
 }
 
 @media (max-width: 768px) {
-<<<<<<< HEAD
     .nav-container {
         height: 80px;
     }
@@ -1240,13 +909,6 @@ select option {
     .slider-btn {
         display: none;
     }
-=======
-    .nav-container { height: 80px; }
-    .logo-img { max-height: 55px; }
-    
-    .nav-links { display: none; }
-    .slider-btn { display: none; }
->>>>>>> 99cd1fb7b1b196f8d11b981d8c2c22c9b66a1b20
     
     .form-row {
         flex-direction: column;
