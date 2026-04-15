@@ -1,0 +1,1344 @@
+/* =========================================================================
+   STYLE.CSS - LGC (Versión Isologo Integrado con Geometría Perfecta)
+   ========================================================================= */
+
+/* =========================================
+   RESET Y CONFIGURACIÓN BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--clr-text-main);
+    background-color: var(--clr-bg-light);
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--clr-dark);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   CLASES UTILITARIAS
+   ========================================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 4vw, 3rem); 
+    margin-bottom: var(--space-lg);
+    color: var(--clr-dark); 
+}
+
+.text-muted {
+    color: var(--clr-text-muted);
+}
+
+.section-tag {
+    color: var(--clr-primary); 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+/* --- Botones --- */
+.btn-primary, .btn-outline, .btn-outline-light {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: var(--font-body); 
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--radius-soft);
+    transition: var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+.btn-primary {
+    background-color: var(--clr-primary); 
+    color: var(--clr-surface);
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-accent); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(144, 162, 36, 0.3);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    border: 2px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
+}
+
+/* =========================================
+   HEADER (Ahora Progresivo, Sticky y Geométrico)
+   ========================================= */
+   
+/* 1. Reset del Header: ahora es solo un contenedor */
+.header {
+    position: relative; 
+    width: 100%;
+    background-color: transparent;
+    padding: 0; 
+    z-index: 1000;
+    /* ESTA LÍNEA ES CLAVE: Corta el excedente inclinado a la derecha */
+    overflow: hidden; 
+}
+
+/* 2. La nueva pieza azul horizontal (La "hoja" de la base) */
+.header-blue-body {
+    position: absolute;
+    top: 0;
+    right: 0; /* Lo dejamos en 0 y usamos overflow:hidden en el header para que sea recto */
+    left: 240px; /* MATEMÁTICO: 150px (blanco) + 90px (verde) */
+    height: 100%;
+    background-color: var(--clr-primary);
+    z-index: 1;
+    transform: skewX(-18deg);
+    transform-origin: top left;
+
+    /* La curva arranca justo en el borde izquierdo del azul (donde toca al verde) */
+    border-bottom-left-radius: 200px 90px; 
+    
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.header.scrolled {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    /* Reducimos el padding a 0 para que NO crezca el menú */
+    padding: 0; 
+    /* Cambiamos al color crema de fondo original con un toque de transparencia */
+    background-color: #F9F7F4;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header.scrolled .nav-container {
+    height: 70px; /* Un poco más compacto que los 70px originales */
+    transition: height 1s ease;
+}
+
+.header .btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--clr-surface);
+    color: var(--clr-surface);
+}
+
+.header .btn-outline:hover {
+    background-color: var(--clr-surface);
+    color: var(--clr-primary);
+}
+
+/* Desvanecer formas al scrollear */
+.header.scrolled::before,
+.header.scrolled::after {
+    opacity: 0;
+}
+
+.header.scrolled .logo-img {
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 50px; 
+}
+
+/* --- BOTÓN DE CONTACTO AL SCROLLEAR --- */
+/* Le damos color y borde azul para que resalte sobre el fondo claro */
+.header.scrolled .nav-links .btn-outline {
+    border-color: var(--clr-primary) !important;
+    color: var(--clr-primary) !important;
+}
+
+/* Efecto hover: se rellena de azul y la letra pasa a blanca */
+.header.scrolled .nav-links .btn-outline:hover {
+    background-color: var(--clr-primary) !important;
+    color: var(--clr-surface) !important;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: relative;
+    z-index: 10; /* VITAL: Pone el menú por encima de las formas de fondo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 250px; 
+    position: relative;
+    overflow: visible;
+}
+
+/* El div verde del HTML lo ocultamos, la magia ahora la hace el Header */
+.logo-placeholder-green {
+    display: none;
+}
+
+/* Parche blanco del Menú (Atado a la pantalla entera, no al container) */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw; 
+    width: calc(100vw + 240px); /* MATEMÁTICO: Cubre hasta el inicio del azul */
+    height: 100%;
+    background-color: #F9F7F4;
+    z-index: 0; /* Al fondo de todo */
+    transform: skewX(-18deg);
+    transform-origin: top right;
+}
+
+/* 4. El Bloque Verde (Lo movemos para que flote sobre el azul) */
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 150px; 
+    width: 90px; 
+    height: 100%;
+    background-color: var(--clr-accent);
+    z-index: 2;
+    transform: skewX(-18deg);
+    transform-origin: top left;
+    border-radius: 0; /* Recto para que el azul apoye ahí */
+}
+
+.logo-img {
+    position: absolute;
+    left: 0;
+    max-height: 50px;
+    width: auto;
+    opacity: 0; 
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+.nav-links a:not(.btn-outline) {
+    color: var(--clr-surface) !important;
+    font-weight: 500;
+}
+
+.nav-links a:not(.btn-outline):hover {
+    color: var(--clr-tostado) !important; 
+}
+
+/* --- Lógica del Submenú (Dropdown) --- */
+.dropdown {
+    position: relative;
+    padding: 20px 0; 
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--clr-dark); 
+    min-width: 175px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border-radius: var(--radius-soft);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border-top: 3px solid var(--clr-accent);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--clr-surface) !important;
+    font-size: 0.95rem !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-primary) !important;
+}
+
+/* 1. LINKS PRINCIPALES (Usamos "> li > a" para no afectar al submenú) */
+.header.scrolled .nav-links > li > a:not(.btn-outline) {
+    color: var(--clr-text-main) !important;
+}
+
+.header.scrolled .nav-links > li > a:not(.btn-outline):hover {
+    color: var(--clr-primary) !important;
+}
+
+/* 2. LINKS DEL DESPLEGABLE (Exclusivos para Servicios) */
+.header.scrolled .dropdown-menu a {
+    color: var(--clr-surface) !important; /* Texto blanco/crema */
+}
+
+.header.scrolled .dropdown-menu a:hover {
+    color: var(--clr-primary) !important; /* Azul al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.05) !important; /* Leve fondo iluminado */
+}
+
+/* =========================================
+   HERO SLIDER
+   ========================================= */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-color: var(--clr-bg-light);
+    overflow: hidden;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    display: flex;
+    align-items: center;
+    padding-top: 100px; 
+    background: var(--clr-bg-light);
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    font-weight: 600;
+    color: var(--clr-accent); 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    margin-bottom: var(--space-md);
+    color: var(--clr-primary); 
+    font-style: italic; 
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: var(--clr-text-muted); 
+    max-width: 650px;
+    margin-bottom: var(--space-lg);
+}
+
+.slider-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--clr-primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: var(--clr-accent);
+    color: white;
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.dot.active {
+    background: var(--clr-primary);
+    transform: scale(1.3);
+}
+
+/* =========================================
+   QUIÉNES SOMOS 
+   ========================================= */
+.about {
+    position: relative;
+    padding: var(--space-xl) 0;
+    background-color: var(--clr-bg-light);
+    overflow: hidden;
+}
+
+.about::before {
+    display: none;
+}
+
+.about .container {
+    position: relative;
+    z-index: 2; 
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.about-subtitle {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem); 
+    margin-bottom: var(--space-xs);
+    color: var(--clr-primary); 
+    line-height: 1.2;
+}
+
+.about-text p {
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+    color: var(--clr-text-main); 
+}
+
+.about-alianzas {
+    background-color: var(--clr-surface); 
+    padding: var(--space-lg);
+    border-radius: var(--radius-fluid);
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border-left: 4px solid var(--clr-accent); 
+    margin-top: var(--space-lg);
+    color: var(--clr-text-main);
+}
+
+.about-alianzas h3 {
+    color: var(--clr-primary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.alianzas-grid {
+    list-style: none;
+    margin-top: var(--space-md);
+    display: grid;
+    gap: 15px;
+}
+
+.alianzas-grid li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+}
+
+.alianzas-grid li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--clr-accent); 
+    font-size: 0.8rem;
+}
+
+.alianzas-grid li strong {
+    color: var(--clr-dark); 
+}
+
+.about-alianzas .text-muted {
+    color: var(--clr-text-muted); 
+}
+
+/* =========================================
+   SERVICIOS: EDITORIAL SHOWCASE
+   ========================================= */
+.services-intro {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-sm);
+}
+
+.services-intro .section-tag {
+    color: var(--clr-primary); 
+}
+
+.services-main-title {
+    font-family: var(--font-heading);
+    color: var(--clr-dark); 
+    font-size: clamp(1.8rem, 3vw, 2.5rem); 
+    max-width: 900px; 
+    margin: 0 auto; 
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.services-showcase {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-bg-light);
+}
+
+.showcase-block {
+    position: relative;
+    padding: var(--space-xl) 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.showcase-grid {
+    position: relative;
+    z-index: 2;
+}
+
+.showcase-content {
+    max-width: 600px; 
+    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-left: 4px solid var(--clr-primary);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+    border-radius: var(--radius-fluid);
+}
+.showcase-block:nth-child(odd) .showcase-bg-number { right: -5%; }
+.showcase-block:nth-child(even) .showcase-bg-number { left: -5%; }
+
+.showcase-grid.align-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.showcase-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.showcase-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
+}
+
+.showcase-desc {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-md);
+    font-weight: 400;
+}
+
+.showcase-features {
+    list-style: none;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.showcase-features li {
+    position: relative;
+    padding-left: 28px;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.showcase-features li::before {
+    content: "■";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.8rem;
+}
+
+/* --- OVERRIDES DE TEMAS --- */
+.theme-light, .theme-primary, .theme-tostado, .theme-accent { background: var(--clr-bg-light) !important; }
+.showcase-bg-number { 
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: clamp(12rem, 25vw, 25rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 0.8;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+    color: var(--clr-dark) !important; 
+    opacity: 0.03 !important; 
+}
+.showcase-tag { color: var(--clr-accent) !important; }
+.showcase-title { color: var(--clr-primary) !important; }
+.showcase-desc { color: var(--clr-text-muted) !important; }
+.showcase-features li { color: var(--clr-text-main) !important; }
+.showcase-features li strong { color: var(--clr-dark) !important; }
+.showcase-features li::before { color: var(--clr-accent) !important; }
+
+/* =========================================
+   CASOS DE ÉXITO 
+   ========================================= */
+.success {
+    padding: var(--space-lg) 0; 
+    background-color: var(--clr-bg-light); 
+}
+
+.success .section-title {
+    color: var(--clr-dark);
+    text-align: center; 
+    font-size: clamp(2rem, 3.5vw, 2.5rem); 
+}
+
+.logos-marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: var(--space-md) 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: var(--space-lg);
+}
+
+.logos-track {
+    display: inline-block;
+    animation: scrollLogos 20s linear infinite;
+}
+
+.logo-item {
+    display: inline-block;
+    margin: 0 var(--space-lg);
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--clr-dark); 
+    opacity: 0.3;
+}
+
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-md);
+}
+
+.case-card {
+    background-color: var(--clr-surface);
+    border-radius: var(--radius-soft);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    border-left: 4px solid var(--clr-accent);
+}
+
+.case-header {
+    background-color: var(--clr-primary);
+    padding: var(--space-md);
+    color: var(--clr-surface);
+}
+
+.case-header h3 {
+    color: var(--clr-surface);
+    margin-bottom: 5px;
+}
+
+.case-sector {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.case-body {
+    padding: var(--space-md);
+}
+
+.case-body p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.case-body hr {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin: 15px 0;
+}
+
+.case-result {
+    color: var(--clr-accent);
+}
+
+/* =========================================
+   NOVEDADES NORMATIVAS 
+   ========================================= */
+.news {
+    padding: var(--space-xl) 0;
+    background-color: var(--clr-bg-light);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.news-card {
+    background-color: var(--clr-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-fluid);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    transition: var(--transition-fast);
+}
+
+.news-card:hover {
+    border-color: var(--clr-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 127, 161, 0.08);
+}
+
+.news-date {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.news-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--clr-primary);
+}
+
+/* =========================================
+   FOOTER / CONTACTO 
+   ========================================= */
+.footer {
+    background-color: var(--clr-bg-light); 
+    color: var(--clr-text-main);
+    padding: var(--space-xl) 0 var(--space-lg);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-info h2 {
+    color: var(--clr-primary); 
+    font-size: clamp(2rem, 5vw, 3rem); 
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+}
+
+.footer-info p {
+    color: var(--clr-text-muted);
+}
+
+.contact-data a {
+    color: var(--clr-primary);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-xl);
+}
+
+.form-group {
+    margin-bottom: var(--space-sm);
+}
+
+.form-row {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: var(--clr-dark);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: var(--radius-soft);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    background-color: var(--clr-surface);
+    color: var(--clr-text-main);
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(0,0,0,0.4);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--clr-primary); 
+    background-color: var(--clr-surface);
+}
+
+select option {
+    background-color: var(--clr-surface);
+    color: var(--clr-text-main);
+}
+
+.radio-group {
+    display: flex;
+    gap: var(--space-sm);
+    padding: 8px 0;
+    flex-wrap: wrap; 
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.footer .btn-submit {
+    width: 100%;
+    margin-top: var(--space-md);
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
+}
+
+.footer .btn-submit:hover {
+    background-color: var(--clr-accent);
+    color: var(--clr-surface);
+}
+
+/* =========================================
+   RESPONSIVE (Mobile First)
+   ========================================= */
+@media (max-width: 1100px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    .nav-links a:not(.btn-outline) {
+        font-size: 0.85rem;
+    }
+    .dropdown-menu {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .showcase-grid.align-right {
+        justify-content: flex-start; 
+    }
+    .showcase-content {
+        max-width: 100%;
+        padding: var(--space-sm) 0;
+        background: none;
+        backdrop-filter: none;
+        box-shadow: none;
+        border: none;
+    }
+    .showcase-bg-number {
+        font-size: 15rem;
+        top: 20%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        height: 80px;
+    }
+    .logo-img {
+        max-height: 60px;
+        opacity: 1; /* Mostrar siempre en móvil */
+        pointer-events: auto;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+
+    .slider-btn {
+        display: none;
+    }
+    
+    .slider-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px; 
+    }
+    
+    .slider-actions a {
+        width: 100%; 
+        text-align: center;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .footer {
+        padding: var(--space-lg) 0 var(--space-md);
+    }
+    
+    .footer-grid {
+        gap: var(--space-lg);
+    }
+    
+    /* Ocultar isologo complejo en celular */
+    .brand-asta-blue,
+    .lamas-hero-compo::before,
+    .header::before,
+    .header::after {
+        display: none !important;
+    }
+}
+
+/* =========================================
+   BLOQUE HÉROE COMPOSICIÓN (ISOLOGO RECONSTRUIDO)
+   ========================================= */
+.lamas-hero-compo {
+    position: relative;
+    width: 100%;
+    height: 45vh; 
+    background-color: var(--clr-primary); /* Fondo de resguardo */
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* 1. La imagen ahora ocupa TODO el fondo */
+.hero-image-bg {
+    position: absolute;
+    inset: 0; 
+    background-image: url('../img/bg/bg.png'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* Oscurecemos la imagen para que el logo resalte (sin tocar HTML) */
+.hero-image-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* 2. Parche blanco que tapa la foto a la izquierda */
+.lamas-hero-compo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    /* 150px (inicio azul) + 90px (ancho azul) = 240px */
+    width: calc(100vw + 240px); 
+    height: 100%;
+    background-color: #F9F7F4;
+    z-index: 2; /* Sigue estando debajo del azul */
+    transform: skewX(-18deg);
+    transform-origin: bottom right;
+}
+
+/* 3. Asta Azul (Delgada y perfecta) */
+.brand-asta-blue {
+    position: absolute;
+    top: 0;
+    left: 150px; 
+    width: 90px; 
+    height: 100%;
+    background-color: var(--clr-primary);
+    z-index: 3;
+    transform: skewX(-18deg);
+    transform-origin: bottom left; 
+    /* Curva idéntica */
+    border-bottom-left-radius: 90px 300px; 
+}
+
+/* Logo centrado */
+.centered-logo {
+    position: absolute;
+    top: 50%;
+    left: 60%; /* Ajustá esto (ej: 65%) si lo querés más a la derecha */
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    max-width: 150px;
+}
+
+/* =========================================
+   ANIMACIONES ON SCROLL (REVEAL)
+   ========================================= */
+/* Estados Iniciales (Ocultos y desplazados) */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+/* Estado Final (Visible y en su lugar original) */
+.reveal-up.active,
+.reveal-left.active,
+.reveal-right.active {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* Retraso sutil para que el texto cargue después del número de fondo (Opcional) */
+.showcase-content.reveal-left,
+.showcase-content.reveal-right {
+    transition-delay: 0.1s;
+}
+
+/* =========================================
+   HOVER EFFECTS (INTERACTIVIDAD SUTIL)
+   ========================================= */
+
+/* Transiciones base para que el movimiento sea suave */
+.about-alianzas,
+.showcase-content {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+}
+
+/* Hover para Alianzas Estratégicas */
+.about-alianzas:hover {
+    transform: translateY(-5px); /* Se eleva 5 píxeles */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Sombra más pronunciada */
+    border-left-color: var(--clr-primary); /* El borde pasa de verde a azul */
+}
+
+/* Hover para los recuadros de Servicios */
+.showcase-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+}
+
+/* Intercambiamos el color de la barrita izquierda de los servicios al hacer hover */
+#srv-matrices .showcase-content:hover,
+#srv-ambiente .showcase-content:hover {
+    border-left-color: var(--clr-accent); /* Pasan a verde */
+}
+
+#srv-seguridad .showcase-content:hover,
+#srv-habilitaciones .showcase-content:hover {
+    border-left-color: var(--clr-primary); /* Pasan a azul */
+}
+
+.case-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.btn-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--clr-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Estilos básicos del Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 40px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 15px;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.close-modal {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 35px; cursor: pointer;
+}
+
+/* --- Cards de Casos --- */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* --- Cards de Casos (Look Minimalista) --- */
+.case-card {
+    background: var(--clr-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    /* 1. Eliminamos el border-bottom */
+    border: none; 
+    /* 2. Sombra inicial súper sutil y extendida */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.case-card:hover {
+    transform: translateY(-8px); /* Elevación un poquito más suave */
+    /* 3. Sombra al hacer hover: más amplia pero sigue siendo elegante */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+}
+
+.case-header {
+    background: var(--clr-primary);
+    padding: 2rem;
+    color: white;
+}
+
+.case-header h3 { color: white; font-size: 1.4rem; margin-bottom: 5px; }
+.case-sector { font-size: 0.8rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
+
+.case-body { padding: 2rem; }
+.btn-more { color: var(--clr-accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+/* --- Modal & Layout de Infografía --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 41, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none; /* JS lo activa */
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-container {
+    background: var(--white);
+    width: 95%; /* Un poco más ancho para ganar espacio vertical */
+    max-width: 1100px; 
+    max-height: 90vh;
+    border-radius: 20px;
+    position: relative;
+    overflow-y: auto;
+    padding: 1.5rem 2.5rem; /* Reducido de 3rem */
+    animation: modalIn 0.5s ease forwards;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none; border: none;
+    font-size: 2.5rem; color: var(--clr-primary);
+    cursor: pointer;
+}
+
+/* Clases internas para la infografía */
+.info-header { 
+    border-bottom: 2px solid var(--clr-bg-light); 
+    margin-bottom: 1rem; /* Reducido de 2rem */
+    padding-bottom: 0.5rem; 
+}
+
+.info-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.2rem; /* Reducido de 2rem */
+}
+
+.info-box { 
+    background: var(--clr-bg-light); 
+    padding: 1rem 1.5rem; /* Reducido de 1.5rem */
+    border-radius: 12px; 
+    height: 100%; 
+}
+
+.info-box h4 { 
+    color: var(--clr-primary); 
+    margin-bottom: 0.5rem; /* Reducido */
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+}
+
+.info-results { 
+    grid-column: span 2; 
+    background: var(--clr-primary); 
+    color: white; 
+    padding: 1.2rem 2rem; /* Reducido de 2rem */
+    border-radius: 12px; 
+    margin-top: 0.5rem; /* Reducido */
+}
+
+.info-results h4 { color: var(--clr-accent); }
+.info-list { list-style: none; }
+.info-list li { 
+    margin-bottom: 4px; /* Más compacto */
+    font-size: 0.9rem; /* Un punto menos para ganar aire */
+}
+.info-list li::before { content: '→'; position: absolute; left: 0; color: var(--clr-accent); }

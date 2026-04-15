@@ -15,7 +15,16 @@
 </head>
 <body>
 
+    <section class="lamas-hero-compo">
+        <div class="brand-white-left"></div>
+        <div class="brand-asta-blue"></div>
+        <div class="hero-image-bg">
+            <div class="hero-overlay"></div> <img src="assets/img/logos/logo_lgc_blanco.png" alt="LAMAS Logo" class="centered-logo">
+        </div>
+    </section>
+
     <header class="header" id="header">
+        <div class="header-blue-body"></div>
         <div class="container nav-container">
             <a href="#inicio" class="logo">
                 <img src="assets/img/logos/logo_lgc2.png" alt="Lamas Global Consulting" class="logo-img">
@@ -125,7 +134,7 @@
                     <h3 class="about-subtitle" style="margin-top: var(--space-md);">Compromiso con el Acompañamiento</h3>
                     <p>Como socio estratégico, nuestro diferencial reside en la asistencia profesional permanente; entendemos la consultoría como un nexo experto y continuo entre la normativa y la operatividad de nuestros clientes. A través de un abordaje integral y una red de alianzas estratégicas, brindamos el respaldo necesario para transformar el cumplimiento regulatorio en un valor institucional.</p>
                 </div>
-                <div class="about-alianzas" style="margin-top: 0;">
+                <div class="about-alianzas reveal-up" style="margin-top: 0;">
                     <h3>Alianzas Estratégicas</h3>
                     <p class="text-muted">Fortalecemos nuestra capacidad operativa y garantizamos respaldo especializado:</p>
                     <ul class="alianzas-grid">
@@ -151,7 +160,7 @@
             <div id="srv-matrices" class="showcase-block theme-light">
                 <div class="showcase-bg-number" aria-hidden="true">01</div>
                 <div class="container showcase-grid">
-                    <div class="showcase-content">
+                    <div class="showcase-content reveal-left">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Matrices Legales</h3>
                         <p class="showcase-desc">Transformamos el cumplimiento normativo en una gestión clara, dinámica y automatizable.</p>
@@ -167,7 +176,7 @@
             <div id="srv-ambiente" class="showcase-block theme-primary">
                 <div class="showcase-bg-number" aria-hidden="true">02</div>
                 <div class="container showcase-grid align-right">
-                    <div class="showcase-content">
+                    <div class="showcase-content reveal-right">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Ambiente</h3>
                         <p class="showcase-desc">Evaluación y gestión integral para viabilizar proyectos equilibrando desarrollo y protección del entorno.</p>
@@ -183,11 +192,11 @@
             </div>
 
             <div id="srv-seguridad" class="showcase-block theme-tostado">
-                <div class="showcase-bg-number" aria-hidden="true">03</div>
+                <div class="showcase-bg-number" aria-hidden="true">SeH</div>
                 <div class="container showcase-grid">
                     <div class="showcase-content">
                         <span class="showcase-tag">Área de especialidad</span>
-                        <h3 class="showcase-title">Seguridad e Higiene (SYSO)</h3>
+                        <h3 class="showcase-title reveal-left">Seguridad e Higiene (SYSO)</h3>
                         <p class="showcase-desc">Fortalecemos la cultura preventiva y el compromiso organizacional para entornos seguros.</p>
                         <ul class="showcase-features">
                             <li><strong>Auditorías SYSO:</strong> Identificación de riesgos legales y operativos con planes correctivos.</li>
@@ -199,9 +208,9 @@
             </div>
 
             <div id="srv-habilitaciones" class="showcase-block theme-accent">
-                <div class="showcase-bg-number" aria-hidden="true">04</div>
+                <div class="showcase-bg-number" aria-hidden="true">HyP</div>
                 <div class="container showcase-grid align-right">
-                    <div class="showcase-content">
+                    <div class="showcase-content reveal-right">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Habilitaciones y Permisos</h3>
                         <p class="showcase-desc">Garantizamos seguridad jurídica actuando como nexo técnico entre la empresa y la autoridad de aplicación.</p>
@@ -218,46 +227,64 @@
 
         <section id="casos-exito" class="success">
             <div class="container">
+                <span class="section-tag text-center">Resultados Comprobados</span>
                 <h2 class="section-title">Confían en nosotros</h2>
+                
                 <div class="logos-marquee">
                     <div class="logos-track">
-                        <span class="logo-item">Logo Cliente 1</span>
-                        <span class="logo-item">Logo Cliente 2</span>
-                        <span class="logo-item">Logo Cliente 3</span>
-                        <span class="logo-item">Logo Cliente 4</span>
-                        <span class="logo-item">Logo Cliente 5</span>
+                        <span class="logo-item">CIRION</span>
+                        <span class="logo-item">BELGRANO CARGAS</span>
+                        <span class="logo-item">BBVA</span>
+                        <span class="logo-item">CIRION</span>
+                        <span class="logo-item">BELGRANO CARGAS</span>
+                        <span class="logo-item">BBVA</span>
                     </div>
                 </div>
                 
                 <div class="cases-grid">
-                    <article class="case-card">
+                    <article class="case-card reveal-up" onclick="openCaseModal('cirion')">
                         <div class="case-header">
                             <h3>CIRION Technologies</h3>
-                            <span class="case-sector">Telecomunicaciones e infraestructura</span>
+                            <span class="case-sector">Telecomunicaciones</span>
                         </div>
                         <div class="case-body">
-                            <p><strong>El Desafío:</strong> Garantizar cumplimiento en instalaciones complejas (antenas, combustibles, residuos).</p>
-                            <p><strong>Nuestra Intervención:</strong> Auditorías ISO 14001, matrices legales, plan de monitoreo de radiación y regularización ambiental.</p>
-                            <hr>
-                            <p class="case-result"><strong>Resultados:</strong> Reducción de contingencias, actualización normativa y reducción de pasivos en un 40%.</p>
+                            <p>Optimización ISO 14001 y control de radiación en infraestructura crítica.</p>
+                            <span class="btn-more">VER CASO DE ÉXITO +</span>
                         </div>
                     </article>
 
-                    <article class="case-card">
+                    <article class="case-card reveal-up" onclick="openCaseModal('belgrano')">
                         <div class="case-header">
-                            <h3>Belgrano Cargas y Logística</h3>
-                            <span class="case-sector">Transporte ferroviario</span>
+                            <h3>Belgrano Cargas</h3>
+                            <span class="case-sector">Logística Ferroviaria</span>
                         </div>
                         <div class="case-body">
-                            <p><strong>El Desafío:</strong> Diagnóstico integral y regularización en talleres, depósitos y lavaderos a escala nacional.</p>
-                            <p><strong>Nuestra Intervención:</strong> Relevamiento en 33 establecimientos, matrices legales dinámicas y asesoramiento en transporte de sustancias peligrosas.</p>
-                            <hr>
-                            <p class="case-result"><strong>Resultados:</strong> Operatividad garantizada, estandarización de procedimientos y minimización de riesgos en inspecciones.</p>
+                            <p>Diagnóstico ambiental integral en 33 sedes y gestión de sustancias peligrosas.</p>
+                            <span class="btn-more">VER CASO DE ÉXITO +</span>
+                        </div>
+                    </article>
+
+                    <article class="case-card reveal-up" onclick="openCaseModal('bbva')">
+                        <div class="case-header">
+                            <h3>BBVA</h3>
+                            <span class="case-sector">Sector Financiero</span>
+                        </div>
+                        <div class="case-body">
+                            <p>Huella de carbono, ecoeficiencia y certificación ISO 45001 a nivel nacional.</p>
+                            <span class="btn-more">VER CASO DE ÉXITO +</span>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
+
+        <div id="caseModal" class="modal-overlay">
+            <div class="modal-container">
+                <button class="modal-close" onclick="closeCaseModal()">&times;</button>
+                <div id="modal-content-area">
+                    </div>
+            </div>
+        </div>
 
         <section id="novedades" class="news">
             <div class="container">

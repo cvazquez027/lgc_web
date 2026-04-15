@@ -58,7 +58,7 @@ img {
 .section-title {
     font-size: clamp(2.2rem, 4vw, 3rem); 
     margin-bottom: var(--space-lg);
-    color: var(--clr-primary);
+    color: var(--clr-tostado);
 }
 
 .text-muted {
@@ -66,7 +66,7 @@ img {
 }
 
 .section-tag {
-    color: var(--clr-accent);
+    color: var(--clr-tostado);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
@@ -379,7 +379,7 @@ img {
     overflow: hidden;
 }
 
-/* El "teñido" Turquesa oscuro que hace que todo resalte */
+/* El "teñido" Verde Oliva que hace que todo resalte */
 .about::before {
     content: '';
     position: absolute;
@@ -387,7 +387,8 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--clr-overlay-dark); /* El overlay profundo que definimos en variables */
+    /* Volvemos a la variable azul oscura con transparencia */
+    background-color: var(--clr-overlay-dark); 
     z-index: 1;
 }
 
@@ -406,26 +407,34 @@ img {
 .about-subtitle {
     font-size: clamp(1.6rem, 2.5vw, 2.2rem); /* Más sutil y elegante que el H2 anterior */
     margin-bottom: var(--space-xs);
-    color: var(--clr-primary);
+    color: var(--clr-tostado);
     line-height: 1.2;
 }
 
 .about-text p {
     margin-bottom: var(--space-sm);
     font-size: 1.1rem;
-    color: var(--clr-text-muted);
+    color: var(--clr-tostado);
 }
 
 .about-alianzas {
-    background-color: var(--clr-bg-light);
+    /* Fondo muy transparente basado en tu color claro */
+    background-color: rgba(249, 247, 244, 0.05); 
+    backdrop-filter: blur(10px); 
     padding: var(--space-lg);
     border-radius: var(--radius-fluid);
+    
+    /* Borde verde oliva */
     border-left: 4px solid var(--clr-accent); 
     margin-top: var(--space-lg);
+    
+    /* Todo el texto dentro pasa a ser tostado */
+    color: var(--clr-tostado);
 }
 
+/* También cambiamos el color del h3 para que no quede en verde */
 .about-alianzas h3 {
-    color: var(--clr-accent);
+    color: var(--clr-tostado);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
@@ -449,12 +458,19 @@ img {
     position: absolute;
     left: 0;
     top: 2px;
-    color: var(--clr-tostado);
+    /* Puntitos verdes como el borde */
+    color: var(--clr-accent); 
     font-size: 0.8rem;
 }
 
 .alianzas-grid li strong {
-    color: var(--clr-primary);
+    /* Las negritas también en color tostado */
+    color: var(--clr-tostado); 
+}
+
+.about-alianzas .text-muted {
+    /* Forzamos que el texto aclaratorio también use el tono tostado con algo de transparencia propia */
+    color: rgba(224, 214, 196, 0.8); 
 }
 
 /* Máscara Geométrica Inspirada en el Logo */
@@ -486,7 +502,28 @@ img {
 /* =========================================
    SERVICIOS: EDITORIAL SHOWCASE
    ========================================= */
-.services-showcase {
+
+   /* --- Encabezado General de Servicios --- */
+    .services-intro {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-sm);
+    }
+
+    .services-intro .section-tag {
+        color: var(--clr-primary); /* Usamos tu turquesa para la etiqueta */
+    }
+
+    .services-main-title {
+        font-family: var(--font-heading);
+        color: var(--clr-dark); /* Un azul bien oscuro para lectura óptima */
+        font-size: clamp(1.8rem, 3vw, 2.5rem); /* Se achica solo en celulares */
+        max-width: 900px; /* Evita que la línea de texto sea larguísima e ilegible */
+        margin: 0 auto; /* Lo centra perfectamente */
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+   .services-showcase {
     width: 100%;
     display: flex;
     flex-direction: column;

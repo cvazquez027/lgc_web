@@ -1,0 +1,49 @@
+# =========================================================================
+# IGNORAR VARIABLES DE ENTORNO (Seguridad Crítica)
+# =========================================================================
+# Ignora todos los archivos .env, sin importar en qué carpeta estén
+#.env
+#.env.*
+#!.env.example
+
+# =========================================================================
+# IGNORAR DEPENDENCIAS DE COMPOSER (PHP)
+# =========================================================================
+# No subimos el código de terceros, cada server lo descarga con 'composer install'
+backend/vendor/
+composer.phar
+
+# =========================================================================
+# IGNORAR DEPENDENCIAS DE NODE/NPM (Si FEXY usa algo de JS en el futuro)
+# =========================================================================
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# =========================================================================
+# IGNORAR ARCHIVOS DEL SISTEMA OPERATIVO Y EDITORES (Basura)
+# =========================================================================
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editores / IDEs (VSCode, PhpStorm, etc.)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================================================================
+# IGNORAR ARCHIVOS DE LOGS Y CACHÉ
+# =========================================================================
+*.log
+backend/error_log
+backend/php_error.log
