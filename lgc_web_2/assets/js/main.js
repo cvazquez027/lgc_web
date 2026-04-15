@@ -153,6 +153,26 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(el);
     });
 
+// 7. MENÚ HAMBURGUESA (MÓVIL)
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileBtn && navLinks) {
+        // Abrir/Cerrar menú al tocar las rayitas
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            mobileBtn.classList.toggle('active'); // Convierte rayas en X
+        });
+
+        // Cerrar el menú automáticamente si tocamos un link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                mobileBtn.classList.remove('active');
+            });
+        });
+    }
+
 }); // <--- ACA CERRAMOS EL DOMContentLoaded PARA QUE LO DE ABAJO SEA GLOBAL
 
 
