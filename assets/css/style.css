@@ -1,5 +1,6 @@
 /* =========================================================================
    STYLE.CSS - LGC (Identidad Final: Turquesa, Verde y Crema)
+   // [SEO OPTIMIZATION] Estilos optimizados para evitar Layout Shifts (CLS)
    ========================================================================= */
 
 /* =========================================
@@ -65,7 +66,12 @@ img { max-width: 100%; display: block; }
 .slide.active { opacity: 1; visibility: visible; z-index: 1; }
 .hero-content { max-width: 800px; position: relative; z-index: 2; }
 .hero-subtitle { font-weight: 600; color: var(--clr-tostado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: var(--space-sm); font-size: 0.95rem; font-family: var(--font-body); }
-.hero-title { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: var(--space-md); color: var(--clr-surface); font-style: italic; }
+.hero-title { 
+    font-size: clamp(2.2rem, 4vw, 3.5rem); 
+    margin-bottom: var(--space-md); 
+    color: var(--clr-surface); 
+    font-style: italic; 
+}
 .hero-text { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 650px; margin-bottom: var(--space-lg); }
 .slider-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
 .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: var(--clr-surface); border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; z-index: 10; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; }
@@ -79,14 +85,46 @@ img { max-width: 100%; display: block; }
 /* =========================================
    QUIÉNES SOMOS & MÁSCARA DEL LOGO
    ========================================= */
-.about { position: relative; padding: var(--space-xl) 0; background-color: var(--clr-surface); }
-.about .container { position: relative; z-index: 2; }
+.about { 
+    position: relative; 
+    padding: var(--space-xl) 0; 
+    background-color: var(--clr-surface); 
+    overflow: hidden; /* Evita que la imagen se desborde */
+}
+
+/* --- Imagen de fondo sutil con opacidad --- */
+.about::before {
+    content: '';
+    position: absolute;
+    inset: 0; /* Ocupa todo el alto y ancho de la sección */
+    background-image: url('../img/bg/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Agrega un pequeño efecto parallax muy elegante al scrollear */
+    opacity: 0.1; /* Opacidad al 4% (ajustala a gusto, entre 0.03 y 0.08 suele ser ideal) */
+    z-index: 1;
+    pointer-events: none; /* Asegura que no interfiera con los clics */
+}
+
+.about .container { 
+    position: relative; 
+    z-index: 2; /* Mantiene el texto y las alianzas por encima de la imagen */
+}
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: start; }
 .about-text .section-title { color: var(--clr-primary); }
 .about-text .section-tag { color: var(--clr-accent); }
-.about-subtitle { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom: var(--space-xs); color: var(--clr-primary); line-height: 1.2; }
+.about-subtitle { font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom: var(--space-xs); color: var(--clr-primary); line-height: 1.2; }
 .about-text p { margin-bottom: var(--space-sm); font-size: 1.1rem; color: var(--clr-text-muted); }
-.about-alianzas { padding: var(--space-md); border-radius: var(--radius-fluid); border-left: 4px solid var(--clr-accent); background-color: var(--clr-bg-light); margin-top: var(--space-lg); }
+.about-alianzas {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    padding: var(--space-lg);
+    border-radius: var(--radius-fluid);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--clr-accent); 
+    margin-top: var(--space-lg);
+    color: var(--clr-text-main);
+}
 .about-alianzas h3 { color: var(--clr-accent); font-size: 1.5rem; margin-bottom: 0.5rem; }
 .alianzas-grid { list-style: none; margin-top: var(--space-sm); display: grid; gap: 15px; }
 .alianzas-grid li { font-size: 0.95rem; line-height: 1.5; position: relative; padding-left: 20px; }
@@ -108,7 +146,7 @@ img { max-width: 100%; display: block; }
 .showcase-block:nth-child(even) .showcase-bg-number { left: -5%; }
 .showcase-grid.align-right { display: flex; justify-content: flex-end; }
 .showcase-tag { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: var(--space-sm); font-weight: 600; }
-.showcase-title { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: var(--space-sm); line-height: 1.1; }
+.showcase-title { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: var(--space-sm); line-height: 1.1; }
 .showcase-desc { font-size: 1.2rem; margin-bottom: var(--space-md); font-weight: 400; }
 .showcase-features { list-style: none; display: grid; gap: 1.2rem; }
 .showcase-features li { position: relative; padding-left: 28px; line-height: 1.6; font-size: 1.05rem; }
@@ -167,29 +205,26 @@ img { max-width: 100%; display: block; }
     border-bottom: 1px solid rgba(0,0,0,0.05); 
     margin-bottom: var(--space-lg);
     display: flex;
-    align-items: center; /* Centra verticalmente logos de distintos altos */
+    align-items: center; 
 }
 
 .logos-track { 
     display: inline-flex; 
     align-items: center;
-    /* Subí a 40s la animación porque ahora son 19 logos, para que no pase tan rápido */
     animation: scrollLogos 40s linear infinite; 
 }
 
 .logo-item-img {
-    height: 45px; /* Fijamos el alto para que todos se vean uniformes */
+    height: 45px; 
     width: auto;
-    max-width: 180px; /* Evita que logos muy anchos rompan el diseño */
-    margin: 0 3rem; /* Espaciado entre logos */
+    max-width: 180px; 
+    margin: 0 3rem; 
     object-fit: contain;
-    /* Efecto Premium: Todo en escala de grises y un poco opaco por defecto */
     filter: grayscale(100%) opacity(0.5); 
     transition: filter 0.3s ease, transform 0.3s ease;
     cursor: default;
 }
 
-/* Efecto Mágico: Vuelve el color al pasar el mouse */
 .logo-item-img:hover {
     filter: grayscale(0%) opacity(1);
     transform: scale(1.05);
@@ -200,49 +235,129 @@ img { max-width: 100%; display: block; }
     100% { transform: translateX(-50%); } 
 }
 
-.cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); }
-.case-card { 
-    background-color: var(--clr-surface); border-radius: var(--radius-soft); overflow: hidden; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-left: 4px solid var(--clr-accent);
-    cursor: pointer; transition: var(--transition-smooth);
+/* --- Cards de Casos (Look Op2) --- */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
-.case-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left-color: var(--clr-primary); }
-.case-header { background-color: var(--clr-primary); padding: var(--space-md); color: var(--clr-surface); transition: var(--transition-smooth); }
-.case-card:hover .case-header { background-color: var(--clr-dark); }
-.case-header h3 { color: var(--clr-surface); margin-bottom: 5px; font-size: 1.4rem; }
-.case-sector { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
-.case-body { padding: var(--space-md); display: flex; flex-direction: column; justify-content: space-between; height: calc(100% - 100px); }
-.case-body p { margin-bottom: 10px; font-size: 0.95rem; }
-.btn-more { display: inline-block; margin-top: 15px; font-size: 0.85rem; font-weight: 600; color: var(--clr-primary); text-decoration: none; text-transform: uppercase; }
 
-/* Estilos del Modal */
-.modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 50, 65, 0.7); /* Azul oscuro difuminado */
-    backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
+.case-card {
+    background: var(--clr-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: none; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+.case-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+}
+
+.case-header {
+    background: var(--clr-primary);
+    padding: 2rem;
+    color: white;
+}
+
+.case-header h3 { color: white; font-size: 1.4rem; margin-bottom: 5px; }
+.case-sector { font-size: 0.8rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
+
+.case-body { padding: 2rem; }
+.case-body p { margin-bottom: 10px; font-size: 0.95rem; }
+.btn-more { display: inline-block; margin-top: 15px; color: var(--clr-accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
+
+/* --- Modal & Layout de Infografía (Look Op2) --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 41, 0.85); /* Fondo oscuro azulado */
+    backdrop-filter: blur(8px); /* Efecto vidrio esmerilado */
+    z-index: 2000;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
 .modal-container {
-    background: var(--clr-surface); width: 100%; max-width: 800px;
-    border-radius: var(--radius-fluid); position: relative; padding: var(--space-lg) var(--space-md);
-    max-height: 90vh; overflow-y: auto; border-top: 6px solid var(--clr-accent);
+    background: var(--clr-surface);
+    width: 95%; 
+    max-width: 1100px; 
+    max-height: 90vh;
+    border-radius: 20px;
+    position: relative;
+    overflow-y: auto;
+    padding: 1.5rem 2.5rem; 
+    animation: modalIn 0.5s ease forwards; /* Animación de entrada */
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
 }
-.modal-close {
-    position: absolute; top: 15px; right: 20px; font-size: 2.5rem; background: none; border: none;
-    cursor: pointer; color: var(--clr-text-muted); transition: var(--transition-fast);
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
-.modal-close:hover { color: var(--clr-primary); }
-.info-header { margin-bottom: var(--space-sm); border-bottom: 1px solid #eaeaea; padding-bottom: 15px; }
-.info-grid { display: grid; gap: var(--space-md); }
-.info-box { background: var(--clr-bg-light); padding: 20px; border-radius: var(--radius-soft); }
-.info-box h4 { color: var(--clr-primary); margin-bottom: 15px; font-size: 1.2rem; }
+
+.modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: none; border: none;
+    font-size: 2.5rem; color: var(--clr-primary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.modal-close:hover { color: var(--clr-accent); }
+
+/* Clases internas para la infografía */
+.info-header { 
+    border-bottom: 2px solid var(--clr-bg-light); 
+    margin-bottom: 1rem; 
+    padding-bottom: 0.5rem; 
+}
+
+.info-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.2rem; 
+}
+
+.info-box { 
+    background: var(--clr-bg-light); 
+    padding: 1rem 1.5rem; 
+    border-radius: 12px; 
+    height: 100%; 
+}
+
+.info-box h4 { 
+    color: var(--clr-primary); 
+    margin-bottom: 0.5rem; 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+}
+
+.info-results { 
+    grid-column: span 2; 
+    background: var(--clr-primary); 
+    color: white; 
+    padding: 1.2rem 2rem; 
+    border-radius: 12px; 
+    margin-top: 0.5rem; 
+}
+
+.info-results h4 { color: var(--clr-accent); margin-bottom: 15px; font-size: 1.2rem; }
 .info-list { list-style: none; display: grid; gap: 10px; }
-.info-list li { position: relative; padding-left: 20px; font-size: 1rem; color: var(--clr-text-main); }
-.info-list li::before { content: "■"; position: absolute; left: 0; color: var(--clr-accent); font-size: 0.8rem; top: 3px; }
-.info-results { background: var(--clr-primary); color: #fff; padding: 25px; border-radius: var(--radius-soft); }
-.info-results h4 { color: var(--clr-tostado); margin-bottom: 15px; font-size: 1.2rem; }
+.info-list li { 
+    position: relative;
+    margin-bottom: 4px; 
+    font-size: 0.9rem; 
+    color: var(--clr-text-main);
+}
 .info-results .info-list li { color: rgba(255,255,255,0.9); }
-.info-results .info-list li::before { color: var(--clr-tostado); }
 
 /* =========================================
    NOVEDADES NORMATIVAS 
@@ -258,8 +373,38 @@ img { max-width: 100%; display: block; }
    FOOTER / CONTACTO 
    ========================================= */
 .footer { background-color: var(--clr-dark); color: var(--clr-surface); padding: var(--space-xl) 0 var(--space-lg); border-top: 5px solid var(--clr-accent); }
-.footer-info h2 { color: var(--clr-tostado); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-sm); font-style: italic; }
+.footer-info h2 { 
+    color: var(--clr-tostado); 
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); 
+    margin-bottom: var(--space-sm); 
+    font-style: italic; 
+}
 .footer-info p { color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; }
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+}
+
+.footer-logo-wrapper {
+    margin-top: auto; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding-bottom: var(--space-md);
+}
+
+.footer-logo {
+    max-width: 250px; 
+    opacity: 0.6; 
+    filter: grayscale(100%); 
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.footer-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
 .contact-data a { color: var(--clr-tostado); font-weight: 500; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--space-xl); }
 .form-group { margin-bottom: var(--space-sm); }

@@ -1,7 +1,9 @@
+// [SEO OPTIMIZATION] Archivo optimizado para carga diferida (defer)
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
     initSmoothScroll();
     initFormAutoSelect();
+    initInfiniteLogos(); 
 });
 
 function initSlider() {
@@ -58,7 +60,6 @@ function initFormAutoSelect() {
             const val = btn.getAttribute('data-servicio');
             if (val && serviceSelect) {
                 serviceSelect.value = val;
-                // Efecto visual para mostrar que se seleccionó
                 serviceSelect.style.boxShadow = '0 0 0 3px rgba(144, 162, 36, 0.5)';
                 setTimeout(() => serviceSelect.style.boxShadow = 'none', 1500);
             }
@@ -66,9 +67,16 @@ function initFormAutoSelect() {
     });
 }
 
-// =========================================================================
-// DATOS Y FUNCIONES GLOBALES (MODALES DE CASOS DE ÉXITO)
-// =========================================================================
+function initInfiniteLogos() {
+    const track = document.querySelector('.logos-track');
+    if (!track) return;
+    const logos = Array.from(track.children);
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+    });
+}
 
 const caseData = {
     cirion: {
@@ -131,7 +139,6 @@ function openCaseModal(caseId) {
 
     if (!data) return;
 
-    // Generamos el HTML de la infografía
     contentArea.innerHTML = `
         <div class="info-header">
             <span class="section-tag">${data.sector}</span>
@@ -158,15 +165,14 @@ function openCaseModal(caseId) {
     `;
 
     modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeCaseModal() {
     document.getElementById('caseModal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restaura el scroll
+    document.body.style.overflow = 'auto'; 
 }
 
-// Cerrar al hacer clic en el fondo gris oscuro del modal
 window.onclick = function(event) {
     const modal = document.getElementById('caseModal');
     if (event.target == modal) {

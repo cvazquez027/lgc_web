@@ -1,5 +1,6 @@
 /* =========================================================================
    STYLE.CSS - LGC (Versión Isologo Integrado con Geometría Perfecta)
+   // [SEO OPTIMIZATION] Estilos optimizados para evitar Layout Shifts (CLS)
    ========================================================================= */
 
 /* =========================================
@@ -125,10 +126,9 @@ img {
 }
 
 /* =========================================
-   HEADER (Ahora Progresivo, Sticky y Geométrico)
+   HEADER (Progresivo, Sticky y Geométrico)
    ========================================= */
    
-/* 1. Reset del Header: ahora es solo un contenedor */
 .header {
     position: relative; 
     width: 100%;
@@ -137,11 +137,9 @@ img {
     z-index: 1000;
 }
 
-/* 2. La nueva pieza azul horizontal (La "hoja" de la base) */
 .header-blue-body {
     position: absolute;
     top: 0;
-    /* EL ARREGLO DERECHO: Lo estiramos 150px fuera de la pantalla */
     right: -150px; 
     left: 240px; 
     height: 70px;
@@ -150,13 +148,9 @@ img {
     transform: skewX(-18deg);
     transform-origin: top left;
     transition: opacity 0.4s ease, visibility 0.4s ease;
-
-    /* LA CURVA EMPINADA (Edita los valores explicados abajo) */
-    /* Usamos 5000 para asegurarnos de que cubra monitores 4K gigantes hacia la derecha */
     clip-path: path('M 5000 0 L 5000 70 L 100 70 C 45 45 20 20 0 0 Z');
 }
 
-/* Ocultar el botón hamburguesa en vista de computadora */
 .mobile-menu-btn {
     display: none;
 }
@@ -165,15 +159,13 @@ img {
     position: fixed; 
     top: 0;
     left: 0;
-    /* Reducimos el padding a 0 para que NO crezca el menú */
     padding: 0; 
-    /* Cambiamos al color crema de fondo original con un toque de transparencia */
     background-color: #F9F7F4;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header.scrolled .nav-container {
-    height: 70px; /* Un poco más compacto que los 70px originales */
+    height: 70px; 
     transition: height 1s ease;
 }
 
@@ -188,7 +180,6 @@ img {
     color: var(--clr-primary);
 }
 
-/* Desvanecer formas al scrollear */
 .header.scrolled::before,
 .header.scrolled::after {
     opacity: 0;
@@ -206,14 +197,11 @@ img {
     pointer-events: none;
 }
 
-/* --- BOTÓN DE CONTACTO AL SCROLLEAR --- */
-/* Le damos color y borde azul para que resalte sobre el fondo claro */
 .header.scrolled .nav-links .btn-outline {
     border-color: var(--clr-primary) !important;
     color: var(--clr-primary) !important;
 }
 
-/* Efecto hover: se rellena de azul y la letra pasa a blanca */
 .header.scrolled .nav-links .btn-outline:hover {
     background-color: var(--clr-primary) !important;
     color: var(--clr-surface) !important;
@@ -225,7 +213,7 @@ img {
     align-items: center;
     height: 70px;
     position: relative;
-    z-index: 10; /* VITAL: Pone el menú por encima de las formas de fondo */
+    z-index: 10; 
 }
 
 .logo {
@@ -237,26 +225,23 @@ img {
     overflow: visible;
 }
 
-/* El div verde del HTML lo ocultamos, la magia ahora la hace el Header */
 .logo-placeholder-green {
     display: none;
 }
 
-/* Parche blanco del Menú (Atado a la pantalla entera, no al container) */
 .header::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100vw; 
-    width: calc(100vw + 240px); /* MATEMÁTICO: Cubre hasta el inicio del azul */
+    width: calc(100vw + 240px); 
     height: 100%;
     background-color: #F9F7F4;
-    z-index: 0; /* Al fondo de todo */
+    z-index: 0; 
     transform: skewX(-18deg);
     transform-origin: top right;
 }
 
-/* 4. El Bloque Verde (Lo movemos para que flote sobre el azul) */
 .header::after {
     content: '';
     position: absolute;
@@ -268,7 +253,7 @@ img {
     z-index: 2;
     transform: skewX(-18deg);
     transform-origin: top left;
-    border-radius: 0; /* Recto para que el azul apoye ahí */
+    border-radius: 0; 
 }
 
 .logo-img {
@@ -298,7 +283,6 @@ img {
     color: var(--clr-tostado) !important; 
 }
 
-/* --- Lógica del Submenú (Dropdown) --- */
 .dropdown {
     position: relative;
     padding: 20px 0; 
@@ -353,7 +337,6 @@ img {
     color: var(--clr-primary) !important;
 }
 
-/* 1. LINKS PRINCIPALES (Usamos "> li > a" para no afectar al submenú) */
 .header.scrolled .nav-links > li > a:not(.btn-outline) {
     color: var(--clr-text-main) !important;
 }
@@ -362,14 +345,13 @@ img {
     color: var(--clr-primary) !important;
 }
 
-/* 2. LINKS DEL DESPLEGABLE (Exclusivos para Servicios) */
 .header.scrolled .dropdown-menu a {
-    color: var(--clr-surface) !important; /* Texto blanco/crema */
+    color: var(--clr-surface) !important; 
 }
 
 .header.scrolled .dropdown-menu a:hover {
-    color: var(--clr-primary) !important; /* Azul al pasar el mouse */
-    background-color: rgba(255, 255, 255, 0.05) !important; /* Leve fondo iluminado */
+    color: var(--clr-primary) !important; 
+    background-color: rgba(255, 255, 255, 0.05) !important; 
 }
 
 /* =========================================
@@ -428,7 +410,7 @@ img {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-size: clamp(2.2rem, 4vw, 3.5rem); 
     margin-bottom: var(--space-md);
     color: var(--clr-primary); 
     font-style: italic; 
@@ -531,7 +513,7 @@ img {
 }
 
 .about-subtitle {
-    font-size: clamp(1.6rem, 2.5vw, 2.2rem); 
+    font-size: clamp(1.2rem, 2vw, 1.8rem); 
     margin-bottom: var(--space-xs);
     color: var(--clr-primary); 
     line-height: 1.2;
@@ -660,7 +642,7 @@ img {
 }
 
 .showcase-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
     margin-bottom: var(--space-sm);
     line-height: 1.1;
 }
@@ -730,33 +712,43 @@ img {
     font-size: clamp(2rem, 3.5vw, 2.5rem); 
 }
 
-.logos-marquee {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: var(--space-md) 0;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+/* --- Carrusel de Logos de Clientes --- */
+.logos-marquee { 
+    width: 100%; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    padding: var(--space-md) 0; 
+    border-top: 1px solid rgba(0,0,0,0.05); 
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
     margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center; 
 }
 
-.logos-track {
-    display: inline-block;
-    animation: scrollLogos 20s linear infinite;
+.logos-track { 
+    display: inline-flex; 
+    align-items: center;
+    animation: scrollLogos 40s linear infinite; 
 }
 
-.logo-item {
-    display: inline-block;
-    margin: 0 var(--space-lg);
-    font-size: 1.5rem;
-    font-family: var(--font-heading);
-    font-style: italic;
-    color: var(--clr-dark); 
-    opacity: 0.3;
+.logo-item-img {
+    height: 45px; 
+    width: auto;
+    max-width: 180px; 
+    margin: 0 3rem; 
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5); 
+    transition: filter 0.3s ease, transform 0.3s ease;
+    cursor: default;
 }
 
-@keyframes scrollLogos {
-    0% { transform: translateX(0); }
+.logo-item-img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+}
+
+@keyframes scrollLogos { 
+    0% { transform: translateX(0); } 
     100% { transform: translateX(-50%); } 
 }
 
@@ -868,13 +860,39 @@ img {
 
 .footer-info h2 {
     color: var(--clr-primary); 
-    font-size: clamp(2rem, 5vw, 3rem); 
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); 
     margin-bottom: var(--space-sm);
     font-style: italic;
 }
 
 .footer-info p {
     color: var(--clr-text-muted);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+}
+
+.footer-logo-wrapper {
+    margin-top: auto; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding-bottom: var(--space-md);
+}
+
+.footer-logo {
+    max-width: 250px; 
+    opacity: 0.6; 
+    filter: grayscale(100%); 
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.footer-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
 }
 
 .contact-data a {
@@ -994,12 +1012,10 @@ select option {
 }
 
 @media (max-width: 768px) {
-    /* 1. Ocultamos el bloque del isologo gigante entero */
     .lamas-hero-compo {
         display: none !important;
     }
 
-    /* 2. Forzamos el menú a estar fijo, blanco y sin las formas azules/verdes */
     .header {
         position: fixed !important;
         background-color: #F9F7F4 !important;
@@ -1014,7 +1030,6 @@ select option {
         display: none !important;
     }
 
-    /* 3. Ajustes de altura y logo */
     .nav-container {
         height: 70px;
     }
@@ -1023,10 +1038,9 @@ select option {
         max-height: 40px;
         opacity: 1 !important; 
         pointer-events: auto;
-        position: relative; /* Evita que flote raro */
+        position: relative; 
     }
 
-    /* 4. Estilos de las 3 rayitas (Hamburguesa) */
     .mobile-menu-btn {
         display: flex;
         flex-direction: column;
@@ -1047,28 +1061,25 @@ select option {
         transition: all 0.3s linear;
     }
 
-    /* Animación: Las rayitas se convierten en una "X" al abrir */
     .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
     .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
-    /* 5. El menú desplegable (Oculto hacia arriba por defecto) */
     .nav-links {
         position: absolute;
-        top: 70px; /* Empieza justo debajo del header */
+        top: 70px; 
         left: 0;
         width: 100%;
         background-color: #F9F7F4;
         flex-direction: column;
         align-items: center;
         padding: 0;
-        max-height: 0; /* Cerrado */
+        max-height: 0; 
         overflow: hidden;
         transition: max-height 0.4s ease-in-out, padding 0.4s ease;
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     }
 
-    /* Clase que usará JS para abrirlo */
     .nav-links.open {
         max-height: 500px;
         padding: 20px 0;
@@ -1085,17 +1096,16 @@ select option {
         font-size: 1.1rem;
     }
 
-    /* Ajuste para el submenú de servicios en celular */
     .dropdown-menu {
         position: relative;
         box-shadow: none;
         border: none;
-        display: none; /* Oculto hasta tocar "Servicios" */
+        display: none; 
         background: transparent;
     }
     
     .dropdown.open .dropdown-menu {
-        display: flex; /* Se abre con JS */
+        display: flex; 
     }
 
     .dropdown-menu a {
@@ -1103,7 +1113,6 @@ select option {
         font-size: 0.95rem !important;
     }
 
-    /* Resto de ajustes móviles que ya tenías */
     .slider-btn { display: none; }
     .slider-actions { flex-direction: column; width: 100%; gap: 15px; }
     .slider-actions a { width: 100%; text-align: center; }
@@ -1111,7 +1120,6 @@ select option {
     .footer { padding: var(--space-lg) 0 var(--space-md); }
     .footer-grid { gap: var(--space-lg); }
     
-    /* Para que el Slider principal no quede atrapado bajo el header */
     main {
         margin-top: 70px !important;
     }
@@ -1124,12 +1132,11 @@ select option {
     position: relative;
     width: 100%;
     height: 45vh; 
-    background-color: var(--clr-primary); /* Fondo de resguardo */
+    background-color: var(--clr-primary); 
     overflow: hidden;
     z-index: 10;
 }
 
-/* 1. La imagen ahora ocupa TODO el fondo */
 .hero-image-bg {
     position: absolute;
     inset: 0; 
@@ -1139,7 +1146,6 @@ select option {
     z-index: 1;
 }
 
-/* Oscurecemos la imagen para que el logo resalte (sin tocar HTML) */
 .hero-image-bg::after {
     content: '';
     position: absolute;
@@ -1148,22 +1154,19 @@ select option {
     z-index: 1;
 }
 
-/* 2. Parche blanco que tapa la foto a la izquierda */
 .lamas-hero-compo::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100vw;
-    /* 150px (inicio azul) + 90px (ancho azul) = 240px */
     width: calc(100vw + 240px); 
     height: 100%;
     background-color: #F9F7F4;
-    z-index: 2; /* Sigue estando debajo del azul */
+    z-index: 2; 
     transform: skewX(-18deg);
     transform-origin: bottom right;
 }
 
-/* 3. Asta Azul (Delgada y perfecta) */
 .brand-asta-blue {
     position: absolute;
     top: 0;
@@ -1174,19 +1177,13 @@ select option {
     z-index: 3;
     transform: skewX(-18deg);
     transform-origin: bottom left; 
-    
-    /* 1. BORRAMOS el border-bottom-left-radius que tenías acá */
-    
-    /* 2. AGREGAMOS el clip-path con la diagonal exacta */
-    /* Corta la base izquierda exactamente 70px más arriba para que encastre perfecto con el menú */
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 110px));
 }
 
-/* Logo centrado */
 .centered-logo {
     position: absolute;
     top: 50%;
-    left: 60%; /* Ajustá esto (ej: 65%) si lo querés más a la derecha */
+    left: 60%; 
     transform: translate(-50%, -50%);
     z-index: 5;
     max-width: 150px;
@@ -1195,7 +1192,6 @@ select option {
 /* =========================================
    ANIMACIONES ON SCROLL (REVEAL)
    ========================================= */
-/* Estados Iniciales (Ocultos y desplazados) */
 .reveal-up {
     opacity: 0;
     transform: translateY(50px);
@@ -1214,7 +1210,6 @@ select option {
     transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
 }
 
-/* Estado Final (Visible y en su lugar original) */
 .reveal-up.active,
 .reveal-left.active,
 .reveal-right.active {
@@ -1222,7 +1217,6 @@ select option {
     transform: translate(0);
 }
 
-/* Retraso sutil para que el texto cargue después del número de fondo (Opcional) */
 .showcase-content.reveal-left,
 .showcase-content.reveal-right {
     transition-delay: 0.1s;
@@ -1232,7 +1226,6 @@ select option {
    HOVER EFFECTS (INTERACTIVIDAD SUTIL)
    ========================================= */
 
-/* Transiciones base para que el movimiento sea suave */
 .about-alianzas,
 .showcase-content {
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
@@ -1240,28 +1233,25 @@ select option {
                 border-color 0.4s ease !important;
 }
 
-/* Hover para Alianzas Estratégicas */
 .about-alianzas:hover {
-    transform: translateY(-5px); /* Se eleva 5 píxeles */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Sombra más pronunciada */
-    border-left-color: var(--clr-primary); /* El borde pasa de verde a azul */
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06); 
+    border-left-color: var(--clr-primary); 
 }
 
-/* Hover para los recuadros de Servicios */
 .showcase-content:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 45px rgba(0,0,0,0.08);
 }
 
-/* Intercambiamos el color de la barrita izquierda de los servicios al hacer hover */
 #srv-matrices .showcase-content:hover,
 #srv-ambiente .showcase-content:hover {
-    border-left-color: var(--clr-accent); /* Pasan a verde */
+    border-left-color: var(--clr-accent); 
 }
 
 #srv-seguridad .showcase-content:hover,
 #srv-habilitaciones .showcase-content:hover {
-    border-left-color: var(--clr-primary); /* Pasan a azul */
+    border-left-color: var(--clr-primary); 
 }
 
 .case-card {
@@ -1307,7 +1297,6 @@ select option {
     font-size: 35px; cursor: pointer;
 }
 
-/* --- Cards de Casos --- */
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1315,22 +1304,18 @@ select option {
     margin-top: 3rem;
 }
 
-/* --- Cards de Casos (Look Minimalista) --- */
 .case-card {
     background: var(--clr-surface);
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    /* 1. Eliminamos el border-bottom */
     border: none; 
-    /* 2. Sombra inicial súper sutil y extendida */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .case-card:hover {
-    transform: translateY(-8px); /* Elevación un poquito más suave */
-    /* 3. Sombra al hacer hover: más amplia pero sigue siendo elegante */
+    transform: translateY(-8px); 
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
 }
 
@@ -1346,28 +1331,27 @@ select option {
 .case-body { padding: 2rem; }
 .btn-more { color: var(--clr-accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
 
-/* --- Modal & Layout de Infografía --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(10, 25, 41, 0.85);
     backdrop-filter: blur(8px);
     z-index: 2000;
-    display: none; /* JS lo activa */
+    display: none; 
     align-items: center;
     justify-content: center;
     padding: 2rem;
 }
 
 .modal-container {
-    background: var(--white);
-    width: 95%; /* Un poco más ancho para ganar espacio vertical */
+    background: var(--clr-surface);
+    width: 95%; 
     max-width: 1100px; 
     max-height: 90vh;
     border-radius: 20px;
     position: relative;
     overflow-y: auto;
-    padding: 1.5rem 2.5rem; /* Reducido de 3rem */
+    padding: 1.5rem 2.5rem; 
     animation: modalIn 0.5s ease forwards;
 }
 
@@ -1384,29 +1368,28 @@ select option {
     cursor: pointer;
 }
 
-/* Clases internas para la infografía */
 .info-header { 
     border-bottom: 2px solid var(--clr-bg-light); 
-    margin-bottom: 1rem; /* Reducido de 2rem */
+    margin-bottom: 1rem; 
     padding-bottom: 0.5rem; 
 }
 
 .info-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
-    gap: 1.2rem; /* Reducido de 2rem */
+    gap: 1.2rem; 
 }
 
 .info-box { 
     background: var(--clr-bg-light); 
-    padding: 1rem 1.5rem; /* Reducido de 1.5rem */
+    padding: 1rem 1.5rem; 
     border-radius: 12px; 
     height: 100%; 
 }
 
 .info-box h4 { 
     color: var(--clr-primary); 
-    margin-bottom: 0.5rem; /* Reducido */
+    margin-bottom: 0.5rem; 
     text-transform: uppercase; 
     font-size: 0.85rem; 
 }
@@ -1415,15 +1398,14 @@ select option {
     grid-column: span 2; 
     background: var(--clr-primary); 
     color: white; 
-    padding: 1.2rem 2rem; /* Reducido de 2rem */
+    padding: 1.2rem 2rem; 
     border-radius: 12px; 
-    margin-top: 0.5rem; /* Reducido */
+    margin-top: 0.5rem; 
 }
 
 .info-results h4 { color: var(--clr-accent); }
 .info-list { list-style: none; }
 .info-list li { 
-    margin-bottom: 4px; /* Más compacto */
-    font-size: 0.9rem; /* Un punto menos para ganar aire */
+    margin-bottom: 4px; 
+    font-size: 0.9rem; 
 }
-.info-list li::before { content: '→'; position: absolute; left: 0; color: var(--clr-accent); }

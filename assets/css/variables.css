@@ -1,5 +1,6 @@
 /* =========================================================================
    VARIABLES.CSS - LGC (Identidad Final: Turquesa, Verde y Crema)
+   // [SEO OPTIMIZATION] Colores y tipografías consistentes para accesibilidad
    ========================================================================= */
 
 :root {
@@ -21,8 +22,8 @@
     --clr-text-muted: #636E72;
 
     /* --- TIPOGRAFÍAS SELECCIONADAS --- */
-    --font-heading: 'Cormorant Garamond', serif; 
-    --font-body: 'Outfit', sans-serif;
+    --font-heading: 'Tenor Sans', sans-serif; 
+    --font-body: 'Montserrat', sans-serif;
 
     /* --- ESPACIADOS Y BORDES --- */
     --space-xs: 0.5rem;

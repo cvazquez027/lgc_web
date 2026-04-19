@@ -1,5 +1,6 @@
 /* =========================================================================
    MAIN.JS - LGC (Versión Definitiva: Slider, Sticky, Formulario, Scroll, Modales)
+   // [SEO OPTIMIZATION] Archivo optimizado para carga diferida (defer) y accesibilidad
    ========================================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,16 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                e.preventDefault(); // Evitamos el salto brusco
+                e.preventDefault(); 
                 
-                // Calculamos cuánto mide el menú para no tapar el título al llegar
                 const headerOffset = header ? header.offsetHeight : 0;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: 'smooth' // Deslizamiento elegante
+                    behavior: 'smooth' 
                 });
             }
         });
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.parentElement.classList.toggle('open');
         });
 
-        // Cerrar el submenú si hacés clic en cualquier otra parte
         document.addEventListener('click', function(e) {
             if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownToggle.parentElement.classList.remove('open');
@@ -153,23 +152,32 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(el);
     });
 
-// 7. MENÚ HAMBURGUESA (MÓVIL)
+    // 7. MENÚ HAMBURGUESA (MÓVIL)
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileBtn && navLinks) {
-        // Abrir/Cerrar menú al tocar las rayitas
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('open');
-            mobileBtn.classList.toggle('active'); // Convierte rayas en X
+            mobileBtn.classList.toggle('active'); 
         });
 
-        // Cerrar el menú automáticamente si tocamos un link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
                 mobileBtn.classList.remove('active');
             });
+        });
+    }
+
+    // 8. CARRUSEL INFINITO DE LOGOS (SEO & ACCESIBILIDAD TRAÍDO DE OP1)
+    const track = document.querySelector('.logos-track');
+    if (track) {
+        const logos = Array.from(track.children);
+        logos.forEach(logo => {
+            const clone = logo.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
         });
     }
 
@@ -241,11 +249,11 @@ function openCaseModal(caseId) {
 
     if (!data) return;
 
-    // Generamos el HTML de la infografía
+    // Generamos el HTML de la infografía (Tamaños y espacios ajustados a Op1)
     contentArea.innerHTML = `
         <div class="info-header">
             <span class="section-tag">${data.sector}</span>
-            <h2 class="hero-title" style="font-size: 1.8rem; color: var(--clr-primary);">${data.title}</h2>
+            <h2 class="hero-title" style="font-size: 2rem; color: var(--clr-primary); margin-bottom: 0;">${data.title}</h2>
         </div>
         <div class="info-grid">
             <div class="info-box">
@@ -260,7 +268,7 @@ function openCaseModal(caseId) {
             </div>
             <div class="info-results">
                 <h4>Impacto y Resultados</h4>
-                <ul class="info-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <ul class="info-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     ${data.resultados.map(res => `<li><strong>${res}</strong></li>`).join('')}
                 </ul>
             </div>
@@ -268,15 +276,14 @@ function openCaseModal(caseId) {
     `;
 
     modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
+    document.body.style.overflow = 'hidden'; 
 }
 
 function closeCaseModal() {
     document.getElementById('caseModal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restaura el scroll
+    document.body.style.overflow = 'auto'; 
 }
 
-// Cerrar al hacer clic en el fondo gris del modal
 window.onclick = function(event) {
     const modal = document.getElementById('caseModal');
     if (event.target == modal) {
