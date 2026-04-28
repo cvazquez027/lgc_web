@@ -50,101 +50,144 @@
 </head>
 <body>
 
+    <section class="lamas-hero-compo">
+        <div class="brand-white-left"></div>
+        <div class="brand-asta-blue"></div>
+        
+        <div class="hero-image-bg">
+            <div class="bg-slide" style="background-image: url('assets/img/bg/bg0.png');"></div>
+            <div class="bg-slide" style="background-image: url('assets/img/bg/bg1.jpg');"></div>
+            <div class="bg-slide" style="background-image: url('assets/img/bg/bg2.jpg');"></div>
+            <div class="bg-slide" style="background-image: url('assets/img/bg/bg3.png');"></div>
+            <div class="bg-slide" style="background-image: url('assets/img/bg/bg_new.png');"></div>
+            <div class="hero-overlay"></div> 
+        </div>
+        <img src="assets/img/logos/logo_lgc_sombra.png" alt="LAMAS Logo" class="centered-logo">
+    </section>
+
     <header class="header" id="header">
+        <div class="header-blue-body"></div>
         <div class="container nav-container">
             <a href="#inicio" class="logo">
-                <img src="assets/img/logos/logo_lgc.png" alt="Lamas Global Consulting" class="logo-img" width="150" height="100">
+                <img src="assets/img/logos/logo_lgc.png" alt="Lamas Global Consulting" class="logo-img">
             </a>
+
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <nav class="navbar">
                 <ul class="nav-links">
                     <li><a href="#quienes-somos">Quiénes somos</a></li>
-                    
                     <li class="dropdown">
-                        <a href="#servicios" class="dropdown-toggle">Servicios ▾</a>
+                        <a href="#servicios" class="dropdown-toggle">Servicios</a>
                         <ul class="dropdown-menu">
                             <li><a href="#srv-matrices">Matrices Legales</a></li>
                             <li><a href="#srv-ambiente">Ambiente</a></li>
-                            <li><a href="#srv-seguridad">Seguridad e Higiene</a></li>
-                            <li><a href="#srv-habilitaciones">Habilitaciones</a></li>
+                            <li><a href="#srv-seguridad">Seguridad, Higiene y Salud Ocupacional</a></li>
+                            <li><a href="#srv-habilitaciones">Habilitaciones y Permisos</a></li>
+                            <li><a href="#srv-facility">Facility Management</a></li>
                         </ul>
                     </li>
-                    
                     <li><a href="#casos-exito">Confían en Nosotros</a></li>
                     <li><a href="#novedades">Novedades</a></li>
-                    <li><a href="#contacto" class="btn-outline">Contacto</a></li>
+                    <li><a href="#contacto" >Contactanos</a></li>
+                    <li><a href="https://matrizonline.lamas-gc.com" target="_blank" class="btn-outline">Ingresar</a></li>
+                    
+                    <li class="mobile-volver"><button id="btn-cerrar-menu" class="btn-primary">VOLVER</button></li>
                 </ul>
             </nav>
+            <div class="lang-switcher">
+                <a href="#" id="lang-es" class="active"><img src="https://flagcdn.com/w40/ar.png" alt="ES" width="24"></a>
+                <a href="#" id="lang-en"><img src="https://flagcdn.com/w40/us.png" alt="EN" width="24"></a>
+            </div>
         </div>
     </header>
 
+    <div id="google_translate_element" style="display:none;"></div>
+
     <main>
         <section id="inicio" class="hero-slider-section">
-            <div class="slider-container" id="mainSlider">
+            <div class="hero-split-layout">
                 
-                <div class="slide active">
-                    <div class="container hero-content">
-                        <p class="hero-subtitle">Ambiente · Seguridad · Gestión</p>
-                        <h1 class="hero-title">Socio estratégico en cumplimiento normativo y sostenibilidad</h1>
-                        <p class="hero-text">Acompañamiento integral personalizado con más de 30 años de trayectoria.</p>
-                        <div class="slider-actions">
-                            <a href="#contacto" class="btn-primary">Solicitá tu cotización</a>
+                <div class="hero-slider-col">
+                    <div class="slider-container" id="mainSlider">
+                        
+                        <div class="slide active">
+                            <div class="container hero-content">
+                                <p class="hero-subtitle">Ambiente · Seguridad · Gestión</p>
+                                <h1 class="hero-title">Facility Management <span class="hero-title-sub">Ambiental y en SYSO</span></h1>
+                                <p class="hero-text">Gestión ambiental integrada de servicios, alineada a la norma ISO 41001:2018, orientada a la eficiencia operativa, sustentabilidad y resiliencia organizacional.</p>
+                                <div class="slider-actions">
+                                    <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="facility">Solicitá tu cotización</a>
+                                    <a href="#srv-facility" class="btn-outline-light">Ver más</a>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="slide">
+                            <div class="container hero-content">
+                                <p class="hero-subtitle">Sistemas Online</p>
+                                <h2 class="hero-title">Matrices Legales Dinámicas</h2>
+                                <p class="hero-text">Transformamos el cumplimiento normativo en una gestión clara con alertas y reportes.</p>
+                                <div class="slider-actions">
+                                    <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="matrices">Solicitá tu cotización</a>
+                                    <a href="#srv-matrices" class="btn-outline-light">Ver más</a>
+                                    <a href="https://matrizonline.lamas-gc.com" target="_blank" class="btn-outline">Ingresar</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="container hero-content">
+                                <p class="hero-subtitle">Sostenibilidad Estratégica</p>
+                                <h2 class="hero-title">Gestión Ambiental Integral</h2>
+                                <p class="hero-text">Viabilizamos proyectos equilibrando el desarrollo industrial y la protección del entorno.</p>
+                                <div class="slider-actions">
+                                    <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="ambiente">Solicitá tu cotización</a>
+                                    <a href="#srv-ambiente" class="btn-outline-light">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="container hero-content">
+                                <p class="hero-subtitle">Prevención y Control</p>
+                                <h2 class="hero-title">Seguridad, Higiene y Salud Ocupacional</h2>
+                                <p class="hero-text">Fortalecemos la cultura preventiva y el compromiso organizacional promoviendo entornos seguros.</p>
+                                <div class="slider-actions">
+                                    <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="seguridad">Solicitá tu cotización</a>
+                                    <a href="#srv-seguridad" class="btn-outline-light">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="container hero-content">
+                                <p class="hero-subtitle">Operatividad Continua</p>
+                                <h2 class="hero-title">Habilitaciones y Permisos</h2>
+                                <p class="hero-text">Con foco en la seguridad jurídica, actuamos como nexo técnico experto ante las autoridades de aplicación.</p>
+                                <div class="slider-actions">
+                                    <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="habilitaciones">Solicitá tu cotización</a>
+                                    <a href="#srv-habilitaciones" class="btn-outline-light">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                    
+                    <button class="slider-btn prev" aria-label="Anterior">&#10094;</button>
+                    <button class="slider-btn next" aria-label="Siguiente">&#10095;</button>
+                    <div class="slider-dots"></div>
                 </div>
 
-                <div class="slide">
-                    <div class="container hero-content">
-                        <p class="hero-subtitle">Sistemas Online</p>
-                        <h2 class="hero-title">Matrices Legales Dinámicas</h2>
-                        <p class="hero-text">Transformamos el cumplimiento normativo en una gestión clara y automatizable con alertas y reportes.</p>
-                        <div class="slider-actions">
-                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="matrices">Solicitá tu cotización</a>
-                            <a href="#srv-matrices" class="btn-outline-light" title="Más información sobre matrices legales">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <div class="container hero-content">
-                        <p class="hero-subtitle">Sostenibilidad Estratégica</p>
-                        <h2 class="hero-title">Gestión Ambiental Integral</h2>
-                        <p class="hero-text">Viabilizamos proyectos equilibrando el desarrollo industrial y la protección del entorno.</p>
-                        <div class="slider-actions">
-                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="ambiente">Solicitá tu cotización</a>
-                            <a href="#srv-ambiente" class="btn-outline-light" title="Más información sobre gestión ambiental">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <div class="container hero-content">
-                        <p class="hero-subtitle">Prevención y Control</p>
-                        <h2 class="hero-title">Seguridad e Higiene</h2>
-                        <p class="hero-text">Fortalecemos la cultura preventiva y el compromiso organizacional para garantizar entornos seguros.</p>
-                        <div class="slider-actions">
-                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="seguridad">Solicitá tu cotización</a>
-                            <a href="#srv-seguridad" class="btn-outline-light" title="Más información sobre seguridad e higiene">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide">
-                    <div class="container hero-content">
-                        <p class="hero-subtitle">Operatividad Continua</p>
-                        <h2 class="hero-title">Habilitaciones y Permisos</h2>
-                        <p class="hero-text">Garantizamos seguridad jurídica actuando como nexo técnico experto ante las autoridades de aplicación.</p>
-                        <div class="slider-actions">
-                            <a href="#contacto" class="btn-primary btn-quote-service" data-servicio="habilitaciones">Solicitá tu cotización</a>
-                            <a href="#srv-habilitaciones" class="btn-outline-light" title="Más información sobre habilitaciones">Ver más</a>
-                        </div>
-                    </div>
+                <div class="hero-image-col">
+                    <img src="assets/img/design/slide.png" alt="Diseño Integrado LGC" class="hero-side-img">
                 </div>
 
             </div>
-            
-            <button class="slider-btn prev" aria-label="Anterior">&#10094;</button>
-            <button class="slider-btn next" aria-label="Siguiente">&#10095;</button>
-            <div class="slider-dots"></div>
         </section>
 
         <section id="quienes-somos" class="about">
@@ -154,23 +197,20 @@
                     <span class="section-tag">Conocé nuestra firma</span>
                     <h2 class="section-title" style="margin-bottom: var(--space-md); text-align: left;">Sobre nosotros</h2>
                     
-                    <h3 class="about-subtitle">Trayectoria y Visión Estratégica</h3>
-                    <p>Somos continuadores de Estudio Lamas & Asociados, integrando más de 30 años de experiencia en el mercado con una visión moderna y dinámica. Nuestro equipo combina solidez técnica y jurídica —con un profundo conocimiento de la función pública— para ofrecer soluciones a medida que garantizan seguridad y previsibilidad a cada organización.</p>
+                    <h3 class="about-subtitle">Trayectoria y visión estratégica</h3>
+                    <p>Somos continuadores de Estudio Lamas & Asociados, integrando más de 30 años de experiencia en el mercado con una visión moderna y dinámica. Nuestro equipo combina solidez técnica y jurídica —con un profundo conocimiento de la función pública— para ofrecer soluciones a medida que promueven la seguridad y previsibilidad a cada organización.</p>
                     
-                    <h3 class="about-subtitle" style="margin-top: var(--space-md);">Compromiso con el Acompañamiento</h3>
-                    <p>Como socio estratégico, nuestro diferencial reside en la asistencia profesional permanente; entendemos la consultoría como un nexo experto y continuo entre la normativa y la operatividad de nuestros clientes. A través de un abordaje integral y una red de alianzas estratégicas, brindamos el respaldo necesario para transformar el cumplimiento regulatorio en un valor institucional.</p>
+                    <h3 class="about-subtitle" style="margin-top: var(--space-md);">Aliados en cada etapa de tu gestión</h3>
+                    <p>Entendemos la consultoría como algo más que una respuesta puntual: somos el nexo permanente entre la normativa vigente y la operación diaria de cada cliente. Como verdaderos Sherpas, guiamos a cada organización por el terreno regulatorio con experiencia, precisión y compromiso sostenido — porque sabemos que no hay dos caminos iguales. Desde la gestión ambiental hasta la seguridad e higiene ocupacional, diseñamos soluciones personalizadas para cada necesidad, asegurándonos de que el cumplimiento regulatorio no sea una carga, sino una ventaja competitiva real.</p>
                 </div>
-                <div class="about-alianzas" style="margin-top: 0;">
+                <div class="about-alianzas reveal-up" style="margin-top: 0;">
                     <h3>Alianzas Estratégicas</h3>
-                    <p class="text-muted">Fortalecemos nuestra capacidad operativa y garantizamos respaldo especializado:</p>
+                    <p class="text-muted">Fortalecemos nuestra capacidad operativa y brindamos respaldo especializado en conjunto con:</p>
                     <ul class="alianzas-grid">
-                        <li><strong>Grupo Ecogestionar:</strong> Licitaciones y abordajes interdisciplinarios.</li>
-                        <li><strong>Laboratorios LAIA:</strong> Respaldo técnico analítico bajo estándares de calidad.</li>
-                        <li><strong>MEGMA:</strong> Auditorías Certificadas en Secretaría de Energía.</li>
-                        <li><strong>Peritos Sin Fronteras:</strong> Intervención en alta complejidad técnica/judicial.</li>
-                        <li><strong>CC Sustainable:</strong> Integración con estrategias financieras (Bonos Verdes).</li>
-                        <li><strong>LEAF:</strong> Cuantificación y reporte (Huellas Ambientales).</li>
-                        <li><strong>EHS:</strong> Intervención especializada en terreno (SYSO).</li>
+                        <li><strong>Laboratorios Acreditados</strong> Contamos con el respaldo de un laboratorio de primer nivel, acreditado bajo normas ISO/IEC 17025 y reconocido por los principales organismos regulatorios (APRA, Ministerio de Ambiente PBA, SENASA y COFILAB). Esta alianza nos permite brindar resultados con validez legal y técnica ante auditorías, inscritos en registros clave como el RNCEA y el RUPAYAR.</li>
+                        <li><strong>Innovación Digital en Sustentabilidad.</strong> Integramos soluciones tecnológicas de vanguardia mediante el soporte de especialistas en software para la medición de Huella de Carbono e Inventarios de GEI. Esto nos permite ofrecer datos precisos y trazables para la descarbonización de nuestros clientes.</li>
+                        <li><strong>Auditoría Técnica Energética.</strong> Colaboramos estrechamente con auditores certificados ante la Secretaría de Energía, especializados en la inspección de tanques y cumplimiento de las Res. 1102/04 y 785/05, asegurando la integridad de las instalaciones y la prevención de pasivos ambientales.</li>
+                        <li><strong>Miembro de Peritos Sin Fronteras. </strong> Organización que agrupa peritos ambientales que asisten a las partes, jueces y fiscales en litigios judiciales y colaboran en extra-judiciales. Se realizan cursos de capacitación para peritos ambientales.</li>
                     </ul>
                 </div>
             </div>
@@ -186,34 +226,43 @@
             <div id="srv-matrices" class="showcase-block theme-light">
                 <div class="showcase-bg-number" aria-hidden="true">01</div>
                 <div class="container showcase-grid">
-                    <div class="showcase-content">
+                    <div class="showcase-content reveal-left">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Matrices Legales</h3>
-                        <p class="showcase-desc">Transformamos el cumplimiento normativo en una gestión clara, dinámica y automatizable.</p>
-                        <ul class="showcase-features">
-                            <li><strong>Sistemas Online:</strong> Plataforma digital interactiva con alertas de vencimientos y reportes exportables.</li>
-                            <li><strong>Asesoramiento Jurídico:</strong> Interpretación normativa aplicada, elaboración de descargos y representación en inspecciones.</li>
-                            <li><strong>Abonos de Mantenimiento:</strong> Actualización mensual y seguimiento continuo.</li>
+                        <p class="showcase-desc">Diseñamos matrices legales y normativas a medida de cada organización. Creemos en el tailor made: cada matriz refleja la identidad, la operación y los tiempos propios de cada cliente.</p>
+                        <ul class="service-features" style="list-style: none; padding-left: 0;">
+                            <li><strong>Relevamiento y Diseño a Medida:</strong> Elaboramos cada matriz a partir de un diagnóstico in situ, con precisión a la actividad real de la organización y actualización periódica según sus necesidades.</li>
+                            <li><strong>Monitoreo Normativo:</strong> Boletines informativos mensuales con nueva legislación y su interpretación práctica, más alertas ante cambios normativos relevantes.</li>
+                            <li><strong>Auditoría y Certificaciones:</strong> Acompañamiento personalizado y descargos administrativos ante inspecciones.</li>
                         </ul>
+                    </div>
+
+                    <div class="showcase-visual reveal-right">
+                        <img src="assets/img/design/bg_matrices.png" alt="Matrices Legales Digitales" class="matrices-side-img">
+                        <a href="https://matrizonline.lamas-gc.com" target="_blank" class="btn-primary" style="width: fit-content;">Acceso a Matrices Online</a>
                     </div>
                 </div>
             </div>
 
             <div id="srv-ambiente" class="showcase-block theme-primary">
                 <div class="showcase-bg-number" aria-hidden="true">02</div>
-                <div class="container showcase-grid align-right">
-                    <div class="showcase-content">
+                <div class="container showcase-grid">
+                    
+                    <div class="showcase-visual reveal-left">
+                    </div>
+
+                    <div class="showcase-content reveal-right">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Ambiente</h3>
                         <p class="showcase-desc">Evaluación y gestión integral para viabilizar proyectos equilibrando desarrollo y protección del entorno.</p>
                         <ul class="showcase-features">
-                            <li><strong>Estudios de Impacto Ambiental:</strong> Línea de base, evaluaciones y planes de gestión para radicación.</li>
-                            <li><strong>Auditorías Ambientales:</strong> Evaluación de pasivos, Due Diligence y relevamiento con drones.</li>
-                            <li><strong>Estrategia y Normativa de Residuos:</strong>  Planificación técnica, gestión documental y trazabilidad legal de corrientes industriales y especiales.</li>
+                            <li><strong>Estudios de Impacto Ambiental:</strong> Relevamiento de la operatoria y su relación con el entorno, evaluaciones y planes de gestión para radicación.</li>
+                            <li><strong>Auditorías Ambientales:</strong> Environmental Site Assessment (ESA) Fases 1 y 2, evaluación de pasivos y relevamiento con drones.</li>
                             <li><strong>Huella de Carbono:</strong> Inventario de emisiones y planes de compensación.</li>
                             <li><strong>Sistemas ISO 14001:</strong> Diseño, implementación y preparación para certificación.</li>
                         </ul>
                     </div>
+
                 </div>
             </div>
 
@@ -222,30 +271,55 @@
                 <div class="container showcase-grid">
                     <div class="showcase-content">
                         <span class="showcase-tag">Área de especialidad</span>
-                        <h3 class="showcase-title">Seguridad e Higiene (SYSO)</h3>
-                        <p class="showcase-desc">Fortalecemos la cultura preventiva y el compromiso organizacional para entornos seguros.</p>
+                        <h3 class="showcase-title">Seguridad, Higiene y Salud Ocupacional (SYSO)</h3>
+                        <p class="showcase-desc">Fortalecemos la cultura preventiva y el compromiso organizacional para entornos seguros y saludables.</p>
                         <ul class="showcase-features">
                             <li><strong>Auditorías SYSO:</strong> Identificación de riesgos legales y operativos con planes correctivos.</li>
-                            <li><strong>Sistemas ISO 45001:</strong> Implementación de estándares internacionales de seguridad en el trabajo.</li>
-                            <li><strong>Capacitación:</strong> Programas a medida sobre prevención y responsabilidades legales.</li>
+                            <li><strong>Sistemas ISO 45001:</strong> Implementación de estándares internacionales de seguridad y salud en el trabajo.</li>
+                            <li><strong>Capacitación:</strong> Programas a medida sobre prevención, salud laboral y responsabilidades legales.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div id="srv-habilitaciones" class="showcase-block theme-accent">
-                <div class="showcase-bg-number" aria-hidden="true">04</div>
-                <div class="container showcase-grid align-right">
-                    <div class="showcase-content">
+                <div class="showcase-bg-number" aria-hidden="true">HyP</div>
+                <div class="container showcase-grid">
+                    
+                    <div class="showcase-visual reveal-left">
+                    </div>
+
+                    <div class="showcase-content reveal-right">
                         <span class="showcase-tag">Área de especialidad</span>
                         <h3 class="showcase-title">Habilitaciones y Permisos</h3>
-                        <p class="showcase-desc">Garantizamos seguridad jurídica actuando como nexo técnico entre la empresa y la autoridad de aplicación.</p>
+                        <p class="showcase-desc">Actuamos como nexo técnico entre la empresa y la autoridad de aplicación.</p>
                         <ul class="showcase-features">
                             <li><strong>Gestión Administrativa:</strong> Habilitaciones industriales, comerciales y categorizaciones.</li>
                             <li><strong>Trámites Específicos:</strong> Permisos de vuelco, emisiones e inscripción como generador de residuos.</li>
-                            <li><strong>Facility Management:</strong> Control documental y supervisión técnica de proveedores.</li>
                         </ul>
                     </div>
+
+                </div>
+            </div>
+
+            <div id="srv-facility" class="showcase-block theme-dark">
+                <div class="showcase-bg-number" aria-hidden="true">05</div>
+                <div class="container showcase-grid">
+                    
+                    <div class="showcase-content reveal-left">
+                        <span class="showcase-tag">Área de especialidad</span>
+                        <h3 class="showcase-title">Facility Management</h3>
+                        <p class="showcase-desc">Gestionamos los inmuebles y servicios de soporte como una extensión de cada organización. No aplicamos recetas genéricas: Diseñamos sistemas de gestión que responden a la identidad, escala y operación real de cada cliente.</p>
+                        <ul class="showcase-features">
+                            <li><strong>Diagnóstico y Diseño del Sistema de FM:</strong> Relevamiento in situ de la organización, sus activos y procesos para diseñar un sistema de gestión a medida, alineado con los objetivos estratégicos del negocio principal.</li>
+                            <li><strong>Control Documental y Supervisión de Proveedores:</strong> Gestión integral de la información documentada, contratos de servicio, acuerdos de nivel de servicio y supervisión técnica de la cadena de suministro.</li>
+                            <li><strong>Gestión de Riesgos Operativos:</strong> Identificación y evaluación de riesgos asociados a la operación del inmueble, con planes de respuesta y continuidad adaptados a cada organización.</li>
+                            <li><strong>Implementación ISO 41001:</strong> Acompañamiento en el diseño, implementación y preparación para la certificación bajo estándares internacionales de Facility Management.</li>
+                        </ul>
+                    </div>
+
+                    <div class="showcase-visual reveal-right">
+                        </div>
                 </div>
             </div>
 
@@ -256,28 +330,139 @@
                 <span class="section-tag text-center" style="margin-bottom: 0;">Resultados Comprobados</span>
                 <h2 class="section-title text-center">Confían en nosotros</h2>
                 
-                <div class="logos-marquee">
-                    <div class="logos-track">
-                        <img src="assets/img/logos/logo_aerolineas.svg" alt="Aerolíneas Argentinas" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_aireuropa.svg" alt="Air Europa" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_arcodisa.png" alt="Arcodisa" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_arredo.png" alt="Arredo" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_baisur.png" alt="Baisur" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_bancocomafi.png" alt="Banco Comafi" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_belgranocargas.gif" alt="Belgrano Cargas" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_camaraarbitral.png" alt="Cámara Arbitral" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_cassara.svg" alt="Laboratorio Pablo Cassará" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_cementosavellaneda.svg" alt="Cementos Avellaneda" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_cirion.svg" alt="Cirion Technologies" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_clubcampoelmoro.png" alt="Club de Campo El Moro" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_hpv.png" alt="HPV" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_lapompeya.png" alt="La Pompeya" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_macro.png" alt="Banco Macro" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_puertonizuc.svg" alt="Puerto Nizuc" class="logo-item-img" loading="lazy" width="180" height="45">
-                        <img src="assets/img/logos/logo_valo.svg" alt="Banco de Valores" class="logo-item-img" loading="lazy" width="180" height="45">
+                <div class="clients-slider-wrapper">
+                    
+                    <div class="clients-track track-left">
+                        <img src="assets/img/logos/logo_aerolineas.svg" alt="Aerolíneas Argentinas" loading="lazy">
+                        <img src="assets/img/logos/logo_agrofacil.png" alt="Agrofacil" loading="lazy">
+                        <img src="assets/img/logos/logo_aireuropa.svg" alt="Air Europa" loading="lazy">
+                        <img src="assets/img/logos/logo_alpes.png" alt="Alpes" loading="lazy">
+                        <img src="assets/img/logos/logo_aquatherm.png" alt="Aquatherm" loading="lazy">
+                        <img src="assets/img/logos/logo_arcodisa.png" alt="Arcodisa" loading="lazy">
+                        <img src="assets/img/logos/logo_arredo.png" alt="Arredo" loading="lazy">
+                        <img src="assets/img/logos/logo_baisur.png" alt="Baisur" loading="lazy">
+                        <img src="assets/img/logos/logo_bancocomafi.png" alt="Banco Comafi" loading="lazy">
+                        <img src="assets/img/logos/logo_belgranocargas.gif" alt="Belgrano Cargas" loading="lazy">
+                        <img src="assets/img/logos/logo_camaraarbitral.png" alt="Cámara Arbitral" loading="lazy">
+                        <img src="assets/img/logos/logo_cassara.svg" alt="Cassará" loading="lazy">
+                        <img src="assets/img/logos/logo_cementosavellaneda.svg" alt="Cementos Avellaneda" loading="lazy">
+                        <img src="assets/img/logos/logo_cirion.svg" alt="Cirion" loading="lazy">
+                        <img src="assets/img/logos/logo_clubcampoelmoro.png" alt="Club Campo El Moro" loading="lazy">
+                        <img src="assets/img/logos/logo_cooprogetti.png" alt="Cooprogetti" loading="lazy">
+                        <img src="assets/img/logos/logo_cushman.png" alt="Cushman & Wakefield" loading="lazy">
+                        <img src="assets/img/logos/logo_dibert.png" alt="Dibert" loading="lazy">
+                        <img src="assets/img/logos/logo_dm.png" alt="DM" loading="lazy">
+                        <img src="assets/img/logos/logo_ehs.png" alt="EHS" loading="lazy">
+                        <img src="assets/img/logos/logo_embusa.png" alt="Embajada de USA" loading="lazy">
+                        <img src="assets/img/logos/logo_frigocarne.png" alt="Frigocarne" loading="lazy">
+                        <img src="assets/img/logos/logo_frigorp.png" alt="Frigorífico Rioplatense" loading="lazy">
+                        <img src="assets/img/logos/logo_globenet.png" alt="Globenet" loading="lazy">
+                        <img src="assets/img/logos/logo_gpenaflor.svg" alt="Grupo Peñaflor" loading="lazy">
+                        <img src="assets/img/logos/logo_greener.png" alt="Greener" loading="lazy">
+                        <img src="assets/img/logos/logo_haleman.svg" alt="Hospital Alemán" loading="lazy">
+                        <img src="assets/img/logos/logo_haustralis.png" alt="Hotel Australis" loading="lazy">
+                        <img src="assets/img/logos/logo_hdavinci.png" alt="Hotel Da Vinci" loading="lazy">
+                        <img src="assets/img/logos/logo_heiltrailer.png" alt="Heil Trailer" loading="lazy">
+                        
+                        <img src="assets/img/logos/logo_aerolineas.svg" alt="Aerolíneas Argentinas" loading="lazy">
+                        <img src="assets/img/logos/logo_agrofacil.png" alt="Agrofacil" loading="lazy">
+                        <img src="assets/img/logos/logo_aireuropa.svg" alt="Air Europa" loading="lazy">
+                        <img src="assets/img/logos/logo_alpes.png" alt="Alpes" loading="lazy">
+                        <img src="assets/img/logos/logo_aquatherm.png" alt="Aquatherm" loading="lazy">
+                        <img src="assets/img/logos/logo_arcodisa.png" alt="Arcodisa" loading="lazy">
+                        <img src="assets/img/logos/logo_arredo.png" alt="Arredo" loading="lazy">
+                        <img src="assets/img/logos/logo_baisur.png" alt="Baisur" loading="lazy">
+                        <img src="assets/img/logos/logo_bancocomafi.png" alt="Banco Comafi" loading="lazy">
+                        <img src="assets/img/logos/logo_belgranocargas.gif" alt="Belgrano Cargas" loading="lazy">
+                        <img src="assets/img/logos/logo_camaraarbitral.png" alt="Cámara Arbitral" loading="lazy">
+                        <img src="assets/img/logos/logo_cassara.svg" alt="Cassará" loading="lazy">
+                        <img src="assets/img/logos/logo_cementosavellaneda.svg" alt="Cementos Avellaneda" loading="lazy">
+                        <img src="assets/img/logos/logo_cirion.svg" alt="Cirion" loading="lazy">
+                        <img src="assets/img/logos/logo_clubcampoelmoro.png" alt="Club Campo El Moro" loading="lazy">
+                        <img src="assets/img/logos/logo_cooprogetti.png" alt="Cooprogetti" loading="lazy">
+                        <img src="assets/img/logos/logo_cushman.png" alt="Cushman & Wakefield" loading="lazy">
+                        <img src="assets/img/logos/logo_dibert.png" alt="Dibert" loading="lazy">
+                        <img src="assets/img/logos/logo_dm.png" alt="DM" loading="lazy">
+                        <img src="assets/img/logos/logo_ehs.png" alt="EHS" loading="lazy">
+                        <img src="assets/img/logos/logo_embusa.png" alt="Embajada de USA" loading="lazy">
+                        <img src="assets/img/logos/logo_frigocarne.png" alt="Frigocarne" loading="lazy">
+                        <img src="assets/img/logos/logo_frigorp.png" alt="Frigorífico Rioplatense" loading="lazy">
+                        <img src="assets/img/logos/logo_globenet.png" alt="Globenet" loading="lazy">
+                        <img src="assets/img/logos/logo_gpenaflor.svg" alt="Grupo Peñaflor" loading="lazy">
+                        <img src="assets/img/logos/logo_greener.png" alt="Greener" loading="lazy">
+                        <img src="assets/img/logos/logo_haleman.svg" alt="Hospital Alemán" loading="lazy">
+                        <img src="assets/img/logos/logo_haustralis.png" alt="Hotel Australis" loading="lazy">
+                        <img src="assets/img/logos/logo_hdavinci.png" alt="Hotel Da Vinci" loading="lazy">
+                        <img src="assets/img/logos/logo_heiltrailer.png" alt="Heil Trailer" loading="lazy">
                     </div>
+
+                    <div class="clients-track track-right">
+                        <img src="assets/img/logos/logo_hitachi.svg" alt="Hitachi" loading="lazy">
+                        <img src="assets/img/logos/logo_hitaliano.png" alt="Hospital Italiano" loading="lazy">
+                        <img src="assets/img/logos/logo_hpv.png" alt="HPV" loading="lazy">
+                        <img src="assets/img/logos/logo_intercargo.png" alt="Intercargo" loading="lazy">
+                        <img src="assets/img/logos/logo_interfarma.png" alt="Interfarma" loading="lazy">
+                        <img src="assets/img/logos/logo_javifer.png" alt="Javifer" loading="lazy">
+                        <img src="assets/img/logos/logo_lanin.png" alt="Lanin" loading="lazy">
+                        <img src="assets/img/logos/logo_laoctava.png" alt="La Octava" loading="lazy">
+                        <img src="assets/img/logos/logo_lapompeya.png" alt="La Pompeya" loading="lazy">
+                        <img src="assets/img/logos/logo_liberline.png" alt="Liberline" loading="lazy">
+                        <img src="assets/img/logos/logo_maxpinturas.png" alt="Max Pinturas" loading="lazy">
+                        <img src="assets/img/logos/logo_metropol.svg" alt="Metropol" loading="lazy">
+                        <img src="assets/img/logos/logo_mostaza.png" alt="Mostaza" loading="lazy">
+                        <img src="assets/img/logos/logo_motomel.png" alt="Motomel" loading="lazy">
+                        <img src="assets/img/logos/logo_personal.svg" alt="Personal" loading="lazy">
+                        <img src="assets/img/logos/logo_picanuelas.png" alt="Parque Ind Cañuelas" loading="lazy">
+                        <img src="assets/img/logos/logo_pintlogistics.png" alt="Point Logistics" loading="lazy">
+                        <img src="assets/img/logos/logo_prohygiene.svg" alt="Prohygiene" loading="lazy">
+                        <img src="assets/img/logos/logo_puertonizuc.svg" alt="Puerto Nizuc" loading="lazy">
+                        <img src="assets/img/logos/logo_sap.svg" alt="SAP" loading="lazy">
+                        <img src="assets/img/logos/logo_southex.png" alt="Southex" loading="lazy">
+                        <img src="assets/img/logos/logo_tetrapak.png" alt="Tetrapak" loading="lazy">
+                        <img src="assets/img/logos/logo_torneos.png" alt="Torneos" loading="lazy">
+                        <img src="assets/img/logos/logo_torresdelsur.png" alt="Torres del Sur" loading="lazy">
+                        <img src="assets/img/logos/logo_treslomas.png" alt="Tres Lomas" loading="lazy">
+                        <img src="assets/img/logos/logo_valo.svg" alt="Banco de Valores" loading="lazy">
+                        <img src="assets/img/logos/logo_vtal.png" alt="VTAL" loading="lazy">
+                        <img src="assets/img/logos/logo_wurth.svg" alt="Wurth" loading="lazy">
+                        <img src="assets/img/logos/logo_ypfluz.png" alt="YPF Luz" loading="lazy">
+
+                        <img src="assets/img/logos/logo_hitachi.svg" alt="Hitachi" loading="lazy">
+                        <img src="assets/img/logos/logo_hitaliano.png" alt="Hospital Italiano" loading="lazy">
+                        <img src="assets/img/logos/logo_hpv.png" alt="HPV" loading="lazy">
+                        <img src="assets/img/logos/logo_intercargo.png" alt="Intercargo" loading="lazy">
+                        <img src="assets/img/logos/logo_interfarma.png" alt="Interfarma" loading="lazy">
+                        <img src="assets/img/logos/logo_javifer.png" alt="Javifer" loading="lazy">
+                        <img src="assets/img/logos/logo_lanin.png" alt="Lanin" loading="lazy">
+                        <img src="assets/img/logos/logo_laoctava.png" alt="La Octava" loading="lazy">
+                        <img src="assets/img/logos/logo_lapompeya.png" alt="La Pompeya" loading="lazy">
+                        <img src="assets/img/logos/logo_liberline.png" alt="Liberline" loading="lazy">
+                        <img src="assets/img/logos/logo_maxpinturas.png" alt="Max Pinturas" loading="lazy">
+                        <img src="assets/img/logos/logo_metropol.svg" alt="Metropol" loading="lazy">
+                        <img src="assets/img/logos/logo_mostaza.png" alt="Mostaza" loading="lazy">
+                        <img src="assets/img/logos/logo_motomel.png" alt="Motomel" loading="lazy">
+                        <img src="assets/img/logos/logo_personal.svg" alt="Personal" loading="lazy">
+                        <img src="assets/img/logos/logo_picanuelas.png" alt="Parque Ind Cañuelas" loading="lazy">
+                        <img src="assets/img/logos/logo_pintlogistics.png" alt="Point Logistics" loading="lazy">
+                        <img src="assets/img/logos/logo_prohygiene.svg" alt="Prohygiene" loading="lazy">
+                        <img src="assets/img/logos/logo_puertonizuc.svg" alt="Puerto Nizuc" loading="lazy">
+                        <img src="assets/img/logos/logo_sap.svg" alt="SAP" loading="lazy">
+                        <img src="assets/img/logos/logo_southex.png" alt="Southex" loading="lazy">
+                        <img src="assets/img/logos/logo_tetrapak.png" alt="Tetrapak" loading="lazy">
+                        <img src="assets/img/logos/logo_torneos.png" alt="Torneos" loading="lazy">
+                        <img src="assets/img/logos/logo_torresdelsur.png" alt="Torres del Sur" loading="lazy">
+                        <img src="assets/img/logos/logo_treslomas.png" alt="Tres Lomas" loading="lazy">
+                        <img src="assets/img/logos/logo_valo.svg" alt="Banco de Valores" loading="lazy">
+                        <img src="assets/img/logos/logo_vtal.png" alt="VTAL" loading="lazy">
+                        <img src="assets/img/logos/logo_wurth.svg" alt="Wurth" loading="lazy">
+                        <img src="assets/img/logos/logo_ypfluz.png" alt="YPF Luz" loading="lazy">
+                    </div>
+
                 </div>
-                
+
+                <br><br> <span class="section-tag text-center" style="margin-bottom: 0;">Experiencia Asegurada</span>
+                <h2 class="section-title text-center">Casos de Éxito</h2>
+
                 <div class="cases-grid">
                     <article class="case-card reveal-up" onclick="openCaseModal('cirion')">
                         <div class="case-header">
@@ -301,13 +486,13 @@
                         </div>
                     </article>
 
-                    <article class="case-card reveal-up" onclick="openCaseModal('bbva')">
+                    <article class="case-card reveal-up" onclick="openCaseModal('aleman')">
                         <div class="case-header">
-                            <h3>BBVA</h3>
-                            <span class="case-sector">Sector Financiero</span>
+                            <h3>Hospital Alemán</h3>
+                            <span class="case-sector">Sector Salud</span>
                         </div>
                         <div class="case-body">
-                            <p>Huella de carbono, ecoeficiencia y certificación ISO 45001 a nivel nacional.</p>
+                            <p>Renovación de Certificado de Aptitud Ambiental y gestión integral de residuos.</p>
                             <span class="btn-more">VER CASO DE ÉXITO +</span>
                         </div>
                     </article>
@@ -325,13 +510,13 @@
 
         <section id="novedades" class="news">
             <div class="container">
-                <h2 class="section-title text-center">Novedades Normativas</h2>
-                <div class="news-grid">
-                    <article class="news-card">
-                        <span class="news-date">Última actualización</span>
-                        <h3>Monitoreo Normativo</h3>
-                        <p>Mantenemos a nuestros clientes informados sobre los últimos cambios en la legislación nacional, provincial y municipal aplicable a su sector.</p>
-                    </article>
+                <span class="section-tag text-center" style="margin-bottom: 0;"></span>
+                <h2 class="section-title text-center">Novedades</h2>
+                
+                <div class="news-feed-wrapper reveal-up">
+                    <div class="news-card linkedin-card">
+                        <iframe src="https://widgets.sociablekit.com/linkedin-page-posts/iframe/25676283" frameborder="0" width="100%" height="540px"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -380,15 +565,23 @@
                             <label for="servicio">Servicio de interés *</label>
                             <select id="servicio" name="servicio" required>
                                 <option value="" disabled selected>Seleccioná una opción</option>
-                                <option value="matrices">Sistemas de Matrices Legales</option>
+                                <option value="matrices">Matrices Legales</option>
                                 <option value="ambiente">Ambiente</option>
-                                <option value="seguridad">Seguridad e Higiene</option>
-                                <option value="habilitaciones">Habilitaciones</option>
+                                <option value="seguridad">Seguridad, Higiene y Salud Ocupacional</option>
+                                <option value="habilitaciones">Habilitaciones y permisos</option>
+                                <option value="facility">Facility Management</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="form-row">
                         <div class="form-group">
                             <label for="rubro">Rubro de la empresa</label>
                             <input type="text" id="rubro" name="rubro" placeholder="Ej: Oil & Gas, Minería, etc.">
+                        </div>    
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Ej: Empresa SRL">
                         </div>
                     </div>
 
@@ -416,5 +609,19 @@
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="assets/js/main.js" defer></script>
+
+    <div id="successModal" class="modal-overlay" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3 class="modal-title">¡Consulta enviada con éxito!</h3>
+            <p class="modal-text">Hemos registrado tus datos. Nuestro equipo se pondrá en contacto a la brevedad.</p>
+            <button id="closeModalBtn" class="btn-modal">Seguir navegando</button>
+        </div>
+    </div>
 </body>
 </html>

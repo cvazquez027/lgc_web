@@ -31,11 +31,13 @@ function clean_input($data) {
     return $data;
 }
 
+// 1. CAPTURAMOS LOS DATOS (¡Aquí agregamos Empresa!)
 $nombre      = isset($_POST['nombre']) ? clean_input($_POST['nombre']) : '';
 $apellido    = isset($_POST['apellido']) ? clean_input($_POST['apellido']) : '';
 $email       = isset($_POST['email']) ? filter_var(clean_input($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
 $telefono    = isset($_POST['telefono']) ? clean_input($_POST['telefono']) : '';
 $servicio    = isset($_POST['servicio']) ? clean_input($_POST['servicio']) : 'No especificado';
+$empresa     = isset($_POST['empresa']) ? clean_input($_POST['empresa']) : 'No especificada';
 $rubro       = isset($_POST['rubro']) ? clean_input($_POST['rubro']) : 'No especificado';
 $preferencia = isset($_POST['preferencia']) ? clean_input($_POST['preferencia']) : 'mail';
 $consulta    = isset($_POST['consulta']) ? clean_input($_POST['consulta']) : '';
@@ -71,10 +73,11 @@ if (!$response_data->success) {
 }
 
 $servicios_nombres = [
-    'matrices' => 'Sistemas de Matrices Legales',
-    'impacto' => 'Impacto Ambiental',
-    'seguridad' => 'Seguridad e Higiene',
-    'habilitaciones' => 'Habilitaciones'
+    'matrices' => 'Matrices Legales',
+    'ambiente' => 'Ambiente',
+    'seguridad' => 'Seguridad, Higiene y Salud Ocucpacional',
+    'habilitaciones' => 'Habilitaciones y Permisos',
+    'facility' => 'Facility Management'
 ];
 $servicio_legible = isset($servicios_nombres[$servicio]) ? $servicios_nombres[$servicio] : $servicio;
 
@@ -97,6 +100,7 @@ try {
     $mail->CharSet = 'UTF-8';
     $mail->Subject = "Nuevo Lead LGC: $servicio_legible - $nombre $apellido";
     
+    // 2. AGREGAMOS EMPRESA AL CORREO
     $htmlBody = "
     <div style='font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; border: 1px solid #ddd; border-top: 4px solid #007FA1; padding: 20px;'>
         <h2 style='color: #004d61; margin-top: 0;'>Nueva Consulta desde la Web LGC</h2>
@@ -105,7 +109,8 @@ try {
             <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Nombre:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$nombre $apellido</td></tr>
             <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Email:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'><a href='mailto:$email'>$email</a></td></tr>
             <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Teléfono:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$telefono</td></tr>
-            <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Empresa/Rubro:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$rubro</td></tr>
+            <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Empresa:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$empresa</td></tr>
+            <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Rubro:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$rubro</td></tr>
             <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Servicio de Interés:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee;'>$servicio_legible</td></tr>
             <tr><td style='padding: 8px; border-bottom: 1px solid #eee;'><strong>Prefiere contacto por:</strong></td><td style='padding: 8px; border-bottom: 1px solid #eee; text-transform: capitalize;'>$preferencia</td></tr>
         </table>
@@ -117,19 +122,21 @@ try {
     </div>";
 
     $mail->Body = $htmlBody;
-    $mail->AltBody = "Nuevo Lead: $nombre $apellido\nEmail: $email\nTeléfono: $telefono\nRubro: $rubro\nServicio: $servicio_legible\nPreferencia: $preferencia\nConsulta:\n$consulta";
+    $mail->AltBody = "Nuevo Lead: $nombre $apellido\nEmail: $email\nTeléfono: $telefono\nEmpresa: $empresa\nRubro: $rubro\nServicio: $servicio_legible\nPreferencia: $preferencia\nConsulta:\n$consulta";
 
     $mail->send();
 
     $google_webhook_url = $_ENV['WEBHOOK_URL'] ?? ''; 
 
     if (!empty($google_webhook_url)) {
+        // 3. AGREGAMOS EMPRESA AL ENVÍO DEL WEBHOOK (SHEET)
         $post_data = [
             'nombre' => $nombre,
             'apellido' => $apellido,
             'email' => $email,
             'telefono' => $telefono,
             'servicio' => $servicio_legible,
+            'empresa' => $empresa,
             'rubro' => $rubro,
             'preferencia' => $preferencia,
             'consulta' => $consulta

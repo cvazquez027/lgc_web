@@ -16,7 +16,7 @@ img { max-width: 100%; display: block; }
 .text-center { text-align: center; }
 
 .section-title { font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: var(--space-lg); color: var(--clr-tostado); }
-.text-muted { color: var(--clr-text-muted); }
+.text-muted { color: #cacecf; }
 .section-tag { color: var(--clr-tostado); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 0.8rem; display: block; margin-bottom: var(--space-sm); }
 
 /* --- Botones --- */
@@ -24,63 +24,454 @@ img { max-width: 100%; display: block; }
     display: inline-block; padding: 12px 28px; font-family: var(--font-body); font-weight: 600; text-align: center;
     border-radius: var(--radius-soft); transition: var(--transition-fast); cursor: pointer; border: none;
     text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
+    white-space: nowrap;
 }
 .btn-primary { background-color: var(--clr-primary); color: var(--clr-surface); }
 .btn-primary:hover { background-color: var(--clr-accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(144, 162, 36, 0.3); }
 .btn-outline { background-color: transparent; border: 2px solid var(--clr-primary); color: var(--clr-primary); }
 .btn-outline:hover { background-color: var(--clr-primary); color: var(--clr-surface); }
-.btn-outline-light { background-color: transparent; border: 2px solid var(--clr-surface); color: var(--clr-surface); }
-.btn-outline-light:hover { background-color: var(--clr-surface); color: var(--clr-primary); }
+.btn-outline-light {
+    background-color: transparent;
+    border: 2px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-surface);
+}
 
 /* =========================================
    HEADER & DROPDOWN MENU
    ========================================= */
-.header { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #eaeaea; transition: box-shadow 0.3s ease, padding 0.3s ease; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; height: 100px; }
-.logo { display: flex; align-items: center; height: 100%; }
-.logo-img { max-height: 100px; width: auto; object-fit: contain; }
-.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
-.nav-links a:not(.btn-outline) { font-weight: 500; font-size: 0.95rem; color: var(--clr-text-main); position: relative; transition: var(--transition-fast); }
-.nav-links a:not(.btn-outline):hover { color: var(--clr-accent); }
-
-/* Dropdown */
-.dropdown { position: relative; padding: 20px 0; }
-.dropdown-toggle { cursor: pointer; }
-.dropdown-menu {
-    position: absolute; top: 100%; left: 0; background-color: var(--clr-dark); min-width: 240px; list-style: none;
-    display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease;
-    border-radius: var(--radius-soft); box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; border-top: 3px solid var(--clr-accent);
+.header {
+    position: relative; 
+    width: 100%;
+    background-color: transparent;
+    padding: 0; 
+    z-index: 1000;
 }
-.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown-menu li { border-bottom: 1px solid rgba(255,255,255,0.05); }
-.dropdown-menu li:last-child { border-bottom: none; }
-.dropdown-menu a { display: block; padding: 15px 20px; color: var(--clr-surface) !important; font-size: 0.95rem !important; }
-.dropdown-menu a:hover { background-color: var(--clr-primary); color: var(--clr-surface) !important; }
+
+.header-blue-body {
+    position: absolute;
+    top: 0;
+    right: -150px; 
+    left: 130px; /* ANTES: 240px. El navbar arranca antes para conectar con las formas */
+    height: 70px;
+    background-color: var(--clr-primary);
+    z-index: 1;
+    transform: skewX(-18deg);
+    transform-origin: top left;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    clip-path: path('M 5000 0 L 5000 70 L 100 70 C 45 45 20 20 0 0 Z');
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+.header.scrolled {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    padding: 0; 
+    /* Cambiamos el color sólido por uno con 90% de opacidad */
+    background-color: rgba(249, 247, 244, 0.8); 
+    /* Agregamos un efecto de vidrio esmerilado para que el texto sea legible */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header.scrolled .nav-container {
+    height: 70px; 
+    transition: height 1s ease;
+}
+
+.header .btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--clr-surface);
+    color: var(--clr-surface);
+}
+
+.header .btn-outline:hover {
+    background-color: var(--clr-surface);
+    color: var(--clr-primary);
+}
+
+.header.scrolled::before,
+.header.scrolled::after {
+    opacity: 0;
+}
+
+.header.scrolled .logo-img {
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 75px; 
+}
+
+.header.scrolled .header-blue-body {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.header.scrolled .nav-links .btn-outline {
+    border-color: var(--clr-primary) !important;
+    color: var(--clr-primary) !important;
+}
+
+.header.scrolled .nav-links .btn-outline:hover {
+    background-color: var(--clr-primary) !important;
+    color: var(--clr-surface) !important;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: relative;
+    z-index: 10; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 250px; 
+    position: relative;
+    overflow: visible;
+}
+
+.logo-placeholder-green {
+    display: none;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw; 
+    width: calc(100vw + 130px); /* Mantenemos el ajuste de 40px */
+    height: 100%;
+    background-color: #F9F7F4;
+    /* --- NUEVA TRAMA --- */
+    background-image: url('../img/design/bg_trama_header.png');
+    background-repeat: repeat;
+    background-size: auto;
+    /* ------------------- */
+    z-index: 0; 
+    transform: skewX(-18deg);
+    transform-origin: top right;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40px; /* ANTES: 150px. Rectángulo Verde casi pegado al borde */
+    width: 90px; 
+    height: 100%;
+    background-color: var(--clr-accent);
+    z-index: 2;
+    transform: skewX(-18deg);
+    transform-origin: top left;
+    border-radius: 0; 
+}
+
+.logo-img {
+    position: absolute;
+    left: 0;
+    max-height: 50px;
+    width: auto;
+    opacity: 0; 
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+.nav-links a:not(.btn-outline) {
+    color: var(--clr-surface) !important;
+    font-weight: 500;
+    white-space: nowrap; /* MAGIA: Prohíbe que el texto se rompa en dos renglones */
+    font-size: 0.95rem; /* Tamaño ideal para que respire en la barra */
+    letter-spacing: 0.3px; /* Leve espaciado para mayor legibilidad */
+}
+
+.nav-links a:not(.btn-outline):hover {
+    color: var(--clr-tostado) !important; 
+}
+
+.dropdown {
+    position: relative;
+    padding: 20px 0; 
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--clr-surface) !important; /* Fondo blanco siempre */
+    min-width: 250px; 
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    border-radius: var(--radius-soft);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-top: 3px solid var(--clr-primary); /* Rayita turquesa arriba */
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Divisor sutil */
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+/* --- ESTADO NORMAL DE LAS OPCIONES --- */
+/* Aumentamos la especificidad agregando .nav-links li para ganar prioridad */
+.nav-links li .dropdown-menu a {
+    display: block;
+    padding: 10px 20px !important; 
+    color: var(--clr-text-main) !important; /* Fuerza a que sea oscuro */
+    font-size: 0.85rem !important; 
+    white-space: nowrap !important; 
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* --- REFORZAMOS QUE NO HEREDE EL BLANCO DE LOS LINKS PRINCIPALES --- */
+.nav-links li .dropdown-menu a:not(.btn-outline) {
+    color: var(--clr-text-main) !important;
+}
+
+/* --- ESTADO HOVER (Pasar el mouse) --- */
+.nav-links li .dropdown-menu a:hover {
+    background-color: var(--clr-primary) !important; /* Fondo Turquesa LGC */
+    color: var(--clr-surface) !important; /* Letra blanca */
+    padding-left: 25px !important; /* Pequeño desplazamiento elegante */
+}
+
+.header.scrolled .nav-links > li > a:not(.btn-outline) {
+    color: var(--clr-text-main) !important;
+}
+
+.header.scrolled .nav-links > li > a:not(.btn-outline):hover {
+    color: var(--clr-primary) !important;
+}
+
+.header.scrolled .dropdown-menu a {
+    color: var(--clr-text-main) !important;
+}
+.header.scrolled .dropdown-menu a:hover {
+    background-color: var(--clr-primary) !important;
+    color: var(--clr-surface) !important;
+}
 
 /* =========================================
    HERO SLIDER
    ========================================= */
-.hero-slider-section { position: relative; width: 100%; height: 100vh; min-height: 600px; background-color: var(--clr-primary); overflow: hidden; }
-.slider-container { width: 100%; height: 100%; position: relative; }
-.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 0.8s ease-in-out, visibility 0.8s; display: flex; align-items: center; padding-top: 100px; background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-dark) 100%); }
-.slide.active { opacity: 1; visibility: visible; z-index: 1; }
-.hero-content { max-width: 800px; position: relative; z-index: 2; }
-.hero-subtitle { font-weight: 600; color: var(--clr-tostado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: var(--space-sm); font-size: 0.95rem; font-family: var(--font-body); }
-.hero-title { 
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 550px;
+    background-color: var(--clr-bg-light);
+    overflow: hidden;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/design/bg_trama_header.png');
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    font-weight: 600;
+    color: var(--clr-accent); 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+}
+
+.hero-title {
     font-size: clamp(2.2rem, 4vw, 3.5rem); 
-    margin-bottom: var(--space-md); 
-    color: var(--clr-surface); 
+    margin-bottom: var(--space-md);
+    color: var(--clr-primary); 
     font-style: italic; 
 }
-.hero-text { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 650px; margin-bottom: var(--space-lg); }
-.slider-actions { display: flex; gap: var(--space-md); flex-wrap: wrap; }
-.slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: var(--clr-surface); border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; z-index: 10; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; }
-.slider-btn:hover { background: var(--clr-accent); }
-.slider-btn.prev { left: 20px; }
-.slider-btn.next { right: 20px; }
-.slider-dots { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 10; }
-.dot { width: 12px; height: 12px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; cursor: pointer; transition: var(--transition-fast); }
-.dot.active { background: var(--clr-tostado); transform: scale(1.3); }
+
+.hero-title-sub {
+    display: block; /* Esto obliga a que el texto baje a un nuevo renglón */
+    font-size: 0.6em; /* Lo hace un 40% más chico que el título principal */
+    line-height: 1.1;
+    margin-top: 5px; /* Un pequeño respiro entre los dos renglones */
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    color: var(--clr-text-muted); 
+    max-width: 650px;
+    margin-bottom: var(--space-lg);
+}
+
+.slider-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--clr-primary);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: var(--clr-accent);
+    color: white;
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.dot.active {
+    background: var(--clr-primary);
+    transform: scale(1.3);
+}
+
+/* --- Modificación 70/30 Hero con Overlap Limpio (PNG Transparente) --- */
+.hero-split-layout {
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+
+.hero-slider-col {
+    width: 100%; /* ANTES: 75%. Ahora ocupa toda la pantalla */
+    height: 100%;
+    position: relative;
+    z-index: 1; 
+}
+
+.hero-image-col {
+    display: none !important; /* Apagamos por completo la columna del logo geométrico */
+}
+
+.hero-side-img {
+    height: auto;
+    max-height: 85vh; 
+    object-fit: contain; 
+    
+    width: 75%;
+    
+    /* Limpiamos cualquier efecto visual que ensucie el PNG */
+    background: transparent;
+    border: none; 
+    box-shadow: none; 
+    border-radius: 0; 
+}
+
+/* En móviles ocultamos la imagen lateral para priorizar la lectura */
+@media (max-width: 992px) {
+    .hero-split-layout { flex-direction: column; overflow: visible; }
+    .hero-slider-col { width: 100%; }
+    .hero-image-col { display: none; }
+}
 
 /* =========================================
    QUIÉNES SOMOS & MÁSCARA DEL LOGO
@@ -88,8 +479,8 @@ img { max-width: 100%; display: block; }
 .about { 
     position: relative; 
     padding: var(--space-xl) 0; 
-    background-color: var(--clr-surface); 
-    overflow: hidden; /* Evita que la imagen se desborde */
+    background-color: var(--clr-dark);
+    overflow: hidden;
 }
 
 /* --- Imagen de fondo sutil con opacidad --- */
@@ -97,11 +488,11 @@ img { max-width: 100%; display: block; }
     content: '';
     position: absolute;
     inset: 0; /* Ocupa todo el alto y ancho de la sección */
-    background-image: url('../img/bg/bg.png');
+    background-image: linear-gradient(rgba(1, 6, 12, 0.65), rgba(1, 30, 37, 0.75)), url('../img/bg/bg.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Agrega un pequeño efecto parallax muy elegante al scrollear */
-    opacity: 0.1; /* Opacidad al 4% (ajustala a gusto, entre 0.03 y 0.08 suele ser ideal) */
+    opacity: 1;
     z-index: 1;
     pointer-events: none; /* Asegura que no interfiera con los clics */
 }
@@ -111,10 +502,10 @@ img { max-width: 100%; display: block; }
     z-index: 2; /* Mantiene el texto y las alianzas por encima de la imagen */
 }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: start; }
-.about-text .section-title { color: var(--clr-primary); }
+.about-text .section-title { color: var(--clr-tostado); }
 .about-text .section-tag { color: var(--clr-accent); }
-.about-subtitle { font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom: var(--space-xs); color: var(--clr-primary); line-height: 1.2; }
-.about-text p { margin-bottom: var(--space-sm); font-size: 1.1rem; color: var(--clr-text-muted); }
+.about-subtitle { font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom: var(--space-xs); color: var(--clr-tostado); line-height: 1.2; }
+.about-text p { margin-bottom: var(--space-sm); font-size: 1.1rem; color: #cacecf; }
 .about-alianzas {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
@@ -125,11 +516,11 @@ img { max-width: 100%; display: block; }
     margin-top: var(--space-lg);
     color: var(--clr-text-main);
 }
-.about-alianzas h3 { color: var(--clr-accent); font-size: 1.5rem; margin-bottom: 0.5rem; }
-.alianzas-grid { list-style: none; margin-top: var(--space-sm); display: grid; gap: 15px; }
+.about-alianzas h3 { color: var(--clr-tostado); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.alianzas-grid { list-style: none; margin-top: var(--space-sm); display: grid; gap: 15px; color: #cacecf; }
 .alianzas-grid li { font-size: 0.95rem; line-height: 1.5; position: relative; padding-left: 20px; }
 .alianzas-grid li::before { content: "■"; position: absolute; left: 0; top: 2px; color: var(--clr-tostado); font-size: 0.8rem; }
-.alianzas-grid li strong { color: var(--clr-primary); }
+.alianzas-grid li strong { color: var(--clr-tostado); }
 
 /* =========================================
    SERVICIOS: EDITORIAL SHOWCASE
@@ -196,43 +587,87 @@ img { max-width: 100%; display: block; }
 .success .section-title { color: var(--clr-dark); }
 .success .section-tag { color: var(--clr-accent); }
 /* --- Carrusel de Logos de Clientes --- */
-.logos-marquee { 
-    width: 100%; 
-    overflow: hidden; 
-    white-space: nowrap; 
-    padding: var(--space-md) 0; 
-    border-top: 1px solid rgba(0,0,0,0.05); 
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-    margin-bottom: var(--space-lg);
+/* =========================================
+   SECCIÓN CLIENTES (Marquee Bidireccional)
+   ========================================= */
+
+.clients {
+    padding: var(--space-xxl) 0;
+    background-color: var(--clr-bg-light); /* Aseguramos que se mantenga tu fondo crema */
+    overflow: hidden;
+}
+
+/* El contenedor maestro aplica una máscara de desvanecimiento a los bordes */
+.clients-slider-wrapper {
     display: flex;
-    align-items: center; 
+    flex-direction: column;
+    gap: 50px; /* Espacio vertical entre la Fila 1 y la Fila 2 */
+    width: 100%;
+    overflow: hidden;
+    /* Efecto premium: desvanece los logos antes de que toquen el borde de la pantalla */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.logos-track { 
-    display: inline-flex; 
+.clients-track {
+    display: flex;
     align-items: center;
-    animation: scrollLogos 40s linear infinite; 
+    gap: 80px; /* Espacio horizontal entre logos */
+    width: max-content;
 }
 
-.logo-item-img {
-    height: 45px; 
-    width: auto;
-    max-width: 180px; 
-    margin: 0 3rem; 
+/* Aumentamos el tamaño de los logos */
+.clients-track img {
+    height: 70px; /* Ajuste: Logos visiblemente más altos */
+    max-width: 200px;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.5); 
+    /* Mantenemos la elegancia corporativa: en grises hasta que les pasás el mouse */
+    filter: grayscale(100%) opacity(0.6);
     transition: filter 0.3s ease, transform 0.3s ease;
-    cursor: default;
 }
 
-.logo-item-img:hover {
+.clients-track img:hover {
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.05);
+    transform: scale(1.05); /* Pequeño zoom al posar el mouse */
 }
 
-@keyframes scrollLogos { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
+/* --- Animaciones bidireccionales --- */
+
+/* Fila 1: Va hacia la izquierda */
+.track-left {
+    /* 50s determina la velocidad. Si lo querés más lento, subí a 60s o 70s */
+    animation: scrollLeft 80s linear infinite; 
+}
+
+/* Fila 2: Va hacia la derecha */
+.track-right {
+    animation: scrollRight 80s linear infinite;
+}
+
+/* La lógica del loop: como duplicamos el contenido, al moverlo al 50% exacto 
+   volvemos visualmente al punto de inicio sin que el usuario lo note */
+@keyframes scrollLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } 
+}
+
+@keyframes scrollRight {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .clients-slider-wrapper {
+        gap: 30px;
+    }
+    .clients-track img {
+        height: 45px; /* Un poco más chicos en celular para que entren mejor */
+        max-width: 150px;
+    }
+    .clients-track {
+        gap: 40px;
+    }
 }
 
 /* --- Cards de Casos (Look Op2) --- */
@@ -362,12 +797,40 @@ img { max-width: 100%; display: block; }
 /* =========================================
    NOVEDADES NORMATIVAS 
    ========================================= */
-.news { padding: var(--space-xl) 0; background-color: var(--clr-surface); }
+/* --- Fondo con trama para la sección Novedades --- */
+.news {
+    position: relative;
+    /* Ruta relativa: salimos de css/ para entrar en img/design/ */
+    background-image: url('../img/design/bg_trama.png');
+    background-size: auto; /* 'auto' o 'contain' suele ser mejor para tramas repetitivas */
+    background-repeat: repeat; /* Para que la trama cubra toda la sección */
+    background-position: center;
+    
+    padding: var(--space-xl) 0;
+    background-color: var(--clr-bg-light); /* Color de base por si la imagen tarda en cargar */
+}
+
+/* Opcional: Si la trama es muy oscura o tiene mucho contraste, 
+   podemos ponerle un "velo" para que el título se lea perfecto */
+.news::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(249, 247, 244, 0.7); /* Un velo del color crema base */
+    z-index: 1;
+}
+
+.news .container {
+    position: relative;
+    z-index: 2; /* Aseguramos que el contenido esté sobre el velo */
+}
 .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); }
 .news-card { background-color: var(--clr-bg-light); padding: var(--space-lg); border-radius: var(--radius-fluid); border: 1px solid #eaeaea; transition: var(--transition-fast); }
 .news-card:hover { border-color: var(--clr-primary); transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0, 127, 161, 0.1); }
 .news-date { display: block; font-size: 0.85rem; font-weight: 600; color: var(--clr-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
 .news-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--clr-primary); }
+.news .section-title { color: var(--clr-dark); }
+.news .section-tag { color: var(--clr-accent); }
 
 /* =========================================
    FOOTER / CONTACTO 
@@ -434,14 +897,793 @@ select option { background-color: var(--clr-dark); color: white; }
     .showcase-content { max-width: 100%; padding: var(--space-sm) 0; background: none; backdrop-filter: none; }
     .showcase-bg-number { font-size: 15rem; top: 20%; }
     .info-results .info-list { grid-template-columns: 1fr !important; }
+    /* Ajustes para el Hero dividido en tablets/móviles */
+    .hero-split-layout {
+        flex-direction: column;
+    }
+    .hero-slider-col {
+        width: 100%;
+    }
+    .hero-image-col {
+        display: none; /* Ocultamos la imagen de 30% en móvil para priorizar el texto */
+    }
 }
 
 @media (max-width: 768px) {
+    .lamas-hero-compo { display: none !important; }
     .nav-container { height: 80px; }
     .logo-img { max-height: 55px; }
-    .nav-links { display: none; }
     .slider-btn { display: none; }
     .form-row { flex-direction: column; gap: 0; }
     .footer { padding: var(--space-lg) 0 var(--space-md); }
     .footer-grid { gap: var(--space-lg); }
+}
+
+/* =========================================
+   BLOQUE HÉROE COMPOSICIÓN (ISOLOGO RECONSTRUIDO)
+   ========================================= */
+.lamas-hero-compo {
+    position: relative;
+    width: 100%;
+    height: 45vh; 
+    background-color: var(--clr-primary); 
+    overflow: hidden;
+    z-index: 10;
+}
+
+.hero-image-bg {
+    position: absolute;
+    /* Reemplazamos 'inset: 0' por las posiciones exactas */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 10%; /* 💡 MAGIA AQUÍ: Ajustá este % hasta que encaje exacto con tu rectángulo verde */
+    
+    background-image: url('../img/bg/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    
+    /* IMPORTANTE: Agregamos esto para que al hacer zoom, la foto no "invada" el rectángulo verde */
+    overflow: hidden; 
+}
+
+/* Ocultamos el viejo velo porque vamos a usar el nuevo */
+.hero-image-bg::after {
+    display: none;
+}
+
+/* --- EFECTO SLIDER CROSSFADE (KEN BURNS) --- */
+.bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 0;
+    /* La animación dura 24s en total (4 imágenes x 6s cada una) */
+    animation: crossfadeKenBurns 30s infinite ease-in-out;
+}
+
+/* Retrasos matemáticos para que entren una tras otra exacto cada 6 segundos */
+.bg-slide:nth-child(1) { animation-delay: 0s; }
+.bg-slide:nth-child(2) { animation-delay: 6s; }
+.bg-slide:nth-child(3) { animation-delay: 12s; }
+.bg-slide:nth-child(4) { animation-delay: 18s; }
+.bg-slide:nth-child(5) { animation-delay: 24s; }
+
+/* El velo oscuro para el texto (reemplaza al antiguo ::after) */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 40, 50, 0.1); /* Azul LGC muy oscuro y transparente */
+    z-index: 1;
+}
+
+/* --- Lógica de la animación --- */
+@keyframes crossfadeKenBurns {
+    0%   { opacity: 0; transform: scale(1); }
+    5%   { opacity: 1; }     /* Termina de aparecer suavemente */
+    25%  { opacity: 1; }     /* Se mantiene nítida mientras la siguiente empieza a entrar */
+    30%  { opacity: 0; transform: scale(1.05); } /* Se desvanece haciendo un leve zoom in */
+    100% { opacity: 0; transform: scale(1.05); } /* Espera su turno oculta */
+}
+
+/* El ala izquierda que acompaña al slide */
+.lamas-hero-compo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: calc(100vw + 130px); /* Mantenemos el ajuste de 40px */
+    height: 100%;
+    background-color: #F9F7F4;
+    /* --- NUEVA TRAMA --- */
+    background-image: url('../img/design/bg_trama_header.png');
+    background-repeat: repeat;
+    background-size: auto;
+    /* ------------------- */
+    z-index: 2; 
+    transform: skewX(-18deg);
+    transform-origin: bottom right;
+}
+
+.brand-asta-blue {
+    position: absolute;
+    top: 0;
+    left: 40px; /* ANTES: 150px. El asta azul se alinea perfecto con la verde */
+    width: 90px; 
+    height: 100%;
+    background-color: var(--clr-primary);
+    z-index: 3;
+    transform: skewX(-18deg);
+    transform-origin: bottom left; 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 110px));
+}
+
+.centered-logo {
+    position: absolute;
+    top: 50%;
+    left: 55%; /* ANTES: 60%. Lo tiramos un poco al centro visual nuevo */
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    max-width: 220px;
+}
+
+/* --- Fondo con imagen para la sección Ambiente --- */
+#srv-ambiente.showcase-block {
+    position: relative;
+    background-image: url('../img/design/bg_ambiente.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Aseguramos que el número gigante de fondo (02) no compita con la imagen */
+#srv-ambiente .showcase-bg-number {
+    opacity: 0.03; /* Lo hacemos casi invisible para que no ensucie la foto */
+}
+
+/* --- Fondo con imagen para la sección Habilitaciones --- */
+#srv-habilitaciones.showcase-block {
+    position: relative;
+    /* Usamos un overlay basado en el verde oliva (rgb de #90A224) para mantener la identidad */
+    background-image: url('../img/design/bg_habilitaciones.png');
+    opacity: 0.9;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ajustamos el número gigante (04) para que sea sutil sobre la foto */
+#srv-habilitaciones .showcase-bg-number {
+    opacity: 0.03;
+}
+
+/* --- Ajuste específico para Matrices Legales (2 columnas) --- */
+#srv-matrices .showcase-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* El texto ocupa un poco más que la imagen */
+    gap: var(--space-md);
+    align-items: center; /* Centra la imagen verticalmente respecto al texto */
+}
+
+#srv-matrices .showcase-visual {
+    display: flex;
+    flex-direction: column; /* Apila imagen y botón */
+    align-items: center;    /* Centra horizontalmente */
+    justify-content: center;
+    gap: 20px;             /* Espacio exacto entre imagen y botón */
+    position: relative;
+    z-index: 2;
+}
+
+.matrices-side-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: contain;
+    margin: 0;
+    /* Eliminamos todo lo que genera el "recuadro" */
+    box-shadow: none; 
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Ajuste para móviles: en pantallas chicas volvemos a una sola columna */
+@media (max-width: 992px) {
+    #srv-matrices .showcase-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    #srv-matrices .showcase-visual {
+        margin-top: var(--space-md);
+    }
+
+    /* Ocultamos o achicamos la imagen en móvil si ocupa mucho espacio */
+    .matrices-side-img {
+        max-width: 300px;
+    }
+}
+
+/* --- Restauración de Fondo con imagen para Seguridad e Higiene (SYSO) --- */
+#srv-seguridad.showcase-block {
+    position: relative;
+    /* Overlay CLARO (Tostado) para mantener la legibilidad de los textos oscuros */
+    background-image: linear-gradient(rgba(1, 6, 12, 0.45), rgba(1, 30, 37, 0.55)), 
+                      url('../img/bg/bg3.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efecto Parallax */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* --- Ajuste de Legibilidad: Seguridad e Higiene (Textos Claros) --- */
+
+/* 2. Forzamos el título y la descripción a color blanco */
+#srv-seguridad .showcase-title {
+    color: #FFFFFF !important;
+}
+
+#srv-seguridad .showcase-tag {
+    color: var(--clr-tostado) !important;
+}
+
+#srv-seguridad .showcase-desc {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 3. Ajustamos la lista para que se lea perfecto */
+#srv-seguridad .showcase-features li {
+    color: #FFFFFF !important;
+}
+
+/* 4. Hacemos que las negritas de la lista destaquen en color crema */
+#srv-seguridad .showcase-features li strong {
+    color: var(--clr-tostado) !important; 
+}
+
+/* 5. Aseguramos que las viñetas (los cuadraditos) mantengan tu color Verde Oliva */
+#srv-seguridad .showcase-features li::before {
+    color: var(--clr-accent) !important; 
+}
+
+/* Ajuste de opacidad para el número 03 de fondo */
+#srv-seguridad .showcase-bg-number {
+    opacity: 0.03;
+}
+
+/* --- Diseño de 2 columnas para Ambiente --- */
+#srv-ambiente .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+/* --- Efecto de Imagen Moderna (Cuadrada con desvanecimiento) --- */
+.modern-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1; /* Esto la vuelve cuadrada automáticamente */
+    margin: 0 auto;
+}
+
+.ambiente-modern-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que los árboles llenen el cuadrado sin deformarse */
+    
+    /* EFECTO MODERNO: Máscara de desvanecimiento radial */
+    /* Esto hace que el centro sea opaco y los bordes transparentes */
+    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 72%);
+    mask-image: radial-gradient(circle, black 40%, transparent 72%);
+}
+
+#srv-facility .showcase-tag {
+    color: var(--clr-tostado) !important;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 992px) {
+    #srv-ambiente .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+    .modern-image-wrapper {
+        max-width: 300px;
+        margin-bottom: var(--space-md);
+    }
+}
+
+/* --- Diseño de 2 columnas para Habilitaciones --- */
+#srv-habilitaciones .showcase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+/* --- Efecto de Imagen Circular Desvanecida (Igual a Ambiente) --- */
+.habilitaciones-mask-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+}
+
+.habilitaciones-modern-img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    
+    /* Quitamos el borde redondeado duro */
+    border-radius: 0; 
+    
+    /* Aplicamos exactamente la misma máscara orgánica de Ambiente */
+    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 70%);
+    mask-image: radial-gradient(circle, black 40%, transparent 70%);
+}
+
+/* Ajuste para móviles: Mantenemos que en el celular el texto salga primero y la imagen abajo */
+@media (max-width: 992px) {
+    #srv-habilitaciones .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+    #srv-habilitaciones .showcase-content {
+        order: 1;
+    }
+    #srv-habilitaciones .showcase-visual {
+        order: 2;
+        margin-top: var(--space-md);
+    }
+}
+
+/* --- Ajustes para la nueva sección Facility Management --- */
+#srv-facility.showcase-block {
+    position: relative;
+    /* Usamos un fondo oscuro para que el texto blanco/crema resalte */
+    background-image: linear-gradient(rgba(1, 6, 12, 0.65), rgba(1, 30, 37, 0.75)),
+                      url('../img/design/bg_facility.png') !important; /* Cambia la ruta por tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Forzamos colores claros para legibilidad */
+#srv-facility .showcase-title { color: #FFFFFF !important; }
+#srv-facility .showcase-desc { color: rgba(255, 255, 255, 0.9) !important; }
+#srv-facility .showcase-features li { color: #FFFFFF !important; }
+#srv-facility .showcase-features li strong { color: var(--clr-tostado) !important; }
+#srv-facility .showcase-features li::before { color: var(--clr-accent) !important; }
+
+/* --- Sección Novedades con Iframe --- */
+/* --- Ajuste exacto para Feed de 600x400 --- */
+.news-feed-wrapper {
+    max-width: 800px; /* Igualamos al ancho de tu feed */
+    margin: 0 auto;
+}
+
+.linkedin-card {
+    padding: 0;
+    background:var(--clr-bg-light);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: var(--radius-fluid);
+    overflow: hidden;
+    line-height: 0; /* Elimina espacios residuales debajo del iframe */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.linkedin-card iframe {
+    width: 800px;
+    height: 540px !important; /* Altura exacta de tu configuración */
+    min-height: auto; /* IMPORTANTE: Quitamos el min-height de 500px anterior */
+    border: none;
+    display: block;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .news-feed-wrapper {
+        padding: 0 10px;
+    }
+    .linkedin-card iframe {
+        height: 600px; /* Un poco más corto en móviles */
+    }
+}
+
+/* --- Estilos Especiales para Modal de Infografía --- */
+/* --- Estilos Especiales para Modal de Infografía --- */
+.modal-container.image-mode {
+    padding: 0; /* Eliminamos todo el borde blanco */
+    max-width: 90vw; /* Ajustamos al 90% del ancho de la pantalla */
+    width: fit-content; /* El modal se "abraza" al tamaño exacto de la imagen */
+    background: transparent; /* Quitamos el fondo blanco */
+    box-shadow: none;
+    overflow: visible; /* IMPORTANTE: Permite que el botón de cerrar sobresalga sin crear scrollbars */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Sombra elegante detrás de la infografía */
+}
+
+.modal-infographic {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 85vh; /* Evita que la imagen sea más alta que la pantalla */
+    object-fit: contain;
+    border-radius: 12px;
+    display: block; /* Evita márgenes fantasma debajo de la imagen */
+}
+
+/* Ajustamos el botón de cerrar para que se vea bien sobre la imagen */
+.modal-container.image-mode .modal-close {
+    top: -15px;
+    right: -15px;
+    background: var(--clr-surface);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .modal-container.image-mode {
+        max-width: 95vw; /* En celular aprovechamos más ancho */
+    }
+    .modal-infographic {
+        max-height: 80vh;
+    }
+    .modal-container.image-mode .modal-close {
+        top: -10px;
+        right: -10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+}
+
+/* --- Botón Matrices Online en Navbar --- */
+.btn-nav-matrices {
+    background-color: var(--clr-accent) !important; /* Verde LGC */
+    margin-left: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-nav-matrices:hover {
+    background-color: #7a8a1e !important; /* Un verde un poco más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+/* Ajuste para que el botón bajo la PC no toque la imagen en móviles */
+@media (max-width: 768px) {
+    .showcase-visual {
+        margin-bottom: 30px;
+    }
+    .btn-nav-matrices {
+        margin-left: 0;
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL MODAL DE ÉXITO
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    
+    /* Oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Clase para activarlo desde JS */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: #f0fdf4; /* Fondo verdecito claro */
+    color: var(--clr-accent, #90A224); /* Verde Oliva LGC */
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.modal-title {
+    font-family: var(--font-heading, 'Tenor Sans', sans-serif);
+    color: var(--clr-primary, #007FA1);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-text {
+    font-family: var(--font-body, 'Montserrat', sans-serif);
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.btn-modal {
+    background-color: var(--clr-primary, #007FA1);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: var(--font-body, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-modal:hover {
+    background-color: var(--clr-accent, #90A224);
+}
+
+/* --- BANDERAS DE IDIOMA --- */
+.lang-switcher {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: 10px; /* Empuja las banderas hacia la derecha */
+    margin-right: 10px; /* Las separa del menú hamburguesa */
+}
+
+.lang-switcher a {
+    display: flex;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.lang-switcher img {
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+}
+
+.lang-switcher a.active img {
+    border-color: var(--clr-primary); /* Recuadro azul al idioma activo */
+}
+
+.lang-switcher a:not(.active) {
+    opacity: 0.5; /* Opaca el idioma que no se está usando */
+}
+
+.lang-switcher a:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Esconder el banner molesto de Google lo máximo posible */
+body { top: 0 !important; }
+.skiptranslate iframe { display: none !important; }
+
+/* =========================================
+   VERSIÓN MÓVIL (Smartphones y Tablets)
+   ========================================= */
+
+/* Ocultamos cosas de móvil en la PC */
+@media (min-width: 993px) {
+    .menu-toggle { display: none; }
+    .mobile-volver { display: none; }
+}
+
+/* =========================================
+   VERSIÓN MÓVIL (Smartphones y Tablets)
+   ========================================= */
+
+@media (min-width: 993px) {
+    .menu-toggle { display: none !important; }
+    .mobile-volver { display: none !important; }
+}
+
+@media (max-width: 992px) {
+    /* 1. HEADER FIJO Y RAYITAS */
+    .header {
+        position: fixed !important;
+        top: 0; left: 0; width: 100%;
+        height: 70px;
+        background-color: var(--clr-surface) !important;
+        z-index: 3000 !important;
+        display: flex; align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 32px; height: 22px;
+        background: transparent; border: none;
+        cursor: pointer; z-index: 3100;
+        margin-left: auto !important;
+        margin-right: 20px; /* Para que no se pegue al borde derecho */
+    }
+    
+    .menu-toggle span {
+        width: 100%; height: 3px;
+        background-color: var(--clr-primary);
+        border-radius: 4px;
+    }
+    
+    main { margin-top: 20px !important; }
+    .lamas-hero-compo { display: none !important; }
+
+    /* 2. MENÚ FULL SCREEN Y FILAS */
+    .nav-links {
+        position: fixed;
+        top: 70px; left: 0;
+        width: 100vw; 
+        height: calc(100vh - 70px);
+        background-color: var(--clr-surface);
+        display: flex !important; 
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 2900;
+        overflow-y: auto; 
+        margin: 0; padding: 0;
+    }
+    
+    .nav-links.menu-abierto { transform: translateX(0); }
+
+    .nav-links > li {
+        width: 100%;
+        min-height: 65px; /* Altura estándar para todos */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Alinea al inicio para evitar huecos blancos */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links > li > a {
+        width: 100%; 
+        min-height: 65px; /* Altura idéntica para todas las filas principales */
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.2rem !important;
+        font-weight: 500;
+        color: var(--clr-primary) !important;
+        text-decoration: none;
+        background: transparent !important;
+        border: none !important; 
+    }
+
+    /* 3. ACORDEÓN (SUBMENÚ) */
+    .nav-links .dropdown { height: auto; }
+    
+    .dropdown-menu {
+        display: none;
+        width: 100%;
+        background-color: var(--clr-bg-light) !important;
+        padding: 0;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        border-top: 1px solid rgba(0, 0, 0, 0.2); /* Línea divisoria sutil color blanco transparente */
+        border-bottom: none;
+        display: flex; /* Asegura que el link ocupe todo */
+    }
+
+    .dropdown-menu li a {
+        min-height: 55px !important; /* Ligeramente más bajo para jerarquía */
+        color: #ffffff !important;   /* LETRAS BLANCAS FORZADAS */
+        font-size: 1.1rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .dropdown-toggle::after { content: ' ▾'; margin-left: 8px; }
+
+    /* 4. BOTÓN VOLVER */
+    .mobile-volver {
+        margin-top: auto;
+        min-height: 65px !important;
+        border: none !important;
+    }
+
+    #btn-cerrar-menu {
+        width: 100%;
+        height: 100%;
+        background-color: var(--clr-primary) !important;
+        color: #fff !important;
+        font-weight: 700;
+        border: none;
+        border-radius: 0;
+    }
+
+    /* 5. DEGRADADOS Y RECTOS (Ambiente y Habilitaciones) */
+    #srv-ambiente.showcase-block,
+    #srv-habilitaciones.showcase-block {
+        background-image: none !important;
+        border-radius: 0 !important; 
+        padding: 60px 20px;
+    }
+
+    #srv-ambiente.showcase-block { background: linear-gradient(135deg, var(--clr-primary), #003747) !important; }
+    #srv-habilitaciones.showcase-block { background: linear-gradient(135deg, var(--clr-accent), #566115) !important; }
+    
+    #srv-ambiente *, #srv-habilitaciones * { color: #ffffff !important; }
+
+    /* --- LIMPIEZA DE BUGS EN MÓVIL --- */
+    
+    /* 1. Apagamos las formas diagonales de PC que ensucian el header */
+    .header::before,
+    .header::after,
+    .header-blue-body {
+        display: none !important;
+    }
+
+    /* 2. Forzamos la aparición del logo que había quedado invisible */
+    .logo-img {
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        pointer-events: auto !important;
+        max-height: 60px !important;
+        margin-left: 0px;
+    }
+    
+    .logo {
+        width: auto !important;
+    }
 }
