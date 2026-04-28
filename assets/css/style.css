@@ -1687,3 +1687,38 @@ body { top: 0 !important; }
         width: auto !important;
     }
 }
+
+.social-placeholder {
+    background-color: var(--clr-bg-light);
+    border: 2px dashed rgba(0, 127, 161, 0.3); /* Borde punteado color turquesa transparente */
+    border-radius: 12px;
+    padding: 50px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 350px; /* Ocupa el mismo alto que ocuparía el iframe */
+    transition: all 0.3s ease;
+}
+.social-placeholder:hover {
+    border-color: var(--clr-primary);
+    background-color: #f0f4f5;
+}
+.placeholder-icon {
+    color: #a0aec0; /* Gris apagado */
+    margin-bottom: 20px;
+}
+.placeholder-title {
+    color: var(--clr-primary);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    line-height: 1.2 !important; /* MAGIA: Recupera el interlineado del título */
+}
+
+.social-placeholder p {
+    color: var(--clr-text-muted);
+    font-size: 0.95rem;
+    max-width: 400px;
+    line-height: 1.6 !important; /* MAGIA: Separa los renglones del párrafo */
+}
