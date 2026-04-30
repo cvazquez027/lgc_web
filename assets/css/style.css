@@ -957,20 +957,12 @@ select option { background-color: var(--clr-dark); color: white; }
 .bg-slide {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
+    background-size: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
+    background-position: center bottom; /* Mantiene siempre el centro de la imagen enfocado, ideal para cualquier monitor */
+    opacity: 1; /* MAGIA: La hacemos 100% visible siempre */
     z-index: 0;
-    /* La animación dura 24s en total (4 imágenes x 6s cada una) */
-    animation: crossfadeKenBurns 30s infinite ease-in-out;
+    /* Eliminamos la línea de animation para que quede completamente estática */
 }
-
-/* Retrasos matemáticos para que entren una tras otra exacto cada 6 segundos */
-.bg-slide:nth-child(1) { animation-delay: 0s; }
-.bg-slide:nth-child(2) { animation-delay: 6s; }
-.bg-slide:nth-child(3) { animation-delay: 12s; }
-.bg-slide:nth-child(4) { animation-delay: 18s; }
-.bg-slide:nth-child(5) { animation-delay: 24s; }
 
 /* El velo oscuro para el texto (reemplaza al antiguo ::after) */
 .hero-overlay {
@@ -978,15 +970,6 @@ select option { background-color: var(--clr-dark); color: white; }
     inset: 0;
     background: rgba(0, 40, 50, 0.1); /* Azul LGC muy oscuro y transparente */
     z-index: 1;
-}
-
-/* --- Lógica de la animación --- */
-@keyframes crossfadeKenBurns {
-    0%   { opacity: 0; transform: scale(1); }
-    5%   { opacity: 1; }     /* Termina de aparecer suavemente */
-    25%  { opacity: 1; }     /* Se mantiene nítida mientras la siguiente empieza a entrar */
-    30%  { opacity: 0; transform: scale(1.05); } /* Se desvanece haciendo un leve zoom in */
-    100% { opacity: 0; transform: scale(1.05); } /* Espera su turno oculta */
 }
 
 /* El ala izquierda que acompaña al slide */
