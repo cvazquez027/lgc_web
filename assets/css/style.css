@@ -75,9 +75,7 @@ img { max-width: 100%; display: block; }
     top: 0;
     left: 0;
     padding: 0; 
-    /* Cambiamos el color sólido por uno con 90% de opacidad */
     background-color: rgba(249, 247, 244, 0.8); 
-    /* Agregamos un efecto de vidrio esmerilado para que el texto sea legible */
     backdrop-filter: blur(8px); 
     -webkit-backdrop-filter: blur(8px); 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -153,14 +151,12 @@ img { max-width: 100%; display: block; }
     position: absolute;
     top: 0;
     left: -100vw; 
-    width: calc(100vw + 130px); /* Mantenemos el ajuste de 40px */
+    width: calc(100vw + 130px);
     height: 100%;
     background-color: #F9F7F4;
-    /* --- NUEVA TRAMA --- */
     background-image: url('../img/design/bg_trama_header.png');
     background-repeat: repeat;
     background-size: auto;
-    /* ------------------- */
     z-index: 0; 
     transform: skewX(-18deg);
     transform-origin: top right;
@@ -170,7 +166,7 @@ img { max-width: 100%; display: block; }
     content: '';
     position: absolute;
     top: 0;
-    left: 40px; /* ANTES: 150px. Rectángulo Verde casi pegado al borde */
+    left: 40px;
     width: 90px; 
     height: 100%;
     background-color: var(--clr-accent);
@@ -201,9 +197,9 @@ img { max-width: 100%; display: block; }
 .nav-links a:not(.btn-outline) {
     color: var(--clr-surface) !important;
     font-weight: 500;
-    white-space: nowrap; /* MAGIA: Prohíbe que el texto se rompa en dos renglones */
-    font-size: 0.95rem; /* Tamaño ideal para que respire en la barra */
-    letter-spacing: 0.3px; /* Leve espaciado para mayor legibilidad */
+    white-space: nowrap;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
 }
 
 .nav-links a:not(.btn-outline):hover {
@@ -223,7 +219,7 @@ img { max-width: 100%; display: block; }
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--clr-surface) !important; /* Fondo blanco siempre */
+    background-color: var(--clr-surface) !important;
     min-width: 250px; 
     list-style: none;
     display: flex;
@@ -235,7 +231,7 @@ img { max-width: 100%; display: block; }
     border-radius: var(--radius-soft);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     overflow: hidden;
-    border-top: 3px solid var(--clr-primary); /* Rayita turquesa arriba */
+    border-top: 3px solid var(--clr-primary);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -245,35 +241,31 @@ img { max-width: 100%; display: block; }
 }
 
 .dropdown-menu li {
-    border-bottom: 1px solid rgba(0,0,0,0.05); /* Divisor sutil */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .dropdown-menu li:last-child {
     border-bottom: none;
 }
 
-/* --- ESTADO NORMAL DE LAS OPCIONES --- */
-/* Aumentamos la especificidad agregando .nav-links li para ganar prioridad */
 .nav-links li .dropdown-menu a {
     display: block;
     padding: 10px 20px !important; 
-    color: var(--clr-text-main) !important; /* Fuerza a que sea oscuro */
+    color: var(--clr-text-main) !important;
     font-size: 0.85rem !important; 
     white-space: nowrap !important; 
     font-weight: 500;
     transition: all 0.2s ease;
 }
 
-/* --- REFORZAMOS QUE NO HEREDE EL BLANCO DE LOS LINKS PRINCIPALES --- */
 .nav-links li .dropdown-menu a:not(.btn-outline) {
     color: var(--clr-text-main) !important;
 }
 
-/* --- ESTADO HOVER (Pasar el mouse) --- */
 .nav-links li .dropdown-menu a:hover {
-    background-color: var(--clr-primary) !important; /* Fondo Turquesa LGC */
-    color: var(--clr-surface) !important; /* Letra blanca */
-    padding-left: 25px !important; /* Pequeño desplazamiento elegante */
+    background-color: var(--clr-primary) !important;
+    color: var(--clr-surface) !important;
+    padding-left: 25px !important;
 }
 
 .header.scrolled .nav-links > li > a:not(.btn-outline) {
@@ -356,10 +348,10 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-title-sub {
-    display: block; /* Esto obliga a que el texto baje a un nuevo renglón */
-    font-size: 0.6em; /* Lo hace un 40% más chico que el título principal */
+    display: block;
+    font-size: 0.6em;
     line-height: 1.1;
-    margin-top: 5px; /* Un pequeño respiro entre los dos renglones */
+    margin-top: 5px;
 }
 
 .hero-text {
@@ -432,7 +424,6 @@ img { max-width: 100%; display: block; }
     transform: scale(1.3);
 }
 
-/* --- Modificación 70/30 Hero con Overlap Limpio (PNG Transparente) --- */
 .hero-split-layout {
     display: flex;
     align-items: center; 
@@ -442,31 +433,27 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-slider-col {
-    width: 100%; /* ANTES: 75%. Ahora ocupa toda la pantalla */
+    width: 100%;
     height: 100%;
     position: relative;
     z-index: 1; 
 }
 
 .hero-image-col {
-    display: none !important; /* Apagamos por completo la columna del logo geométrico */
+    display: none !important;
 }
 
 .hero-side-img {
     height: auto;
     max-height: 85vh; 
     object-fit: contain; 
-    
     width: 75%;
-    
-    /* Limpiamos cualquier efecto visual que ensucie el PNG */
     background: transparent;
     border: none; 
     box-shadow: none; 
     border-radius: 0; 
 }
 
-/* En móviles ocultamos la imagen lateral para priorizar la lectura */
 @media (max-width: 992px) {
     .hero-split-layout { flex-direction: column; overflow: visible; }
     .hero-slider-col { width: 100%; }
@@ -483,23 +470,22 @@ img { max-width: 100%; display: block; }
     overflow: hidden;
 }
 
-/* --- Imagen de fondo sutil con opacidad --- */
 .about::before {
     content: '';
     position: absolute;
-    inset: 0; /* Ocupa todo el alto y ancho de la sección */
+    inset: 0;
     background-image: linear-gradient(rgba(1, 6, 12, 0.65), rgba(1, 30, 37, 0.75)), url('../img/bg/bg.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Agrega un pequeño efecto parallax muy elegante al scrollear */
+    background-attachment: fixed;
     opacity: 1;
     z-index: 1;
-    pointer-events: none; /* Asegura que no interfiera con los clics */
+    pointer-events: none;
 }
 
 .about .container { 
     position: relative; 
-    z-index: 2; /* Mantiene el texto y las alianzas por encima de la imagen */
+    z-index: 2;
 }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: start; }
 .about-text .section-title { color: var(--clr-tostado); }
@@ -586,69 +572,80 @@ img { max-width: 100%; display: block; }
 .success { padding: var(--space-xl) 0; background-color: var(--clr-bg-light); }
 .success .section-title { color: var(--clr-dark); }
 .success .section-tag { color: var(--clr-accent); }
-/* --- Carrusel de Logos de Clientes --- */
-/* =========================================
-   SECCIÓN CLIENTES (Marquee Bidireccional)
-   ========================================= */
 
+/* --- Carrusel de Logos de Clientes (CORREGIDO PARA SAFARI) --- */
 .clients {
     padding: var(--space-xxl) 0;
-    background-color: var(--clr-bg-light); /* Aseguramos que se mantenga tu fondo crema */
+    background-color: var(--clr-bg-light);
     overflow: hidden;
 }
 
-/* El contenedor maestro aplica una máscara de desvanecimiento a los bordes */
 .clients-slider-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 50px; /* Espacio vertical entre la Fila 1 y la Fila 2 */
+    gap: 50px;
     width: 100%;
     overflow: hidden;
-    /* Efecto premium: desvanece los logos antes de que toquen el borde de la pantalla */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    position: relative;
+}
+
+/* Efecto de desvanecimiento en bordes SIN mask-image (para compatibilidad Safari) */
+.clients-slider-wrapper::before,
+.clients-slider-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+.clients-slider-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--clr-bg-light), transparent);
+}
+.clients-slider-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--clr-bg-light), transparent);
 }
 
 .clients-track {
     display: flex;
     align-items: center;
-    gap: 80px; /* Espacio horizontal entre logos */
+    gap: 80px;
     width: max-content;
+    flex-shrink: 0;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
-/* Aumentamos el tamaño de los logos */
 .clients-track img {
-    height: 70px; /* Ajuste: Logos visiblemente más altos */
+    height: 70px;
     max-width: 200px;
     object-fit: contain;
-    /* Mantenemos la elegancia corporativa: en grises hasta que les pasás el mouse */
     filter: grayscale(100%) opacity(0.6);
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .clients-track img:hover {
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.05); /* Pequeño zoom al posar el mouse */
+    transform: scale(1.05);
 }
 
-/* --- Animaciones bidireccionales --- */
-
-/* Fila 1: Va hacia la izquierda */
 .track-left {
-    /* 50s determina la velocidad. Si lo querés más lento, subí a 60s o 70s */
-    animation: scrollLeft 80s linear infinite; 
+    animation: scrollLeft 80s linear infinite;
 }
 
-/* Fila 2: Va hacia la derecha */
 .track-right {
     animation: scrollRight 80s linear infinite;
 }
 
-/* La lógica del loop: como duplicamos el contenido, al moverlo al 50% exacto 
-   volvemos visualmente al punto de inicio sin que el usuario lo note */
 @keyframes scrollLeft {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); } 
+    to { transform: translateX(-50%); }
 }
 
 @keyframes scrollRight {
@@ -656,13 +653,16 @@ img { max-width: 100%; display: block; }
     to { transform: translateX(0); }
 }
 
-/* Ajustes para móviles */
 @media (max-width: 768px) {
     .clients-slider-wrapper {
         gap: 30px;
     }
+    .clients-slider-wrapper::before,
+    .clients-slider-wrapper::after {
+        width: 40px;
+    }
     .clients-track img {
-        height: 45px; /* Un poco más chicos en celular para que entren mejor */
+        height: 45px;
         max-width: 150px;
     }
     .clients-track {
@@ -670,7 +670,7 @@ img { max-width: 100%; display: block; }
     }
 }
 
-/* --- Cards de Casos (Look Op2) --- */
+/* --- Cards de Casos --- */
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -706,12 +706,12 @@ img { max-width: 100%; display: block; }
 .case-body p { margin-bottom: 10px; font-size: 0.95rem; }
 .btn-more { display: inline-block; margin-top: 15px; color: var(--clr-accent); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; }
 
-/* --- Modal & Layout de Infografía (Look Op2) --- */
+/* --- Modal & Layout de Infografía --- */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 25, 41, 0.85); /* Fondo oscuro azulado */
-    backdrop-filter: blur(8px); /* Efecto vidrio esmerilado */
+    background: rgba(10, 25, 41, 0.85);
+    backdrop-filter: blur(8px);
     z-index: 2000;
     display: none; 
     align-items: center;
@@ -728,7 +728,7 @@ img { max-width: 100%; display: block; }
     position: relative;
     overflow-y: auto;
     padding: 1.5rem 2.5rem; 
-    animation: modalIn 0.5s ease forwards; /* Animación de entrada */
+    animation: modalIn 0.5s ease forwards;
     box-shadow: 0 20px 50px rgba(0,0,0,0.2);
 }
 
@@ -748,7 +748,6 @@ img { max-width: 100%; display: block; }
 
 .modal-close:hover { color: var(--clr-accent); }
 
-/* Clases internas para la infografía */
 .info-header { 
     border-bottom: 2px solid var(--clr-bg-light); 
     margin-bottom: 1rem; 
@@ -797,32 +796,27 @@ img { max-width: 100%; display: block; }
 /* =========================================
    NOVEDADES NORMATIVAS 
    ========================================= */
-/* --- Fondo con trama para la sección Novedades --- */
 .news {
     position: relative;
-    /* Ruta relativa: salimos de css/ para entrar en img/design/ */
     background-image: url('../img/design/bg_trama.png');
-    background-size: auto; /* 'auto' o 'contain' suele ser mejor para tramas repetitivas */
-    background-repeat: repeat; /* Para que la trama cubra toda la sección */
+    background-size: auto;
+    background-repeat: repeat;
     background-position: center;
-    
     padding: var(--space-xl) 0;
-    background-color: var(--clr-bg-light); /* Color de base por si la imagen tarda en cargar */
+    background-color: var(--clr-bg-light);
 }
 
-/* Opcional: Si la trama es muy oscura o tiene mucho contraste, 
-   podemos ponerle un "velo" para que el título se lea perfecto */
 .news::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: rgba(249, 247, 244, 0.7); /* Un velo del color crema base */
+    background-color: rgba(249, 247, 244, 0.7);
     z-index: 1;
 }
 
 .news .container {
     position: relative;
-    z-index: 2; /* Aseguramos que el contenido esté sobre el velo */
+    z-index: 2;
 }
 .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); }
 .news-card { background-color: var(--clr-bg-light); padding: var(--space-lg); border-radius: var(--radius-fluid); border: 1px solid #eaeaea; transition: var(--transition-fast); }
@@ -833,7 +827,7 @@ img { max-width: 100%; display: block; }
 .news .section-tag { color: var(--clr-accent); }
 
 /* =========================================
-   FOOTER / CONTACTO 
+   FOOTER / CONTACTO (CON RADIO BUTTONS CORREGIDOS PARA SAFARI)
    ========================================= */
 .footer { background-color: var(--clr-dark); color: var(--clr-surface); padding: var(--space-xl) 0 var(--space-lg); border-top: 5px solid var(--clr-accent); }
 .footer-info h2 { 
@@ -877,8 +871,33 @@ input, select, textarea { width: 100%; padding: 12px; border: 1px solid rgba(255
 input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.5); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--clr-tostado); background-color: rgba(255, 255, 255, 0.1); }
 select option { background-color: var(--clr-dark); color: white; }
-.radio-group { display: flex; gap: var(--space-sm); padding: 8px 0; flex-wrap: wrap; }
-.radio-group label { display: flex; align-items: center; gap: 8px; font-weight: 400; }
+
+/* === CORRECCIÓN PARA RADIO BUTTONS EN SAFARI === */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+    align-items: center;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    width: auto;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: var(--clr-tostado);
+}
+
 .footer .btn-submit { width: 100%; margin-top: var(--space-md); background-color: var(--clr-tostado); color: var(--clr-dark); }
 .footer .btn-submit:hover { background-color: var(--clr-accent); color: var(--clr-surface); }
 
@@ -897,7 +916,6 @@ select option { background-color: var(--clr-dark); color: white; }
     .showcase-content { max-width: 100%; padding: var(--space-sm) 0; background: none; backdrop-filter: none; }
     .showcase-bg-number { font-size: 15rem; top: 20%; }
     .info-results .info-list { grid-template-columns: 1fr !important; }
-    /* Ajustes para el Hero dividido en tablets/móviles */
     .hero-split-layout {
         flex-direction: column;
     }
@@ -905,7 +923,7 @@ select option { background-color: var(--clr-dark); color: white; }
         width: 100%;
     }
     .hero-image-col {
-        display: none; /* Ocultamos la imagen de 30% en móvil para priorizar el texto */
+        display: none;
     }
 }
 
@@ -933,59 +951,48 @@ select option { background-color: var(--clr-dark); color: white; }
 
 .hero-image-bg {
     position: absolute;
-    /* Reemplazamos 'inset: 0' por las posiciones exactas */
     top: 0;
     right: 0;
     bottom: 0;
-    left: 10%; /* 💡 MAGIA AQUÍ: Ajustá este % hasta que encaje exacto con tu rectángulo verde */
-    
+    left: 10%;
     background-image: url('../img/bg/bg.jpg'); 
     background-size: cover;
     background-position: center;
     z-index: 1;
-    
-    /* IMPORTANTE: Agregamos esto para que al hacer zoom, la foto no "invada" el rectángulo verde */
     overflow: hidden; 
 }
 
-/* Ocultamos el viejo velo porque vamos a usar el nuevo */
 .hero-image-bg::after {
     display: none;
 }
 
-/* --- EFECTO SLIDER CROSSFADE (KEN BURNS) --- */
 .bg-slide {
     position: absolute;
     inset: 0;
-    background-size: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
-    background-position: center bottom; /* Mantiene siempre el centro de la imagen enfocado, ideal para cualquier monitor */
-    opacity: 1; /* MAGIA: La hacemos 100% visible siempre */
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 1;
     z-index: 0;
-    /* Eliminamos la línea de animation para que quede completamente estática */
 }
 
-/* El velo oscuro para el texto (reemplaza al antiguo ::after) */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 40, 50, 0.1); /* Azul LGC muy oscuro y transparente */
+    background: rgba(0, 40, 50, 0.1);
     z-index: 1;
 }
 
-/* El ala izquierda que acompaña al slide */
 .lamas-hero-compo::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100vw;
-    width: calc(100vw + 130px); /* Mantenemos el ajuste de 40px */
+    width: calc(100vw + 130px);
     height: 100%;
     background-color: #F9F7F4;
-    /* --- NUEVA TRAMA --- */
     background-image: url('../img/design/bg_trama_header.png');
     background-repeat: repeat;
     background-size: auto;
-    /* ------------------- */
     z-index: 2; 
     transform: skewX(-18deg);
     transform-origin: bottom right;
@@ -994,7 +1001,7 @@ select option { background-color: var(--clr-dark); color: white; }
 .brand-asta-blue {
     position: absolute;
     top: 0;
-    left: 40px; /* ANTES: 150px. El asta azul se alinea perfecto con la verde */
+    left: 40px;
     width: 90px; 
     height: 100%;
     background-color: var(--clr-primary);
@@ -1007,13 +1014,12 @@ select option { background-color: var(--clr-dark); color: white; }
 .centered-logo {
     position: absolute;
     top: 50%;
-    left: 55%; /* ANTES: 60%. Lo tiramos un poco al centro visual nuevo */
+    left: 55%;
     transform: translate(-50%, -50%);
     z-index: 5;
     max-width: 220px;
 }
 
-/* --- Fondo con imagen para la sección Ambiente --- */
 #srv-ambiente.showcase-block {
     position: relative;
     background-image: url('../img/design/bg_ambiente.png');
@@ -1023,15 +1029,12 @@ select option { background-color: var(--clr-dark); color: white; }
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Aseguramos que el número gigante de fondo (02) no compita con la imagen */
 #srv-ambiente .showcase-bg-number {
-    opacity: 0.03; /* Lo hacemos casi invisible para que no ensucie la foto */
+    opacity: 0.03;
 }
 
-/* --- Fondo con imagen para la sección Habilitaciones --- */
 #srv-habilitaciones.showcase-block {
     position: relative;
-    /* Usamos un overlay basado en el verde oliva (rgb de #90A224) para mantener la identidad */
     background-image: url('../img/design/bg_habilitaciones.png');
     opacity: 0.9;
     background-size: cover;
@@ -1039,25 +1042,23 @@ select option { background-color: var(--clr-dark); color: white; }
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ajustamos el número gigante (04) para que sea sutil sobre la foto */
 #srv-habilitaciones .showcase-bg-number {
     opacity: 0.03;
 }
 
-/* --- Ajuste específico para Matrices Legales (2 columnas) --- */
 #srv-matrices .showcase-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* El texto ocupa un poco más que la imagen */
+    grid-template-columns: 1.2fr 0.8fr;
     gap: var(--space-md);
-    align-items: center; /* Centra la imagen verticalmente respecto al texto */
+    align-items: center;
 }
 
 #srv-matrices .showcase-visual {
     display: flex;
-    flex-direction: column; /* Apila imagen y botón */
-    align-items: center;    /* Centra horizontalmente */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;             /* Espacio exacto entre imagen y botón */
+    gap: 20px;
     position: relative;
     z-index: 2;
 }
@@ -1068,13 +1069,11 @@ select option { background-color: var(--clr-dark); color: white; }
     height: auto;
     object-fit: contain;
     margin: 0;
-    /* Eliminamos todo lo que genera el "recuadro" */
     box-shadow: none; 
     border-radius: 0;
     background: transparent;
 }
 
-/* Ajuste para móviles: en pantallas chicas volvemos a una sola columna */
 @media (max-width: 992px) {
     #srv-matrices .showcase-grid {
         grid-template-columns: 1fr;
@@ -1085,27 +1084,21 @@ select option { background-color: var(--clr-dark); color: white; }
         margin-top: var(--space-md);
     }
 
-    /* Ocultamos o achicamos la imagen en móvil si ocupa mucho espacio */
     .matrices-side-img {
         max-width: 300px;
     }
 }
 
-/* --- Restauración de Fondo con imagen para Seguridad e Higiene (SYSO) --- */
 #srv-seguridad.showcase-block {
     position: relative;
-    /* Overlay CLARO (Tostado) para mantener la legibilidad de los textos oscuros */
     background-image: linear-gradient(rgba(1, 6, 12, 0.45), rgba(1, 30, 37, 0.55)), 
                       url('../img/bg/bg3.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto Parallax */
+    background-attachment: fixed;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* --- Ajuste de Legibilidad: Seguridad e Higiene (Textos Claros) --- */
-
-/* 2. Forzamos el título y la descripción a color blanco */
 #srv-seguridad .showcase-title {
     color: #FFFFFF !important;
 }
@@ -1118,27 +1111,22 @@ select option { background-color: var(--clr-dark); color: white; }
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* 3. Ajustamos la lista para que se lea perfecto */
 #srv-seguridad .showcase-features li {
     color: #FFFFFF !important;
 }
 
-/* 4. Hacemos que las negritas de la lista destaquen en color crema */
 #srv-seguridad .showcase-features li strong {
     color: var(--clr-tostado) !important; 
 }
 
-/* 5. Aseguramos que las viñetas (los cuadraditos) mantengan tu color Verde Oliva */
 #srv-seguridad .showcase-features li::before {
     color: var(--clr-accent) !important; 
 }
 
-/* Ajuste de opacidad para el número 03 de fondo */
 #srv-seguridad .showcase-bg-number {
     opacity: 0.03;
 }
 
-/* --- Diseño de 2 columnas para Ambiente --- */
 #srv-ambiente .showcase-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1146,22 +1134,18 @@ select option { background-color: var(--clr-dark); color: white; }
     align-items: center;
 }
 
-/* --- Efecto de Imagen Moderna (Cuadrada con desvanecimiento) --- */
 .modern-image-wrapper {
     position: relative;
     width: 100%;
     max-width: 450px;
-    aspect-ratio: 1 / 1; /* Esto la vuelve cuadrada automáticamente */
+    aspect-ratio: 1 / 1;
     margin: 0 auto;
 }
 
 .ambiente-modern-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que los árboles llenen el cuadrado sin deformarse */
-    
-    /* EFECTO MODERNO: Máscara de desvanecimiento radial */
-    /* Esto hace que el centro sea opaco y los bordes transparentes */
+    object-fit: cover;
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 72%);
     mask-image: radial-gradient(circle, black 40%, transparent 72%);
 }
@@ -1170,7 +1154,6 @@ select option { background-color: var(--clr-dark); color: white; }
     color: var(--clr-tostado) !important;
 }
 
-/* Ajuste para móviles */
 @media (max-width: 992px) {
     #srv-ambiente .showcase-grid {
         grid-template-columns: 1fr;
@@ -1181,7 +1164,6 @@ select option { background-color: var(--clr-dark); color: white; }
     }
 }
 
-/* --- Diseño de 2 columnas para Habilitaciones --- */
 #srv-habilitaciones .showcase-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1189,7 +1171,6 @@ select option { background-color: var(--clr-dark); color: white; }
     align-items: center;
 }
 
-/* --- Efecto de Imagen Circular Desvanecida (Igual a Ambiente) --- */
 .habilitaciones-mask-wrapper {
     position: relative;
     width: 100%;
@@ -1202,16 +1183,11 @@ select option { background-color: var(--clr-dark); color: white; }
     width: 90%;
     height: 90%;
     object-fit: cover;
-    
-    /* Quitamos el borde redondeado duro */
-    border-radius: 0; 
-    
-    /* Aplicamos exactamente la misma máscara orgánica de Ambiente */
+    border-radius: 0;
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 70%);
     mask-image: radial-gradient(circle, black 40%, transparent 70%);
 }
 
-/* Ajuste para móviles: Mantenemos que en el celular el texto salga primero y la imagen abajo */
 @media (max-width: 992px) {
     #srv-habilitaciones .showcase-grid {
         grid-template-columns: 1fr;
@@ -1225,68 +1201,60 @@ select option { background-color: var(--clr-dark); color: white; }
     }
 }
 
-/* --- Ajustes para la nueva sección Facility Management --- */
 #srv-facility.showcase-block {
     position: relative;
-    /* Usamos un fondo oscuro para que el texto blanco/crema resalte */
     background-image: linear-gradient(rgba(1, 6, 12, 0.65), rgba(1, 30, 37, 0.75)),
-                      url('../img/design/bg_facility.png') !important; /* Cambia la ruta por tu imagen */
+                      url('../img/design/bg_facility.png') !important;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-/* Forzamos colores claros para legibilidad */
 #srv-facility .showcase-title { color: #FFFFFF !important; }
 #srv-facility .showcase-desc { color: rgba(255, 255, 255, 0.9) !important; }
 #srv-facility .showcase-features li { color: #FFFFFF !important; }
 #srv-facility .showcase-features li strong { color: var(--clr-tostado) !important; }
 #srv-facility .showcase-features li::before { color: var(--clr-accent) !important; }
 
-/* --- Sección Novedades con Iframe --- */
-/* --- Ajuste exacto para Feed de 600x400 --- */
 .news-feed-wrapper {
-    max-width: 100%; /* Igualamos al ancho de tu feed */
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .linkedin-card {
     padding: 0;
-    background:var(--clr-bg-light);
+    background: var(--clr-bg-light);
     border: 1px solid rgba(0,0,0,0.05);
     border-radius: var(--radius-fluid);
     overflow: hidden;
-    line-height: 0; /* Elimina espacios residuales debajo del iframe */
+    line-height: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .linkedin-card iframe {
     width: 100%;
-    height: 540px !important; /* Altura exacta de tu configuración */
-    min-height: auto; /* IMPORTANTE: Quitamos el min-height de 500px anterior */
+    height: 540px !important;
+    min-height: auto;
     border: none;
     display: block;
 }
 
-/* Ajuste para móviles */
 @media (max-width: 768px) {
     .news-feed-wrapper {
         padding: 0 10px;
     }
     .linkedin-card iframe {
-        height: 600px; /* Un poco más corto en móviles */
+        height: 600px;
     }
 }
 
-/* --- Estilos Especiales para Modal de Infografía --- */
-/* --- Estilos Especiales para Modal de Infografía --- */
 .modal-container.image-mode {
-    padding: 0; /* Eliminamos todo el borde blanco */
-    max-width: 90vw; /* Ajustamos al 90% del ancho de la pantalla */
-    width: fit-content; /* El modal se "abraza" al tamaño exacto de la imagen */
-    background: transparent; /* Quitamos el fondo blanco */
+    padding: 0;
+    max-width: 90vw;
+    width: fit-content;
+    background: transparent;
     box-shadow: none;
-    overflow: visible; /* IMPORTANTE: Permite que el botón de cerrar sobresalga sin crear scrollbars */
+    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1297,20 +1265,19 @@ select option { background-color: var(--clr-dark); color: white; }
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Sombra elegante detrás de la infografía */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
 .modal-infographic {
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 85vh; /* Evita que la imagen sea más alta que la pantalla */
+    max-height: 85vh;
     object-fit: contain;
     border-radius: 12px;
-    display: block; /* Evita márgenes fantasma debajo de la imagen */
+    display: block;
 }
 
-/* Ajustamos el botón de cerrar para que se vea bien sobre la imagen */
 .modal-container.image-mode .modal-close {
     top: -15px;
     right: -15px;
@@ -1328,7 +1295,7 @@ select option { background-color: var(--clr-dark); color: white; }
 
 @media (max-width: 768px) {
     .modal-container.image-mode {
-        max-width: 95vw; /* En celular aprovechamos más ancho */
+        max-width: 95vw;
     }
     .modal-infographic {
         max-height: 80vh;
@@ -1342,19 +1309,17 @@ select option { background-color: var(--clr-dark); color: white; }
     }
 }
 
-/* --- Botón Matrices Online en Navbar --- */
 .btn-nav-matrices {
-    background-color: var(--clr-accent) !important; /* Verde LGC */
+    background-color: var(--clr-accent) !important;
     margin-left: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .btn-nav-matrices:hover {
-    background-color: #7a8a1e !important; /* Un verde un poco más oscuro al pasar el mouse */
+    background-color: #7a8a1e !important;
     transform: translateY(-2px);
 }
 
-/* Ajuste para que el botón bajo la PC no toque la imagen en móviles */
 @media (max-width: 768px) {
     .showcase-visual {
         margin-bottom: 30px;
@@ -1367,29 +1332,23 @@ select option { background-color: var(--clr-dark); color: white; }
     }
 }
 
-/* =========================================
-   ESTILOS DEL MODAL DE ÉXITO
-   ========================================= */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 23, 42, 0.7); /* Fondo oscuro semitransparente */
+    background-color: rgba(15, 23, 42, 0.7);
     backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    
-    /* Oculto por defecto */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
 }
 
-/* Clase para activarlo desde JS */
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -1417,8 +1376,8 @@ select option { background-color: var(--clr-dark); color: white; }
     justify-content: center;
     width: 80px;
     height: 80px;
-    background-color: #f0fdf4; /* Fondo verdecito claro */
-    color: var(--clr-accent, #90A224); /* Verde Oliva LGC */
+    background-color: #f0fdf4;
+    color: var(--clr-accent, #90A224);
     border-radius: 50%;
     margin: 0 auto 20px auto;
 }
@@ -1458,13 +1417,12 @@ select option { background-color: var(--clr-dark); color: white; }
     background-color: var(--clr-accent, #90A224);
 }
 
-/* --- BANDERAS DE IDIOMA --- */
 .lang-switcher {
     display: flex;
     gap: 12px;
     align-items: center;
-    margin-left: 10px; /* Empuja las banderas hacia la derecha */
-    margin-right: 10px; /* Las separa del menú hamburguesa */
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .lang-switcher a {
@@ -1479,11 +1437,11 @@ select option { background-color: var(--clr-dark); color: white; }
 }
 
 .lang-switcher a.active img {
-    border-color: var(--clr-primary); /* Recuadro azul al idioma activo */
+    border-color: var(--clr-primary);
 }
 
 .lang-switcher a:not(.active) {
-    opacity: 0.5; /* Opaca el idioma que no se está usando */
+    opacity: 0.5;
 }
 
 .lang-switcher a:hover {
@@ -1491,23 +1449,13 @@ select option { background-color: var(--clr-dark); color: white; }
     opacity: 1;
 }
 
-/* Esconder el banner molesto de Google lo máximo posible */
 body { top: 0 !important; }
 .skiptranslate iframe { display: none !important; }
 
-/* =========================================
-   VERSIÓN MÓVIL (Smartphones y Tablets)
-   ========================================= */
-
-/* Ocultamos cosas de móvil en la PC */
 @media (min-width: 993px) {
     .menu-toggle { display: none; }
     .mobile-volver { display: none; }
 }
-
-/* =========================================
-   VERSIÓN MÓVIL (Smartphones y Tablets)
-   ========================================= */
 
 @media (min-width: 993px) {
     .menu-toggle { display: none !important; }
@@ -1515,7 +1463,6 @@ body { top: 0 !important; }
 }
 
 @media (max-width: 992px) {
-    /* 1. HEADER FIJO Y RAYITAS */
     .header {
         position: fixed !important;
         top: 0; left: 0; width: 100%;
@@ -1534,7 +1481,7 @@ body { top: 0 !important; }
         background: transparent; border: none;
         cursor: pointer; z-index: 3100;
         margin-left: auto !important;
-        margin-right: 20px; /* Para que no se pegue al borde derecho */
+        margin-right: 20px;
     }
     
     .menu-toggle span {
@@ -1546,7 +1493,6 @@ body { top: 0 !important; }
     main { margin-top: 20px !important; }
     .lamas-hero-compo { display: none !important; }
 
-    /* 2. MENÚ FULL SCREEN Y FILAS */
     .nav-links {
         position: fixed;
         top: 70px; left: 0;
@@ -1566,16 +1512,16 @@ body { top: 0 !important; }
 
     .nav-links > li {
         width: 100%;
-        min-height: 65px; /* Altura estándar para todos */
+        min-height: 65px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* Alinea al inicio para evitar huecos blancos */
+        justify-content: flex-start;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-links > li > a {
         width: 100%; 
-        min-height: 65px; /* Altura idéntica para todas las filas principales */
+        min-height: 65px;
         display: flex; align-items: center; justify-content: center;
         font-size: 1.2rem !important;
         font-weight: 500;
@@ -1585,7 +1531,6 @@ body { top: 0 !important; }
         border: none !important; 
     }
 
-    /* 3. ACORDEÓN (SUBMENÚ) */
     .nav-links .dropdown { height: auto; }
     
     .dropdown-menu {
@@ -1600,14 +1545,14 @@ body { top: 0 !important; }
     }
 
     .dropdown-menu li {
-        border-top: 1px solid rgba(0, 0, 0, 0.2); /* Línea divisoria sutil color blanco transparente */
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
         border-bottom: none;
-        display: flex; /* Asegura que el link ocupe todo */
+        display: flex;
     }
 
     .dropdown-menu li a {
-        min-height: 55px !important; /* Ligeramente más bajo para jerarquía */
-        color: #ffffff !important;   /* LETRAS BLANCAS FORZADAS */
+        min-height: 55px !important;
+        color: #ffffff !important;
         font-size: 1.1rem !important;
         display: flex;
         align-items: center;
@@ -1617,7 +1562,6 @@ body { top: 0 !important; }
 
     .dropdown-toggle::after { content: ' ▾'; margin-left: 8px; }
 
-    /* 4. BOTÓN VOLVER */
     .mobile-volver {
         margin-top: auto;
         min-height: 65px !important;
@@ -1634,7 +1578,6 @@ body { top: 0 !important; }
         border-radius: 0;
     }
 
-    /* 5. DEGRADADOS Y RECTOS (Ambiente y Habilitaciones) */
     #srv-ambiente.showcase-block,
     #srv-habilitaciones.showcase-block {
         background-image: none !important;
@@ -1647,16 +1590,12 @@ body { top: 0 !important; }
     
     #srv-ambiente *, #srv-habilitaciones * { color: #ffffff !important; }
 
-    /* --- LIMPIEZA DE BUGS EN MÓVIL --- */
-    
-    /* 1. Apagamos las formas diagonales de PC que ensucian el header */
     .header::before,
     .header::after,
     .header-blue-body {
         display: none !important;
     }
 
-    /* 2. Forzamos la aparición del logo que había quedado invisible */
     .logo-img {
         opacity: 1 !important;
         visibility: visible !important;
@@ -1673,7 +1612,7 @@ body { top: 0 !important; }
 
 .social-placeholder {
     background-color: var(--clr-bg-light);
-    border: 2px dashed rgba(0, 127, 161, 0.3); /* Borde punteado color turquesa transparente */
+    border: 2px dashed rgba(0, 127, 161, 0.3);
     border-radius: 12px;
     padding: 50px 30px;
     text-align: center;
@@ -1681,7 +1620,7 @@ body { top: 0 !important; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 350px; /* Ocupa el mismo alto que ocuparía el iframe */
+    min-height: 350px;
     transition: all 0.3s ease;
 }
 .social-placeholder:hover {
@@ -1689,19 +1628,19 @@ body { top: 0 !important; }
     background-color: #f0f4f5;
 }
 .placeholder-icon {
-    color: #a0aec0; /* Gris apagado */
+    color: #a0aec0;
     margin-bottom: 20px;
 }
 .placeholder-title {
     color: var(--clr-primary);
     font-size: 1.4rem;
     margin-bottom: 10px;
-    line-height: 1.2 !important; /* MAGIA: Recupera el interlineado del título */
+    line-height: 1.2 !important;
 }
 
 .social-placeholder p {
     color: var(--clr-text-muted);
     font-size: 0.95rem;
     max-width: 400px;
-    line-height: 1.6 !important; /* MAGIA: Separa los renglones del párrafo */
+    line-height: 1.6 !important;
 }
