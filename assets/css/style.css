@@ -581,34 +581,14 @@ img { max-width: 100%; display: block; }
 }
 
 .clients-slider-wrapper {
-    position: relative; /* Necesario para los pseudo-elementos absolutos */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 50px;
     width: 100%;
-    overflow-x: hidden; /* Recorta el contenido que se desborda */
-}
-
-/* Efecto de desvanecimiento en los bordes mediante pseudo-elementos (compatible con Safari) */
-.clients-slider-wrapper::before,
-.clients-slider-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px; /* Ancho del degradado */
-    z-index: 2;
-    pointer-events: none;
-}
-
-.clients-slider-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, var(--clr-bg-light), transparent);
-}
-
-.clients-slider-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, var(--clr-bg-light), transparent);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent);
+    mask-image: linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent);
 }
 
 .clients-track {
@@ -617,9 +597,6 @@ img { max-width: 100%; display: block; }
     gap: 80px;
     width: max-content;
     flex-shrink: 0;
-    will-change: transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
 
 .clients-track img {
@@ -656,10 +633,8 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
     .clients-slider-wrapper {
         gap: 30px;
-    }
-    .clients-slider-wrapper::before,
-    .clients-slider-wrapper::after {
-        width: 50px;
+        -webkit-mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
+        mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
     }
     .clients-track img {
         height: 45px;
