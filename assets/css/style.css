@@ -477,7 +477,7 @@ img { max-width: 100%; display: block; }
     background-image: linear-gradient(rgba(1, 6, 12, 0.65), rgba(1, 30, 37, 0.75)), url('../img/bg/bg.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll; /* fixed roto en Safari con overflow:hidden */
     opacity: 1;
     z-index: 1;
     pointer-events: none;
@@ -573,13 +573,7 @@ img { max-width: 100%; display: block; }
 .success .section-title { color: var(--clr-dark); }
 .success .section-tag { color: var(--clr-accent); }
 
-/* --- Carrusel de Logos de Clientes (CORREGIDO PARA SAFARI) --- */
-.clients {
-    padding: var(--space-xxl) 0;
-    background-color: var(--clr-bg-light);
-    overflow: hidden;
-}
-
+/* --- Carrusel de Logos de Clientes --- */
 .clients-slider-wrapper {
     position: relative;
     display: flex;
@@ -587,8 +581,21 @@ img { max-width: 100%; display: block; }
     gap: 50px;
     width: 100%;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent);
-    mask-image: linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent);
+    padding: var(--space-lg) 0;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0px,
+        black 100px,
+        black calc(100% - 100px),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0px,
+        black 100px,
+        black calc(100% - 100px),
+        transparent 100%
+    );
 }
 
 .clients-track {
@@ -605,6 +612,7 @@ img { max-width: 100%; display: block; }
     object-fit: contain;
     filter: grayscale(100%) opacity(0.6);
     transition: filter 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .clients-track img:hover {
@@ -622,19 +630,31 @@ img { max-width: 100%; display: block; }
 
 @keyframes scrollLeft {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to   { transform: translateX(-50%); }
 }
 
 @keyframes scrollRight {
     from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
+    to   { transform: translateX(0); }
 }
 
 @media (max-width: 768px) {
     .clients-slider-wrapper {
         gap: 30px;
-        -webkit-mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
-        mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0px,
+            black 50px,
+            black calc(100% - 50px),
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent 0px,
+            black 50px,
+            black calc(100% - 50px),
+            transparent 100%
+        );
     }
     .clients-track img {
         height: 45px;
