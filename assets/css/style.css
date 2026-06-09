@@ -582,20 +582,26 @@ img { max-width: 100%; display: block; }
     width: 100%;
     overflow: hidden;
     padding: var(--space-lg) 0;
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0px,
-        black 100px,
-        black calc(100% - 100px),
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to right,
-        transparent 0px,
-        black 100px,
-        black calc(100% - 100px),
-        transparent 100%
-    );
+}
+
+/* Fade lateral via pseudo-elementos: evita el bug de -webkit-mask-image en Safari */
+.clients-slider-wrapper::before,
+.clients-slider-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+.clients-slider-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--clr-bg, #fff) 0%, transparent 100%);
+}
+.clients-slider-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--clr-bg, #fff) 0%, transparent 100%);
 }
 
 .clients-track {
@@ -603,11 +609,10 @@ img { max-width: 100%; display: block; }
     align-items: center;
     gap: 80px;
     flex-shrink: 0;
-    /* Safari fix: usar min-width en lugar de max-content */
     min-width: max-content;
-    will-change: transform;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    /* will-change eliminado: causa hit-testing desalineado en Safari */
 }
 
 .clients-track img {
@@ -626,45 +631,41 @@ img { max-width: 100%; display: block; }
 
 .track-left {
     animation: scrollLeft 80s linear infinite;
-    animation-fill-mode: none;
     -webkit-animation: scrollLeft 80s linear infinite;
-    -webkit-animation-fill-mode: none;
 }
 
 .track-right {
     animation: scrollRight 80s linear infinite;
-    animation-fill-mode: none;
     -webkit-animation: scrollRight 80s linear infinite;
-    -webkit-animation-fill-mode: none;
 }
 
 @keyframes scrollLeft {
-    0%   { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@-webkit-keyframes scrollLeft {
+    from { -webkit-transform: translateX(0); }
+    to   { -webkit-transform: translateX(-50%); }
 }
 
 @keyframes scrollRight {
-    0%   { transform: translate3d(-50%, 0, 0); }
-    100% { transform: translate3d(0, 0, 0); }
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+}
+
+@-webkit-keyframes scrollRight {
+    from { -webkit-transform: translateX(-50%); }
+    to   { -webkit-transform: translateX(0); }
 }
 
 @media (max-width: 768px) {
     .clients-slider-wrapper {
         gap: 30px;
-        -webkit-mask-image: linear-gradient(
-            to right,
-            transparent 0px,
-            black 50px,
-            black calc(100% - 50px),
-            transparent 100%
-        );
-        mask-image: linear-gradient(
-            to right,
-            transparent 0px,
-            black 50px,
-            black calc(100% - 50px),
-            transparent 100%
-        );
+    }
+    .clients-slider-wrapper::before,
+    .clients-slider-wrapper::after {
+        width: 50px;
     }
     .clients-track img {
         height: 45px;
