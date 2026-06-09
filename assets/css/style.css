@@ -574,6 +574,9 @@ img { max-width: 100%; display: block; }
 .success .section-tag { color: var(--clr-accent); }
 
 /* --- Carrusel de Logos de Clientes --- */
+/* =========================================
+   CLIENTS SLIDER - CORREGIDO PARA SAFARI
+   ========================================= */
 .clients-slider-wrapper {
     position: relative;
     display: flex;
@@ -584,7 +587,7 @@ img { max-width: 100%; display: block; }
     padding: var(--space-lg) 0;
 }
 
-/* Fade lateral via pseudo-elementos: evita el bug de -webkit-mask-image en Safari */
+/* Fade lateral (sin cambios) */
 .clients-slider-wrapper::before,
 .clients-slider-wrapper::after {
     content: '';
@@ -604,39 +607,26 @@ img { max-width: 100%; display: block; }
     background: linear-gradient(to left, var(--clr-bg, #fff) 0%, transparent 100%);
 }
 
+/* --- Cambio clave: usar GRID en lugar de FLEX --- */
 .clients-track {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 80px;          /* el gap en grid funciona bien en Safari */
     align-items: center;
-    gap: 80px;
-    flex-shrink: 0;
-    min-width: max-content;
-    -webkit-backface-visibility: hidden;
+    width: max-content;  /* en lugar de min-width */
+    will-change: transform;
+    transform: translateZ(0); /* fuerza aceleración por hardware */
     backface-visibility: hidden;
-    /* will-change eliminado: causa hit-testing desalineado en Safari */
 }
 
-.clients-track img {
-    height: 70px;
-    max-width: 200px;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.6);
-    transition: filter 0.3s ease, transform 0.3s ease;
-    flex-shrink: 0;
-}
-
-.clients-track img:hover {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.05);
-}
-
+/* Animaciones (mismos keyframes) */
 .track-left {
     animation: scrollLeft 80s linear infinite;
-    -webkit-animation: scrollLeft 80s linear infinite;
 }
 
 .track-right {
     animation: scrollRight 80s linear infinite;
-    -webkit-animation: scrollRight 80s linear infinite;
 }
 
 @keyframes scrollLeft {
@@ -644,21 +634,12 @@ img { max-width: 100%; display: block; }
     to   { transform: translateX(-50%); }
 }
 
-@-webkit-keyframes scrollLeft {
-    from { -webkit-transform: translateX(0); }
-    to   { -webkit-transform: translateX(-50%); }
-}
-
 @keyframes scrollRight {
     from { transform: translateX(-50%); }
     to   { transform: translateX(0); }
 }
 
-@-webkit-keyframes scrollRight {
-    from { -webkit-transform: translateX(-50%); }
-    to   { -webkit-transform: translateX(0); }
-}
-
+/* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
     .clients-slider-wrapper {
         gap: 30px;
@@ -667,12 +648,12 @@ img { max-width: 100%; display: block; }
     .clients-slider-wrapper::after {
         width: 50px;
     }
+    .clients-track {
+        gap: 40px;
+    }
     .clients-track img {
         height: 45px;
         max-width: 150px;
-    }
-    .clients-track {
-        gap: 40px;
     }
 }
 
