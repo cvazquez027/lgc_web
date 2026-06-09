@@ -602,8 +602,12 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 80px;
-    width: max-content;
     flex-shrink: 0;
+    /* Safari fix: usar min-width en lugar de max-content */
+    min-width: max-content;
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .clients-track img {
@@ -622,20 +626,26 @@ img { max-width: 100%; display: block; }
 
 .track-left {
     animation: scrollLeft 80s linear infinite;
+    animation-fill-mode: none;
+    -webkit-animation: scrollLeft 80s linear infinite;
+    -webkit-animation-fill-mode: none;
 }
 
 .track-right {
     animation: scrollRight 80s linear infinite;
+    animation-fill-mode: none;
+    -webkit-animation: scrollRight 80s linear infinite;
+    -webkit-animation-fill-mode: none;
 }
 
 @keyframes scrollLeft {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes scrollRight {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
+    0%   { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
 }
 
 @media (max-width: 768px) {
