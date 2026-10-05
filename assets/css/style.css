@@ -1238,20 +1238,37 @@ select option { background-color: var(--clr-dark); color: white; }
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
+/* Sin cambio de borde al hover (el efecto de elevación/sombra de .news-card:hover se mantiene) */
+.linkedin-card:hover {
+    border-color: rgba(0,0,0,0.05);
+}
+
 .linkedin-card iframe {
     width: 100%;
-    height: 600px !important;
+    height: 860px !important; /* ANTES: 600px. Ajustar junto con la altura configurada en SociableKit */
     min-height: auto;
     border: none;
     display: block;
 }
 
+/* Más aire alrededor del panel dentro de la sección */
+.news {
+    padding: calc(var(--space-xl) + 2rem) 0;
+}
+
+.news .section-title {
+    margin-bottom: var(--space-xl);
+}
+
 @media (max-width: 768px) {
+    .news {
+        padding: var(--space-xl) 0;
+    }
     .news-feed-wrapper {
         padding: 0 10px;
     }
     .linkedin-card iframe {
-        height: 600px;
+        height: 710px !important; /* ANTES: 600px */
     }
 }
 
