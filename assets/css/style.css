@@ -599,11 +599,11 @@ img { max-width: 100%; display: block; }
 }
 .clients-slider-wrapper::before {
     left: 0;
-    background: linear-gradient(to right, var(--clr-bg, #fff) 0%, transparent 100%);
+    background: linear-gradient(to right, var(--clr-bg-light, #F9F7F4) 0%, transparent 100%);
 }
 .clients-slider-wrapper::after {
     right: 0;
-    background: linear-gradient(to left, var(--clr-bg, #fff) 0%, transparent 100%);
+    background: linear-gradient(to left, var(--clr-bg-light, #F9F7F4) 0%, transparent 100%);
 }
 
 /* Track en grid (funciona bien en Safari) */
@@ -611,7 +611,7 @@ img { max-width: 100%; display: block; }
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
-    gap: 80px;
+    gap: 0;                    /* el espacio lo da el padding de cada logo */
     align-items: center;
     width: max-content;
     will-change: transform;
@@ -635,23 +635,21 @@ img { max-width: 100%; display: block; }
     to   { transform: translateX(0); }
 }
 
-/* ========== ESTILOS PARA LAS IMÁGENES DE LOS LOGOS ========== */
+/* ========== ESTILOS PARA LAS IMÁGENES DE LOS LOGOS ==========
+   Cada logo ocupa una caja fija (ancho x alto) y se escala adentro con
+   object-fit: contain, así todos quedan equiespaciados aunque sus
+   archivos tengan proporciones distintas (y los SVG sin tamaño propio
+   no colapsan a 0px). El espacio entre logos es padding de cada caja,
+   no "gap" del track: así la mitad del track mide exactamente un set
+   de logos y el loop translateX(-50%) no da saltos. */
 .clients-track img {
-    /* Tamaño pequeño y uniforme en desktop */
-    max-height: 55px;
-    width: auto;
-    /* Filtro gris (escala de grises) */
-    filter: grayscale(100%);
-    /* Transición suave para hover */
-    transition: all 0.3s ease;
-    /* Opcional: redondear un poco si los logos tienen bordes duros */
-    border-radius: 4px;
-}
-
-/* Efecto hover: quitar gris y leve zoom */
-.clients-track img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.05);
+    display: block;
+    box-sizing: content-box;
+    width: 180px;
+    height: 70px;
+    padding: 0 40px;          /* 80px entre logos */
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Ajuste para pantallas pequeñas */
@@ -663,17 +661,18 @@ img { max-width: 100%; display: block; }
     .clients-slider-wrapper::after {
         width: 50px;
     }
-    .clients-track {
-        gap: 40px;
-    }
     .clients-track img {
-        max-height: 45px;   /* un poco más pequeño en móvil */
-        filter: grayscale(100%); /* también grises en móvil */
+        width: 140px;
+        height: 56px;
+        padding: 0 22px;      /* 44px entre logos */
     }
-    /* El hover en móvil no es tan relevante, pero lo dejamos igual */
-    .clients-track img:hover {
-        filter: grayscale(0%);
-        transform: scale(1.05);
+}
+
+/* Sin animación para quien la desactiva en el sistema */
+@media (prefers-reduced-motion: reduce) {
+    .track-left,
+    .track-right {
+        animation: none;
     }
 }
 
