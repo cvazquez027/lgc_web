@@ -636,18 +636,23 @@ img { max-width: 100%; display: block; }
 }
 
 /* ========== ESTILOS PARA LAS IMÁGENES DE LOS LOGOS ==========
-   Cada logo ocupa una caja fija (ancho x alto) y se escala adentro con
-   object-fit: contain, así todos quedan equiespaciados aunque sus
-   archivos tengan proporciones distintas (y los SVG sin tamaño propio
-   no colapsan a 0px). El espacio entre logos es padding de cada caja,
-   no "gap" del track: así la mitad del track mide exactamente un set
-   de logos y el loop translateX(-50%) no da saltos. */
+   Los archivos están recortados sin márgenes vacíos y cada <img> trae en
+   el HTML su tamaño (--w / --h, en px a escala 1) calculado para que todos
+   los logos tengan un peso visual parecido: los anchos quedan más bajos y
+   los cuadrados más altos. Como la caja coincide con el logo visible, el
+   padding lateral deja la misma distancia entre bordes de cada logo.
+   El espacio es padding de cada imagen, no "gap" del track: así la mitad
+   del track mide exactamente un set de logos y el loop translateX(-50%)
+   no da saltos. */
+.clients-track {
+    --logo-scale: 1;
+}
 .clients-track img {
     display: block;
     box-sizing: content-box;
-    width: 180px;
-    height: 70px;
-    padding: 0 40px;          /* 80px entre logos */
+    width: calc(var(--w, 180) * var(--logo-scale) * 1px);
+    height: calc(var(--h, 60) * var(--logo-scale) * 1px);
+    padding: 0 45px;          /* 90px entre logos */
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -661,10 +666,11 @@ img { max-width: 100%; display: block; }
     .clients-slider-wrapper::after {
         width: 50px;
     }
+    .clients-track {
+        --logo-scale: 0.72;
+    }
     .clients-track img {
-        width: 140px;
-        height: 56px;
-        padding: 0 22px;      /* 44px entre logos */
+        padding: 0 25px;      /* 50px entre logos */
     }
 }
 
