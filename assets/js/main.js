@@ -167,15 +167,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }, revealOptions);
     revealElements.forEach(el => revealOnScroll.observe(el));
 
-    // 7. CARRUSEL INFINITO LOGOS
-    const track = document.querySelector('.logos-track');
-    if (track) {
-        const logos = Array.from(track.children);
-        logos.forEach(logo => {
-            const clone = logo.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
-        });
+    // 7. CARRUSEL DE LOGOS: arranca recién cuando la sección se ve en pantalla,
+    // para que los logos destacados (primeros de cada fila) aparezcan primero.
+    const clientsSlider = document.querySelector('.clients-slider-wrapper');
+    if (clientsSlider && 'IntersectionObserver' in window) {
+        clientsSlider.classList.add('is-waiting');
+        const clientsObserver = new IntersectionObserver((entries, obs) => {
+            if (entries.some(e => e.isIntersecting)) {
+                // Reinicia la animación desde el principio (por si avanzó
+                // antes de que cargara este script) y la pone en marcha.
+                clientsSlider.querySelectorAll('.clients-track').forEach(t => {
+                    t.style.animation = 'none';
+                    void t.offsetWidth;
+                    t.style.animation = '';
+                    // La fila de arriba va hacia la izquierda: la arrancamos con los
+                    // destacados corridos un 20% del ancho hacia adentro, para que no
+                    // salgan de pantalla enseguida (delay negativo = arrancar más adelante
+                    // en el ciclo, en el punto equivalente a ese corrimiento).
+                    if (t.classList.contains('track-left')) {
+                        const half = t.scrollWidth / 2;
+                        const dur = parseFloat(getComputedStyle(t).animationDuration) || 0;
+                        const shift = clientsSlider.clientWidth * 0.2;
+                        if (half > shift && dur > 0) {
+                            t.style.animationDelay = `-${(dur * (1 - shift / half)).toFixed(3)}s`;
+                        }
+                    }
+                });
+                clientsSlider.classList.remove('is-waiting');
+                obs.disconnect();
+            }
+        }, { threshold: 0.3 });
+        clientsObserver.observe(clientsSlider);
     }
 
     // 8. LÓGICA DE FORMULARIO Y MODAL DE ÉXITO

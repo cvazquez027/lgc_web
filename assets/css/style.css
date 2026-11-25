@@ -657,6 +657,18 @@ img { max-width: 100%; display: block; }
     flex-shrink: 0;
 }
 
+/* Logos destacados (los primeros de cada fila): un 12% más grandes */
+.clients-track img.logo-destacado {
+    width: calc(var(--w, 180) * var(--logo-scale) * 1.12px);
+    height: calc(var(--h, 60) * var(--logo-scale) * 1.12px);
+}
+
+/* El JS pausa el carrusel hasta que la sección entra en pantalla, así los
+   destacados se ven primero. Sin JS, el carrusel corre igual que siempre. */
+.clients-slider-wrapper.is-waiting .clients-track {
+    animation-play-state: paused;
+}
+
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
     .clients-slider-wrapper {
