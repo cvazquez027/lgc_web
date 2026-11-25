@@ -645,7 +645,7 @@ img { max-width: 100%; display: block; }
    del track mide exactamente un set de logos y el loop translateX(-50%)
    no da saltos. */
 .clients-track {
-    --logo-scale: 1.2;
+    --logo-scale: 1.4;
 }
 .clients-track img {
     display: block;
@@ -679,7 +679,7 @@ img { max-width: 100%; display: block; }
         width: 50px;
     }
     .clients-track {
-        --logo-scale: 0.85;
+        --logo-scale: 0.95;
     }
     .clients-track img {
         padding: 0 25px;      /* 50px entre logos */
